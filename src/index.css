@@ -11,3 +11,6 @@
   outline: none;
 }
 
+  .auth-card__textfield {
+    @apply w-full text-lg px-2 bg-transparent font-bold placeholder-shown:font-medium;
+  }
