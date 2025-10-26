@@ -7,7 +7,7 @@ function TextField({ name, value, onChange, placeholder, type, classname }) {
         value={value}
         onChange={onChange}
         autoComplete="off"
-        className={`auth-card__textfield ${classname}`}
+        className={`form-card__textfield ${classname}`}
         placeholder={placeholder}
         type={type}
       />

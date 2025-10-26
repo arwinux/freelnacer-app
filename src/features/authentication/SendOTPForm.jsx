@@ -6,9 +6,9 @@ import Loading from "../../ui/Loading";
 
 function SendOTPForm({ onSendOtp, isSendingOtp, phoneNumber, onChange }) {
   return (
-    <div className="auth-card">
+    <div className="form-card">
       {/* Header with image */}
-      <div className="auth-card__header">
+      <div className="form-card__header">
         <img
           className="w-full h-full object-cover"
           src="/src/assets/images/login-header.jpg"
@@ -34,14 +34,14 @@ function SendOTPForm({ onSendOtp, isSendingOtp, phoneNumber, onChange }) {
             className="flex space-y-5 flex-col"
             action=""
           >
-            <div className="auth-card__details my-4 cursor-default select-none">
+            <div className="form-card__details my-4 cursor-default select-none">
               <p className="text-lg font-semibold">Login or Sign Up</p>
               <p className="text-md text-slate-500">
                 We'll send you a verification code
               </p>
             </div>
             {/* Input */}
-            <div className="auth-card__input-tel">
+            <div className="form-card__input-tel">
               <MdOutlinePhoneInTalk className="size-8 w-14 text-zinc-500" />
               <TextField
                 name="phoneNumber"
@@ -54,7 +54,7 @@ function SendOTPForm({ onSendOtp, isSendingOtp, phoneNumber, onChange }) {
             {/* Button */}
             <button
               type="submit"
-              className="auth-card__btn flex justify-center items-center gap-x-2"
+              className="form-card__btn flex justify-center items-center gap-x-2"
             >
               Send OTP
               {isSendingOtp ? (

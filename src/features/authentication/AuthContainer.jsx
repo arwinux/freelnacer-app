@@ -57,7 +57,7 @@ function AuthContainer() {
   };
 
   return (
-    <div className="auth-page">
+    <div className="page">
       {renderStep()}
       <p className="mt-5 font-semibold cursor-default select-none">
         🔒 Secure authentication powered by OTP

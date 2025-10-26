@@ -50,9 +50,9 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
   };
 
   return (
-    <div className="auth-card">
+    <div className="form-card">
       {/* Header with image */}
-      <div className="auth-card__header">
+      <div className="form-card__header">
         <img
           className="w-full h-full object-cover"
           src="/src/assets/images/login-header.jpg"
@@ -93,7 +93,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
             className="flex space-y-5 flex-col"
             action=""
           >
-            <div className="auth-card__details my-2  cursor-default select-none">
+            <div className="form-card__details my-2  cursor-default select-none">
               <p className="text-lg font-semibold">Enter 6-digit code</p>
               <p
                 className={`px-2 border border-zinc-300 bg-zinc-100 rounded-md font-semibold text-sm ${
@@ -142,7 +142,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
             <button
               onClick={checkOtpHandler}
               type="submit"
-              className="auth-card__btn flex justify-center items-center gap-x-2"
+              className="form-card__btn flex justify-center items-center gap-x-2"
             >
               Verify Code
               {isPending ? (
