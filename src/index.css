@@ -47,4 +47,16 @@
   .otp-no-selection::selection {
     @apply bg-transparent text-inherit;
   }
+
+  .lable-badge {
+    @apply absolute flex justify-center items-center gap-2 -top-[10px] ml-6 bg-zinc-500/80 shadow-lg text-white rounded-lg px-2 text-sm font-semibold;
+  }
+
+  .role-icon {
+    @apply size-11 p-2 rounded-2xl;
+  }
+
+  .role-btn {
+    @apply rounded-xl flex justify-center items-center pr-4 flex-1 px-2 hover:bg-zinc-200;
+  }
 }

@@ -76,9 +76,9 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
           <div
             className={`h-full transition-all duration-1000 ease-linear ${
               time > 70
-                ? "bg-gradient-to-r from-green-400 to-lime-500"
+                ? "bg-gradient-to-r from-[#cafe48] to-[#2afe41]"
                 : time > 50
-                ? "bg-gradient-to-r from-blue-500 to-sky-500"
+                ? "bg-gradient-to-r from-[#02b5d7] to-[#0184b1]"
                 : time > 10
                 ? "bg-gradient-to-r from-orange-500 to-amber-500"
                 : "bg-gradient-to-r from-red-500 to-rose-500"
