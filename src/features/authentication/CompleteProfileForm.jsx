@@ -3,11 +3,42 @@ import { MdEmail, MdOutlineMail } from "react-icons/md";
 import TextField from "../../ui/TextField";
 import { RiShieldUserFill } from "react-icons/ri";
 import { FaRegUser, FaSuitcase, FaUser, FaUserTie } from "react-icons/fa";
+import { useMutation } from "@tanstack/react-query";
+import { completeProfile } from "../../services/authServices";
+import toast from "react-hot-toast";
+import Loading from "../../ui/Loading";
+import { BiSolidCheckCircle } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import useNavigateHome from "../../hooks/useNavigateHome";
 
 function CompleteProfileForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("FREELANCER");
+  const navigate = useNavigate();
+  const moveHome = useNavigateHome();
+
+  const { isPending, mutateAsync } = useMutation({
+    mutationFn: completeProfile,
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { user, message } = await mutateAsync({ name, email, role });
+      toast.success(message);
+
+      if (user.status !== 2) {
+        moveHome();
+        toast("پروفایل شما در انتظار تایید است", { icon: "ℹ️" });
+        return;
+      }
+      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "FREELANCER") return navigate("/freelancer");
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+  };
 
   return (
     <div className="form-card">
@@ -124,10 +155,16 @@ function CompleteProfileForm() {
             </div>
             {/* Button */}
             <button
+              onClick={handleSubmit}
               type="submit"
               className="form-card__btn flex justify-center items-center gap-x-2"
             >
               Complete Profile
+              {isPending ? (
+                <Loading />
+              ) : (
+                <BiSolidCheckCircle className="size-6 mx-1 text-[#2afe41]" />
+              )}
             </button>
             <div className="bg-gray-300 w-full h-[1px]"></div>
             <p className="w-full text-center text-gray-500 text-[13px]">

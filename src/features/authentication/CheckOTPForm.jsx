@@ -8,11 +8,13 @@ import { checkOTP } from "../../services/authServices";
 import { useNavigate } from "react-router-dom";
 import { RESEND_TIME } from "./AuthContainer";
 import Loading from "../../ui/Loading";
+import useNavigateHome from "../../hooks/useNavigateHome";
 
 function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
-  const { isPending, data, mutateAsync } = useMutation({
+  const navigateHome = useNavigateHome();
+  const { isPending, mutateAsync } = useMutation({
     mutationFn: checkOTP,
   });
 
@@ -21,16 +23,15 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
     try {
       const { message, user } = await mutateAsync({ phoneNumber, otp });
       toast.success(message);
-      if (user.isActive) {
-        // push panel based on role
-        // if (user.role === "OWNER") navigate("/owner");
-        // if(user.role === "FREELANCER") navigate("/freelancer")
-      } else {
-        // navigate("/complete-profile");
-      }
 
-      console.log(data);
-      // name, email role => push to /owner or /freelancer
+      if (!user.isActive) return navigate("/complete-profile");
+      if (user.status !== 2) {
+        navigateHome();
+        toast("پروفایل شما در انتظار تایید است", { icon: "ℹ️" });
+        return;
+      }
+      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "FREELANCER") return navigate("/freelancer");
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -41,7 +42,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
     return () => {
       if (timer) clearInterval(timer);
     };
-  }, [time]);
+  }, [setTime, time]);
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
