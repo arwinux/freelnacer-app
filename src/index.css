@@ -52,6 +52,14 @@
     @apply absolute flex justify-center items-center gap-2 -top-[10px] ml-6 bg-zinc-500/80 shadow-lg text-white rounded-lg px-2 text-sm font-semibold;
   }
 
+  .primary-btn {
+    @apply bg-gradient-to-r from-[#FF002A] to-[#FF6801] text-white font-semibold py-2 px-4 rounded-xl text-lg;
+  }
+
+  .secondary-btn {
+    @apply font-semibold py-2 px-4 rounded-xl text-lg;
+  }
+
   .role-icon {
     @apply size-11 p-2 rounded-2xl;
   }
