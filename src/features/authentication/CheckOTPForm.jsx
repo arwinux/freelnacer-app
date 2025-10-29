@@ -8,11 +8,13 @@ import { checkOTP } from "../../services/authServices";
 import { useNavigate } from "react-router-dom";
 import { RESEND_TIME } from "./AuthContainer";
 import Loading from "../../ui/Loading";
+import useNavigateHome from "../../hooks/useNavigateHome";
 
 function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
-  const { isPending, data, mutateAsync } = useMutation({
+  const navigateHome = useNavigateHome();
+  const { isPending, mutateAsync } = useMutation({
     mutationFn: checkOTP,
   });
 
@@ -21,16 +23,15 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
     try {
       const { message, user } = await mutateAsync({ phoneNumber, otp });
       toast.success(message);
-      if (user.isActive) {
-        // push panel based on role
-        // if (user.role === "OWNER") navigate("/owner");
-        // if(user.role === "FREELANCER") navigate("/freelancer")
-      } else {
-        // navigate("/complete-profile");
-      }
 
-      console.log(data);
-      // name, email role => push to /owner or /freelancer
+      if (!user.isActive) return navigate("/complete-profile");
+      if (user.status !== 2) {
+        navigateHome();
+        toast("پروفایل شما در انتظار تایید است", { icon: "ℹ️" });
+        return;
+      }
+      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "FREELANCER") return navigate("/freelancer");
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -41,7 +42,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
     return () => {
       if (timer) clearInterval(timer);
     };
-  }, [time]);
+  }, [setTime, time]);
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
@@ -50,9 +51,9 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
   };
 
   return (
-    <div className="auth-card">
+    <div className="form-card">
       {/* Header with image */}
-      <div className="auth-card__header">
+      <div className="form-card__header">
         <img
           className="w-full h-full object-cover"
           src="/src/assets/images/login-header.jpg"
@@ -76,9 +77,9 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
           <div
             className={`h-full transition-all duration-1000 ease-linear ${
               time > 70
-                ? "bg-gradient-to-r from-green-400 to-lime-500"
+                ? "bg-gradient-to-r from-[#cafe48] to-[#2afe41]"
                 : time > 50
-                ? "bg-gradient-to-r from-blue-500 to-sky-500"
+                ? "bg-gradient-to-r from-[#02b5d7] to-[#0184b1]"
                 : time > 10
                 ? "bg-gradient-to-r from-orange-500 to-amber-500"
                 : "bg-gradient-to-r from-red-500 to-rose-500"
@@ -93,7 +94,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
             className="flex space-y-5 flex-col"
             action=""
           >
-            <div className="auth-card__details my-2  cursor-default select-none">
+            <div className="form-card__details my-2  cursor-default select-none">
               <p className="text-lg font-semibold">Enter 6-digit code</p>
               <p
                 className={`px-2 border border-zinc-300 bg-zinc-100 rounded-md font-semibold text-sm ${
@@ -142,7 +143,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
             <button
               onClick={checkOtpHandler}
               type="submit"
-              className="auth-card__btn flex justify-center items-center gap-x-2"
+              className="form-card__btn flex justify-center items-center gap-x-2"
             >
               Verify Code
               {isPending ? (

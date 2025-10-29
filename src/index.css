@@ -12,15 +12,15 @@
 }
 
 @layer components {
-  .auth-page {
+  .page {
     @apply relative min-h-screen flex flex-col items-center justify-center p-4;
   }
 
-  .auth-card {
+  .form-card {
     @apply shadow-md shadow-slate-300 flex flex-col w-full max-w-[420px] overflow-hidden rounded-3xl;
   }
 
-  .auth-card__header {
+  .form-card__header {
     @apply relative h-52 w-full;
   }
 
@@ -28,23 +28,35 @@
     @apply size-16 flex justify-center items-center rounded-xl bg-white/40;
   }
 
-  .auth-card__input-tel {
+  .form-card__input-tel {
     @apply w-full flex justify-start items-center bg-zinc-200 gap-x-2 border border-zinc-300 px-2 py-3 rounded-lg overflow-hidden;
   }
 
-  .auth-card__btn {
+  .form-card__btn {
     @apply font-bold py-3 text-white text-xl rounded-lg bg-black hover:shadow-black hover:bg-black/80 transition-all;
   }
 
-  .auth-card__textfield {
+  .form-card__textfield {
     @apply w-full text-lg px-2 bg-transparent font-bold placeholder-shown:font-medium;
   }
 
-  .auth-card__details {
+  .form-card__details {
     @apply w-full flex flex-col gap-y-1 justify-center items-center;
   }
 
   .otp-no-selection::selection {
     @apply bg-transparent text-inherit;
+  }
+
+  .lable-badge {
+    @apply absolute flex justify-center items-center gap-2 -top-[10px] ml-6 bg-zinc-500/80 shadow-lg text-white rounded-lg px-2 text-sm font-semibold;
+  }
+
+  .role-icon {
+    @apply size-11 p-2 rounded-2xl;
+  }
+
+  .role-btn {
+    @apply rounded-xl flex justify-center items-center pr-4 flex-1 px-2 hover:bg-zinc-200;
   }
 }
