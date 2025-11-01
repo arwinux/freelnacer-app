@@ -34,7 +34,7 @@ function Sidebar({ isNavOpen, setIsNavOpen }) {
       ref={sidebarRef}
       className={`${
         isNavOpen ? "relative" : "hidden"
-      } flex h-screen flex-col justify-between items-start bg-[#FAFAFA] shadow-xl shadow-zinc-300 row-start-1 row-span-2 p-6`}
+      } flex h-screen flex-col justify-between items-start overflow-y-auto bg-[#FAFAFA] shadow-xl shadow-zinc-300 row-start-1 row-span-2 p-6`}
     >
       <div className="flex gap-x-3 items-center w-full cursor-default">
         <div className="bg-radial text-white p-3 rounded-2xl [animation-duration:3s]">
@@ -100,7 +100,7 @@ function Sidebar({ isNavOpen, setIsNavOpen }) {
           </div>
         </ul>
 
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 mt-5">
           <div className="flex gap-x-3 items-center">
             <div className="bg-black text-white p-2 rounded-full">
               <RiAccountCircle2Line className="size-7" />
