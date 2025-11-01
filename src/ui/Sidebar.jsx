@@ -91,9 +91,11 @@ function Sidebar({ isNavOpen, setIsNavOpen }) {
             <p className="text-zinc-500/85 ml-1 text-[14px] font-bold">
               YOUR ROLE
             </p>
-            <div className="flex w-11/12 gap-x-1 justify-center items-center bg-radial p-2 rounded-xl font-semibold text-lg text-white">
-              <CgAwards />
-              <span>CLIENT</span>
+            <div className="role-badge-container">
+              <div className="role-badge">
+                <CgAwards />
+                <span>CLIENT</span>
+              </div>
             </div>
           </div>
         </ul>

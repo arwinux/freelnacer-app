@@ -4,7 +4,7 @@ import Header from "../ui/Header";
 import Sidebar from "../ui/Sidebar";
 
 function AppLayout() {
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(true);
 
   const onNavOpen = () => {
     setIsNavOpen(!isNavOpen);
@@ -16,12 +16,12 @@ function AppLayout() {
       <Sidebar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
 
       {/* Main Area */}
-      <div className="flex-1 flex flex-col mx-auto sm:max-w-screen-2xl w-full overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
         <Header isNavOpen={isNavOpen} onNavOpen={onNavOpen} />
 
         {/* Content */}
-        <main className="flex-1 p-6 overflow-hidden ">
+        <main className="flex-1 p-6 overflow-hidden w-full max-w-7xl mx-auto">
           <Outlet />
         </main>
       </div>
