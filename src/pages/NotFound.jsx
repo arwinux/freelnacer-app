@@ -20,7 +20,7 @@ function NotFound() {
         <div className="flex gap-x-4">
           <button
             onClick={navigateHome}
-            className="primary-btn flex gap-1 items-center justify-center group transition-all"
+            className="text-white font-semibold py-2 px-4 rounded-xl text-lg bg-radial flex gap-1 items-center justify-center group transition-all"
           >
             <IoHome className="size-9 role-icon text-white hidden group-hover:inline " />
             <IoHomeOutline className="size-9 role-icon text-white group-hover:hidden" />

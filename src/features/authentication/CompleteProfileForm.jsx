@@ -107,10 +107,8 @@ function CompleteProfileForm() {
                   setRole("FREELANCER");
                 }}
                 className={`transition-all duration-300 ${
-                  role === "FREELANCER"
-                    ? "bg-gradient-to-r from-[#FF002A] to-[#FF6801]"
-                    : "text-zinc-200"
-                } role-btn`}
+                  role === "FREELANCER" ? "primary-btn" : "text-zinc-200"
+                } disable-role-btn`}
               >
                 {role === "FREELANCER" ? (
                   <FaUserTie className="role-icon text-white" />
@@ -133,10 +131,8 @@ function CompleteProfileForm() {
                   setRole("OWNER");
                 }}
                 className={`transition-all duration-300 ${
-                  role === "OWNER"
-                    ? "bg-gradient-to-r from-[#FF002A] to-[#FF6801]"
-                    : "text-zinc-200 "
-                } role-btn `}
+                  role === "OWNER" ? "primary-btn" : "text-zinc-200 "
+                } disable-role-btn `}
               >
                 {role === "OWNER" ? (
                   <FaSuitcase className="role-icon text-white" />

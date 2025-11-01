@@ -53,7 +53,12 @@
   }
 
   .primary-btn {
-    @apply bg-gradient-to-r from-[#FF002A] to-[#FF6801] text-white font-semibold py-2 px-4 rounded-xl text-lg;
+    @apply rounded-xl text-white flex justify-center items-center py-1 flex-1 px-2;
+    background-image: radial-gradient(circle at center, #ff9900, #ff3c00);
+  }
+
+  .bg-radial {
+    background-image: radial-gradient(circle at center, #ff9900, #ff3c00);
   }
 
   .secondary-btn {
@@ -64,7 +69,11 @@
     @apply size-11 p-2 rounded-2xl;
   }
 
-  .role-btn {
-    @apply rounded-xl flex justify-center items-center pr-4 flex-1 px-2 hover:bg-zinc-200;
+  .disable-role-btn {
+    @apply rounded-xl flex justify-center items-center py-1 flex-1 px-2 hover:bg-zinc-200;
+  }
+
+  .radial-text {
+    @apply font-bold bg-[radial-gradient(circle_at_center,_#ff7300,_#ff3c00)] bg-clip-text text-transparent;
   }
 }
