@@ -11,7 +11,7 @@ function AppLayout() {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen relative">
       {/* Sidebar */}
       <Sidebar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
 
@@ -21,7 +21,7 @@ function AppLayout() {
         <Header isNavOpen={isNavOpen} onNavOpen={onNavOpen} />
 
         {/* Content */}
-        <main className="flex-1 p-6 overflow-hidden w-full max-w-7xl mx-auto">
+        <main className="flex-1 p-6 overflow-hidden w-full lg:max-w-7xl mx-auto">
           <Outlet />
         </main>
       </div>

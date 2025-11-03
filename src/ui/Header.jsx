@@ -1,3 +1,4 @@
+import { MdArrowBackIosNew } from "react-icons/md";
 import useUser from "../features/authentication/useUser";
 import { GiHamburgerMenu } from "react-icons/gi";
 
@@ -10,7 +11,7 @@ function Header({ onNavOpen }) {
         onClick={onNavOpen}
         className="flex justify-center items-center rounded-md size-8 hover:bg-orange-500/10 p-2"
       >
-        <GiHamburgerMenu />
+        <MdArrowBackIosNew className="size-4 text-orange-700" />
       </button>
       <p className="text-xl font-bold radial-text">FreelanceHub</p>
     </div>
