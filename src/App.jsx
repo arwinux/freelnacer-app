@@ -10,6 +10,8 @@ import AppLayout from "./pages/AppLayout";
 import Projects from "./ui/Projects";
 import ClientProjects from "./ui/clientProjects";
 import CreateProject from "./ui/CreateProject";
+import SingleClientProject from "./ui/SingleClientProject";
+import SingleProject from "./ui/SingleProject";
 
 const queryClient = new QueryClient();
 
@@ -26,9 +28,11 @@ function App() {
           <Route path="dashboard" element={<ClientDashboard />} />
 
           <Route path="projects" element={<Projects />} />
-          <Route path="projects/:id" element={<Projects />} />
+          <Route path="projects/:id" element={<SingleProject />} />
+
           <Route path="client-projects" element={<ClientProjects />} />
-          <Route path="client-projects/:id" />
+          <Route path="client-projects/:id" element={<SingleClientProject />} />
+
           <Route path="create-project" element={<CreateProject />} />
         </Route>
 
