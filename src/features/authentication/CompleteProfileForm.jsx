@@ -33,7 +33,7 @@ function CompleteProfileForm() {
         toast("پروفایل شما در انتظار تایید است", { icon: "ℹ️" });
         return;
       }
-      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "OWNER") return navigate("/client");
       if (user.role === "FREELANCER") return navigate("/freelancer");
     } catch (error) {
       toast.error(error?.response?.data?.message);
