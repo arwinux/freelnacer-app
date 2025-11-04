@@ -82,6 +82,6 @@
   }
 
   .role-badge {
-    @apply flex justify-center border border-zinc-50/45 items-center hover:bg-zinc-300/25 gap-x-2 w-full rounded-md bg-zinc-50/25;
+    @apply flex justify-center border border-zinc-50/60 items-center hover:bg-zinc-300/30 gap-x-2 w-full rounded-md bg-zinc-50/15;
   }
 }

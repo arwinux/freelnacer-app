@@ -23,10 +23,10 @@ function Sidebar({ isNavOpen, setIsNavOpen }) {
     <div
       className={` ${
         isNavOpen ? "absolute" : "hidden"
-      } h-screen absolute w-full bg-black/20 backdrop-blur-sm lg:w-72  lg:relative row-start-1 row-span-2`}
+      } h-screen absolute w-full bg-black/20 backdrop-blur-sm lg:w-72 lg:relative row-start-1 row-span-2`}
     >
       <div
-        className={`flex h-screen flex-col justify-between items-start overflow-y-auto bg-[#FAFAFA] shadow-xl shadow-zinc-300 p-6`}
+        className={`flex w-72 h-screen flex-col justify-between items-start overflow-y-auto bg-[#FAFAFA] shadow-xl shadow-zinc-300 p-6`}
       >
         <div className="flex gap-x-3 items-center w-full cursor-default">
           <div className="bg-radial text-white p-3 rounded-2xl [animation-duration:3s]">
@@ -55,28 +55,28 @@ function Sidebar({ isNavOpen, setIsNavOpen }) {
             </li>
             <li>
               <CustomNavlink to="/client/dashboard">
-                <MdOutlineDashboard className="size-4" />
+                <MdOutlineDashboard className="size-[18px]" />
                 <span>Dashboard</span>
               </CustomNavlink>
             </li>
 
             <li>
               <CustomNavlink to="/client/projects">
-                <FiBriefcase className="size-4" />
+                <FiBriefcase className="size-[18px]" />
                 <span>All Projects</span>
               </CustomNavlink>
             </li>
 
             <li>
               <CustomNavlink to="/client/client-projects">
-                <FaRegFolderOpen className="size-4" />
+                <FaRegFolderOpen className="size-[18px]" />
                 <span>My Projects</span>
               </CustomNavlink>
             </li>
 
             <li>
               <CustomNavlink to="/client/create-project">
-                <PiPlusCircleBold className="size-4" />
+                <PiPlusCircleBold className="size-[18px]" />
                 <span>Create Project</span>
               </CustomNavlink>
             </li>
@@ -85,7 +85,7 @@ function Sidebar({ isNavOpen, setIsNavOpen }) {
               <p className="text-zinc-500/85 ml-1 text-[14px] font-bold">
                 YOUR ROLE
               </p>
-              <div className="role-badge-container">
+              <div className="role-badge-container w-11/12 mx-auto">
                 <div className="role-badge">
                   <CgAwards />
                   <span>CLIENT</span>
