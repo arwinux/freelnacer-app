@@ -23,7 +23,7 @@ function Sidebar({ isNavOpen, setIsNavOpen }) {
     <div
       className={` ${
         isNavOpen ? "absolute" : "hidden"
-      } h-screen absolute w-full bg-black/20 backdrop-blur-sm lg:w-72 lg:relative row-start-1 row-span-2`}
+      } h-screen absolute z-10 w-full bg-black/20 backdrop-blur-sm lg:w-72 lg:relative row-start-1 row-span-2`}
     >
       <div
         className={`flex w-72 h-screen flex-col justify-between items-start overflow-y-auto bg-[#FAFAFA] shadow-xl shadow-zinc-300 p-6`}

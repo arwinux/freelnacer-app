@@ -16,12 +16,12 @@ function AppLayout() {
       <Sidebar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
 
       {/* Main Area */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-auto bg-orange-50/60">
         {/* Header */}
         <Header isNavOpen={isNavOpen} onNavOpen={onNavOpen} />
 
         {/* Content */}
-        <main className="flex-1 p-6 overflow-hidden w-full lg:max-w-7xl mx-auto">
+        <main className="p-6 w-full lg:max-w-7xl lg:mx-auto ">
           <Outlet />
         </main>
       </div>
