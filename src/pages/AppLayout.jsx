@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Outlet } from "react-router-dom";
-import Header from "../ui/Header";
-import Sidebar from "../ui/Sidebar";
+import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from '../ui/Header';
+import Sidebar from '../ui/Sidebar';
 
-function AppLayout() {
+function AppLayout({ children }) {
   const [isNavOpen, setIsNavOpen] = useState(true);
 
   const onNavOpen = () => {
@@ -13,7 +13,9 @@ function AppLayout() {
   return (
     <div className="flex h-screen relative">
       {/* Sidebar */}
-      <Sidebar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
+      <Sidebar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen}>
+        {children}
+      </Sidebar>
 
       {/* Main Area */}
       <div className="flex-1 flex flex-col overflow-auto bg-primary-50/60">

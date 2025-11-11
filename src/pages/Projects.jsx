@@ -1,4 +1,4 @@
-import React from "react";
+import ProjectsViewGrid from '../features/projects/ProjectsViewGrid';
 
 function Projects() {
   return <div>Projects</div>;

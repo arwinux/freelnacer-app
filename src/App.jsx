@@ -1,15 +1,15 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import Auth from "./pages/Auth";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "react-hot-toast";
-import CompleteProfile from "./pages/CompleteProfile";
-import NotFound from "./pages/NotFound";
-import Home from "./pages/Home";
-import ClientDashboard from "./ui/ClientDashboard";
-import AppLayout from "./pages/AppLayout";
-import Projects from "./ui/Projects";
-import ClientProjects from "./ui/clientProjects";
-import CreateProject from "./ui/CreateProject";
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Auth from './pages/Auth';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from 'react-hot-toast';
+import CompleteProfile from './pages/CompleteProfile';
+import NotFound from './pages/NotFound';
+import Home from './pages/Home';
+import ClientDashboard from './pages/ClientDashboard';
+import ClientProjects from './pages/Projects';
+import CreateProject from './features/projects/CreateProject';
+import Project from './pages/Project';
+import AllProjects from './pages/AllProjects';
 import SingleClientProject from "./ui/SingleClientProject";
 import SingleProject from "./ui/SingleProject";
 
@@ -27,11 +27,11 @@ function App() {
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<ClientDashboard />} />
 
-          <Route path="projects" element={<Projects />} />
-          <Route path="projects/:id" element={<SingleProject />} />
+          <Route path="projects" element={<AllProjects />} />
+          <Route path="projects/:id" element={<Project />} />
 
           <Route path="client-projects" element={<ClientProjects />} />
-          <Route path="client-projects/:id" element={<SingleClientProject />} />
+          <Route path="client-projects/:id" element={<Project />} />
 
           <Route path="create-project" element={<CreateProject />} />
         </Route>
