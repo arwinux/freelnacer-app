@@ -15,21 +15,21 @@ function Sidebar({ isNavOpen, setIsNavOpen }) {
       setIsNavOpen(window.innerWidth >= 1024);
     };
     handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [setIsNavOpen]);
 
   return (
     <div
       className={` ${
-        isNavOpen ? "absolute" : "hidden"
+        isNavOpen ? 'absolute' : 'hidden'
       } h-screen absolute z-10 w-full bg-black/20 backdrop-blur-sm lg:w-72 lg:relative row-start-1 row-span-2`}
     >
       <div
-        className={`flex w-72 h-screen flex-col justify-between items-start overflow-y-auto bg-[#FAFAFA] shadow-xl shadow-zinc-300 p-6`}
+        className={`flex w-72 h-screen flex-col justify-between items-start overflow-y-auto  bg-white shadow-xl p-6`}
       >
         <div className="flex gap-x-3 items-center w-full cursor-default">
-          <div className="bg-radial text-white p-3 rounded-2xl [animation-duration:3s]">
+          <div className="bg-radial-back text-white p-3 rounded-2xl [animation-duration:3s]">
             <LuSparkles className="size-6 animate-bounce [animation-duration:2s]" />
           </div>
           <div className="flex flex-col w-full">

@@ -2,6 +2,86 @@
 @import 'tailwindcss/utilities';
 @import 'tailwindcss/preflight';
 
+@theme {
+  /* Brand */
+  --color-primary-50: #fff7ed;
+  --color-primary-100: #ffedd4;
+  --color-primary-200: #ffd6a7;
+  --color-primary-300: #ffb86a;
+  --color-primary-400: #ff8904; /* legacy: #ff9900 */
+  --color-primary-500: #ff6900;
+  --color-primary-600: #f54900; /* legacy: #ff3c00 range */
+  --color-primary-700: #ca3500;
+  --color-primary-800: #9f2d00;
+  --color-primary-900: #7e2a0c;
+  --color-primary-950: #441306;
+
+  --color-zinc-50: #fafafa;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-200: #e4e4e7;
+  --color-zinc-300: #d4d4d8;
+  --color-zinc-400: #9f9fa9;
+  --color-zinc-500: #71717b; /* menu color */
+  --color-zinc-600: #52525c;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-800: #27272a;
+  --color-zinc-900: #18181b;
+  --color-zinc-950: #09090b;
+
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5dc;
+  --color-gray-400: #99a1af;
+  --color-gray-500: #6a7282;
+  --color-gray-600: #4a5565;
+  --color-gray-700: #364153;
+  --color-gray-800: #1e2939;
+  --color-gray-900: #101828;
+  --color-gray-950: #030712;
+
+  --color-green-50: #f0fdf4;
+  --color-green-100: #dcfce7;
+  --color-green-200: #b9f8cf;
+  --color-green-300: #7bf1a8;
+  --color-green-400: #05df72;
+  --color-green-500: #00c950;
+  --color-green-600: #00a63e;
+  --color-green-700: #008236;
+  --color-green-800: #016630;
+  --color-green-900: #0d542b;
+  --color-green-950: #032e15;
+
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bedbff;
+  --color-blue-300: #8ec5ff;
+  --color-blue-400: #51a2ff;
+  --color-blue-500: #2b7fff;
+  --color-blue-600: #155dfc;
+  --color-blue-700: #1447e6;
+  --color-blue-800: #193cb8;
+  --color-blue-900: #1c398e;
+  --color-blue-950: #162456;
+
+  --color-red-50: #fef2f2;
+  --color-red-100: #ffe2e2;
+  --color-red-200: #ffc9c9;
+  --color-red-300: #ffa2a2;
+  --color-red-400: #ff6467;
+  --color-red-500: #fb2c36;
+  --color-red-600: #e7000b;
+  --color-red-700: #c10007;
+  --color-red-800: #9f0712;
+  --color-red-900: #82181a;
+  --color-red-950: #460809;
+
+  --color-white: #ffffff;
+  --color-black: #292524;
+
+  --color-background: #fffaf4;
+}
+
 *,
 *::before,
 *::after {
@@ -56,11 +136,11 @@ button {
 }
 
 .primary-btn {
-  @apply rounded-xl bg-radial-[at_50%_75%] from-[#ff9900] to-[#ff3c00] text-white flex justify-center items-center flex-1 px-2;
+  @apply rounded-xl bg-radial-[at_50%_75%] from-primary-400 to-primary-600 text-white flex justify-center items-center flex-1 px-2;
 }
 
 .bg-radial-back {
-  @apply bg-radial-[at_50%_75%] from-[#ff9900] to-[#ff3c00];
+  @apply bg-radial-[at_50%_75%] from-primary-400 to-primary-600;
 }
 
 .secondary-btn {
@@ -76,11 +156,11 @@ button {
 }
 
 .radial-text {
-  @apply font-bold bg-[radial-gradient(circle_at_center,#ff7300,#ff3c00)] bg-clip-text text-transparent;
+  @apply font-bold bg-[radial-gradient(circle_at_center,var(--color-primary-500),var(--color-primary-600))] bg-clip-text text-transparent;
 }
 
 .role-badge-container {
-  @apply flex w-full shadow-lg shadow-zinc-200 gap-x-1 cursor-default justify-center items-center p-2 rounded-xl font-semibold text-lg text-white;
+  @apply flex w-full shadow-lg gap-x-1 cursor-default justify-center items-center p-2 rounded-xl font-semibold text-lg text-white;
 }
 
 .role-badge {

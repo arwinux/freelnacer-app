@@ -1,17 +1,17 @@
-import { FiSearch } from "react-icons/fi";
-import { IoArrowBack, IoHome, IoHomeOutline } from "react-icons/io5";
-import { ThreeDots } from "react-loader-spinner";
-import useNavigateBack from "../hooks/useNavigateBack";
-import useNavigateHome from "../hooks/useNavigateHome";
+import { FiSearch } from 'react-icons/fi';
+import { IoArrowBack, IoHome, IoHomeOutline } from 'react-icons/io5';
+import { ThreeDots } from 'react-loader-spinner';
+import useNavigateBack from '../hooks/useNavigateBack';
+import useNavigateHome from '../hooks/useNavigateHome';
 
 function NotFound() {
   const navigateBack = useNavigateBack();
   const navigateHome = useNavigateHome();
 
   return (
-    <div className="page bg-orange-500/5">
+    <div className="page bg-primary-500/5">
       <div className="flex gap-y-7 flex-col justify-center items-center">
-        <p className="font-bold text-xl text-orange-600">404</p>
+        <p className="font-bold text-xl text-primary-600">404</p>
         <p className="font-bold text-4xl">Page Not Found</p>
         <p className="text-center text-zinc-600 max-w-sm">
           Oops! The page you're looking for seems to have wandered off. Let's
@@ -20,7 +20,7 @@ function NotFound() {
         <div className="flex gap-x-4">
           <button
             onClick={navigateHome}
-            className="text-white font-semibold py-2 px-4 rounded-xl text-lg bg-radial flex gap-1 items-center justify-center group transition-all"
+            className="text-white font-semibold py-2 px-4 rounded-xl text-lg bg-radial-back flex gap-1 items-center justify-center group transition-all"
           >
             <IoHome className="size-9 role-icon text-white hidden group-hover:inline " />
             <IoHomeOutline className="size-9 role-icon text-white group-hover:hidden" />
@@ -45,8 +45,8 @@ function NotFound() {
           wrapperStyle={{}}
           wrapperClass=""
         />
-        <div className="flex justify-center items-center px-20 py-4 bg-white rounded-xl border-2 border-orange-500/15">
-          <FiSearch className="size-9 role-icon text-orange-600" />
+        <div className="flex justify-center items-center px-20 py-4 bg-white rounded-xl border-2 border-primary-500/15">
+          <FiSearch className="size-9 role-icon text-primary-600" />
           <p className="text-zinc-600 text-sm">
             Try searching for what you need or contact support
           </p>

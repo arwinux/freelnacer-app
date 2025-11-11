@@ -81,7 +81,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
                 : time > 50
                 ? 'bg-linear-to-r from-[#02b5d7] to-[#0184b1]'
                 : time > 10
-                ? 'bg-linear-to-r from-orange-500 to-amber-500'
+                ? 'bg-linear-to-r from-primary-500 to-amber-500'
                 : 'bg-linear-to-r from-red-500 to-rose-500'
             }`}
             style={{ width: `${(time / RESEND_TIME) * 100}%` }}
@@ -122,7 +122,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
                 renderInput={(props) => (
                   <input
                     {...props}
-                    className="otp-no-selection border border-zinc-300 focus:ring-2 focus:ring-orange-600"
+                    className="otp-no-selection border border-zinc-300 focus:ring-2 focus:ring-primary-600"
                   />
                 )}
                 containerStyle="flex gap-x-2 flex-row justify-center items-center"
@@ -160,9 +160,9 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
                 className={`${
                   time > 0 ? 'cursor-not-allowed' : 'cursor-pointer'
                 } ${time > 0 ? 'font-normal' : 'font-semibold'} mt-4  ${
-                  time > 0 ? 'text-gray-500' : 'text-orange-600'
+                  time > 0 ? 'text-gray-500' : 'text-primary-600'
                 } text-sm ${
-                  time > 0 ? 'hover:text-gray-600' : 'hover:text-orange-700'
+                  time > 0 ? 'hover:text-gray-600' : 'hover:text-primary-700'
                 }`}
               >
                 Resend Code {time > 0 ? formatTime(time) : ''}
