@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
+@import 'tailwindcss/preflight';
 
 *,
 *::before,
@@ -11,77 +11,78 @@
   outline: none;
 }
 
-@layer components {
-  .page {
-    @apply relative min-h-screen flex flex-col items-center justify-center p-4;
-  }
+button {
+  @apply cursor-pointer;
+}
 
-  .form-card {
-    @apply shadow-md shadow-slate-300 flex flex-col w-full max-w-[420px] overflow-hidden rounded-3xl;
-  }
+.page {
+  @apply relative min-h-screen flex flex-col items-center justify-center p-4;
+}
 
-  .form-card__header {
-    @apply relative h-52 w-full;
-  }
+.form-card {
+  @apply shadow-md shadow-slate-300 flex flex-col w-full max-w-[420px] overflow-hidden rounded-3xl;
+}
 
-  .badge {
-    @apply size-16 flex justify-center items-center rounded-xl bg-white/40;
-  }
+.form-card__header {
+  @apply relative h-52 w-full;
+}
 
-  .form-card__input-tel {
-    @apply w-full flex justify-start items-center bg-zinc-200 gap-x-2 border border-zinc-300 px-2 py-3 rounded-lg overflow-hidden;
-  }
+.badge {
+  @apply size-16 flex justify-center items-center rounded-xl bg-white/40;
+}
 
-  .form-card__btn {
-    @apply font-bold py-3 text-white text-xl rounded-lg bg-black hover:shadow-black hover:bg-black/80 transition-all;
-  }
+.form-card__input-tel {
+  @apply w-full flex justify-start items-center bg-zinc-200 gap-x-2 border border-zinc-300 px-2 py-3 rounded-lg overflow-hidden;
+}
 
-  .form-card__textfield {
-    @apply w-full text-lg px-2 bg-transparent font-bold placeholder-shown:font-medium;
-  }
+.form-card__btn {
+  @apply font-bold py-3 text-white text-xl rounded-lg bg-black hover:shadow-black hover:bg-black/80 transition-all;
+}
 
-  .form-card__details {
-    @apply w-full flex flex-col gap-y-1 justify-center items-center;
-  }
+.form-card__textfield {
+  @apply w-full text-lg px-2 bg-transparent font-bold placeholder-shown:font-medium;
+}
 
-  .otp-no-selection::selection {
-    @apply bg-transparent text-inherit;
-  }
+.form-card__details {
+  @apply w-full flex flex-col gap-y-1 justify-center items-center;
+}
 
-  .lable-badge {
-    @apply absolute flex justify-center items-center gap-2 -top-[10px] ml-6 bg-zinc-500/80 shadow-lg text-white rounded-lg px-2 text-sm font-semibold;
-  }
+.otp-no-selection::selection {
+  @apply bg-transparent text-inherit;
+}
 
-  .primary-btn {
-    @apply rounded-xl text-white flex justify-center items-center py-1 flex-1 px-2;
-    background-image: radial-gradient(circle at center, #ff9900, #ff3c00);
-  }
+.lable-badge {
+  @apply absolute flex justify-center items-center gap-2 -top-2.5 ml-6 bg-zinc-500/80 shadow-lg text-white rounded-lg px-2 text-sm font-semibold;
+}
 
-  .bg-radial {
-    background-image: radial-gradient(circle at center, #ff9900, #ff3c00);
-  }
+.primary-btn {
+  @apply rounded-xl bg-radial-[at_50%_75%] from-[#ff9900] to-[#ff3c00] text-white flex justify-center items-center flex-1 px-2;
+}
 
-  .secondary-btn {
-    @apply font-semibold py-2 px-4 rounded-xl text-lg;
-  }
+.bg-radial-back {
+  @apply bg-radial-[at_50%_75%] from-[#ff9900] to-[#ff3c00];
+}
 
-  .role-icon {
-    @apply size-11 p-2 rounded-2xl;
-  }
+.secondary-btn {
+  @apply font-semibold py-2 px-4 rounded-xl text-lg;
+}
 
-  .disable-role-btn {
-    @apply rounded-xl flex justify-center items-center py-1 flex-1 px-2 hover:bg-zinc-200;
-  }
+.role-icon {
+  @apply size-11 p-2 rounded-2xl;
+}
 
-  .radial-text {
-    @apply font-bold bg-[radial-gradient(circle_at_center,_#ff7300,_#ff3c00)] bg-clip-text text-transparent;
-  }
+.disable-role-btn {
+  @apply rounded-xl flex justify-center items-center py-1 flex-1 px-2 hover:bg-zinc-200;
+}
 
-  .role-badge-container {
-    @apply flex w-full shadow-lg shadow-zinc-200 gap-x-1 cursor-default justify-center items-center bg-radial p-2 rounded-xl font-semibold text-lg text-white;
-  }
+.radial-text {
+  @apply font-bold bg-[radial-gradient(circle_at_center,#ff7300,#ff3c00)] bg-clip-text text-transparent;
+}
 
-  .role-badge {
-    @apply flex justify-center border border-zinc-50/60 items-center hover:bg-zinc-300/30 gap-x-2 w-full rounded-md bg-zinc-50/15;
-  }
+.role-badge-container {
+  @apply flex w-full shadow-lg shadow-zinc-200 gap-x-1 cursor-default justify-center items-center p-2 rounded-xl font-semibold text-lg text-white;
+}
+
+.role-badge {
+  @apply flex justify-center border border-zinc-50/60 items-center hover:bg-zinc-300/30 gap-x-2 w-full rounded-md bg-zinc-50/15;
 }

@@ -1,8 +1,8 @@
-import TextField from "../../ui/TextField";
-import { RiShieldKeyholeFill } from "react-icons/ri";
-import { TbSend2 } from "react-icons/tb";
-import { MdOutlinePhoneInTalk } from "react-icons/md";
-import Loading from "../../ui/Loading";
+import TextField from '../../ui/TextField';
+import { RiShieldKeyholeFill } from 'react-icons/ri';
+import { TbSend2 } from 'react-icons/tb';
+import { MdOutlinePhoneInTalk } from 'react-icons/md';
+import Loading from '../../ui/Loading';
 
 function SendOTPForm({ onSendOtp, isSendingOtp, phoneNumber, onChange }) {
   return (
@@ -14,7 +14,7 @@ function SendOTPForm({ onSendOtp, isSendingOtp, phoneNumber, onChange }) {
           src="/src/assets/images/login-header.jpg"
           alt=""
         />
-        <div className="absolute inset-0 p-6 space-y-2 cursor-default select-none">
+        <div className="absolute inset-0 p-6 gap-y-2 cursor-default select-none">
           <div className="badge mb-5">
             <RiShieldKeyholeFill className="size-10 mx-2 fill-white" />
           </div>
@@ -31,7 +31,7 @@ function SendOTPForm({ onSendOtp, isSendingOtp, phoneNumber, onChange }) {
         <div className="p-6">
           <form
             onSubmit={onSendOtp}
-            className="flex space-y-5 flex-col"
+            className="flex gap-y-5 flex-col"
             action=""
           >
             <div className="form-card__details my-4 cursor-default select-none">
@@ -64,7 +64,7 @@ function SendOTPForm({ onSendOtp, isSendingOtp, phoneNumber, onChange }) {
               )}
             </button>
 
-            <div className="bg-gray-300 w-full h-[1px]"></div>
+            <div className="bg-gray-300 w-full h-px"></div>
 
             <p className="w-full text-center text-gray-500 text-[13px]">
               By continuing, you agree to our Terms & Privacy Policy
