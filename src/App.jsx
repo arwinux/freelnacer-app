@@ -10,9 +10,7 @@ import ClientProjects from './pages/Projects';
 import CreateProject from './features/projects/CreateProject';
 import Project from './pages/Project';
 import AllProjects from './pages/AllProjects';
-import SingleClientProject from "./ui/SingleClientProject";
-import SingleProject from "./ui/SingleProject";
-
+import ClientLayout from './features/client/ClientLayout';
 const queryClient = new QueryClient();
 
 function App() {
@@ -23,7 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />
 
-        <Route path="/client" element={<AppLayout />}>
+        <Route path="/client" element={<ClientLayout />}>
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<ClientDashboard />} />
 

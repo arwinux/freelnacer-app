@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import getClientProjects from "../../services/projectServices";
+import { getClientProjectsApi } from "../../services/projectServices";
 
 export default function useClientProjects() {
-  const { data, isPending } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["client-projects"],
-    queryFn: getClientProjects,
+    queryFn: getClientProjectsApi,
   });
 
   const { projects } = data || {};
-  return { isPending, projects };
+  return { isLoading, projects, isError };
 }
