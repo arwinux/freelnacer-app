@@ -18,7 +18,7 @@ function AppLayout({ children }) {
       </Sidebar>
 
       {/* Main Area */}
-      <div className="flex-1 flex flex-col overflow-auto bg-primary-50/60">
+      <div className="flex-1 flex flex-col overflow-auto bg-background">
         {/* Header */}
         <Header isNavOpen={isNavOpen} onNavOpen={onNavOpen} />
 

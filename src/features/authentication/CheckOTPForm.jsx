@@ -61,18 +61,18 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
         />
         <div className="absolute inset-0 p-6 gap-y-2 cursor-default select-none">
           <div className="badge mb-5">
-            <TbPasswordFingerprint className="size-10 mx-2 text-white" />
+            <TbPasswordFingerprint className="size-10 mx-2 text-color" />
           </div>
 
-          <p className="text-white text-3xl font-bold">Verify OTP</p>
-          <div className="flex gap-1 text-white text-sm">
+          <p className="text-color text-3xl font-bold">Verify OTP</p>
+          <div className="flex gap-1 text-color text-sm">
             <p className="font-medium">Code sent to </p>
             <span className="font-bold">{phoneNumber}</span>
           </div>
         </div>
       </div>
 
-      <div className="bg-white">
+      <div className="bg-component">
         <div className="bg-zinc-300 h-[7px] rounded-b-md overflow-hidden">
           <div
             className={`h-full transition-all duration-1000 ease-linear ${
@@ -149,7 +149,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
               {isPending ? (
                 <Loading />
               ) : (
-                <RiShieldCheckFill className="size-6 mx-1 text-white" />
+                <RiShieldCheckFill className="size-6 mx-1 text-color" />
               )}
             </button>
 
@@ -170,7 +170,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
 
               <button
                 onClick={onBack}
-                className="text-gray-600 text-sm hover:text-black"
+                className="text-gray-600 text-sm hover:text-title"
               >
                 Change Phone Number
               </button>

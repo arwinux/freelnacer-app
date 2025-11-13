@@ -19,14 +19,14 @@ function SendOTPForm({ onSendOtp, isSendingOtp, phoneNumber, onChange }) {
             <RiShieldKeyholeFill className="size-10 mx-2 fill-white" />
           </div>
 
-          <p className="text-white text-3xl font-bold">Wellcome</p>
-          <p className="text-white text-sm">
+          <p className="text-color text-3xl font-bold">Wellcome</p>
+          <p className="text-color text-sm">
             Enter your phone number to continue
           </p>
         </div>
       </div>
 
-      <div className="bg-white">
+      <div className="bg-component">
         {/* Form */}
         <div className="p-6">
           <form
@@ -42,7 +42,7 @@ function SendOTPForm({ onSendOtp, isSendingOtp, phoneNumber, onChange }) {
             </div>
             {/* Input */}
             <div className="form-card__input-tel">
-              <MdOutlinePhoneInTalk className="size-8 w-14 text-zinc-500" />
+              <MdOutlinePhoneInTalk className="size-8 w-14 text-subtitle" />
               <TextField
                 name="phoneNumber"
                 value={phoneNumber}
@@ -60,7 +60,7 @@ function SendOTPForm({ onSendOtp, isSendingOtp, phoneNumber, onChange }) {
               {isSendingOtp ? (
                 <Loading />
               ) : (
-                <TbSend2 className="size-6 mx-1 text-white" />
+                <TbSend2 className="size-6 mx-1 text-color" />
               )}
             </button>
 

@@ -21,10 +21,10 @@ function Sidebar({ isNavOpen, setIsNavOpen, children }) {
       } h-screen absolute z-10 w-full bg-black/20 backdrop-blur-sm lg:w-72 lg:relative row-start-1 row-span-2`}
     >
       <div
-        className={`flex w-72 h-screen flex-col justify-between items-start overflow-y-auto  bg-white shadow-xl p-6`}
+        className={`flex w-72 h-screen flex-col justify-between items-start overflow-y-auto  bg-component shadow-xl p-6`}
       >
         <div className="flex gap-x-3 items-center w-full cursor-default">
-          <div className="bg-radial-back text-white p-3 rounded-2xl [animation-duration:3s]">
+          <div className="bg-radial-back text-color p-3 rounded-2xl [animation-duration:3s]">
             <LuSparkles className="size-6 animate-bounce [animation-duration:2s]" />
           </div>
           <div className="flex flex-col w-full">
@@ -32,12 +32,12 @@ function Sidebar({ isNavOpen, setIsNavOpen, children }) {
               <p className="text-xl font-bold radial-text">FreelanceHub</p>
               <button
                 onClick={() => setIsNavOpen(false)}
-                className="text-white hover:shadow-lg shadow-zinc-600 rounded-full p-1"
+                className="text-color hover:shadow-lg shadow-zinc-600 rounded-full p-1"
               >
                 <AiTwotoneCloseCircle className="size-5" />
               </button>
             </div>
-            <p className="text-sm font-semibold text-zinc-500">
+            <p className="text-sm font-semibold text-subtitle">
               Premium Edition
             </p>
           </div>

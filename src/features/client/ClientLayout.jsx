@@ -12,7 +12,7 @@ function ClientLayout() {
     <div>
       <AppLayout>
         <ul className="flex flex-col gap-y-3">
-          <li className="text-zinc-500/85 ml-1 text-[14px] font-bold">
+          <li className="text-subtitle/85 ml-1 text-[14px] font-bold">
             NAVIGATION
           </li>
           <li>
@@ -44,7 +44,7 @@ function ClientLayout() {
           </li>
 
           <div className="flex gap-y-3 flex-col mt-10 w-full">
-            <p className="text-zinc-500/85 ml-1 text-[14px] font-bold">
+            <p className="text-subtitle/85 ml-1 text-[14px] font-bold">
               YOUR ROLE
             </p>
             <div className="role-badge-container bg-radial-back w-11/12 mx-auto">
@@ -58,12 +58,12 @@ function ClientLayout() {
 
         <div className="flex flex-col gap-5 mt-5">
           <div className="flex gap-x-3 items-center">
-            <div className="bg-black text-white p-2 rounded-full">
+            <div className="bg-black text-color p-2 rounded-full">
               <RiAccountCircle2Line className="size-7" />
             </div>
             <div className="flex flex-col">
               <p className="text-md font-bold">User Testic</p>
-              <p className="text-sm font-semibold text-zinc-500">
+              <p className="text-sm font-semibold text-subtitle">
                 example@gmail.com
               </p>
             </div>

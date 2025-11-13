@@ -21,7 +21,7 @@
   --color-zinc-200: #e4e4e7;
   --color-zinc-300: #d4d4d8;
   --color-zinc-400: #9f9fa9;
-  --color-zinc-500: #71717b; /* menu color */
+  --color-zinc-500: #71717b;
   --color-zinc-600: #52525c;
   --color-zinc-700: #3f3f46;
   --color-zinc-800: #27272a;
@@ -76,10 +76,13 @@
   --color-red-900: #82181a;
   --color-red-950: #460809;
 
-  --color-white: #ffffff;
-  --color-black: #292524;
+  --color-color: #ffffff;
+  /* --color-color: #292524; */
 
+  --color-title: #292524;
+  --color-subtitle: #71717b;
   --color-background: #fffaf4;
+  --color-component: #ffffff;
 }
 
 *,
@@ -89,6 +92,10 @@
   margin: 0;
   box-sizing: 0;
   outline: none;
+}
+
+body {
+  @apply bg-background;
 }
 
 button {
@@ -108,7 +115,7 @@ button {
 }
 
 .badge {
-  @apply size-16 flex justify-center items-center rounded-xl bg-white/40;
+  @apply size-16 flex justify-center items-center rounded-xl bg-component/40;
 }
 
 .form-card__input-tel {
@@ -116,7 +123,7 @@ button {
 }
 
 .form-card__btn {
-  @apply font-bold py-3 text-white text-xl rounded-lg bg-black hover:shadow-black hover:bg-black/80 transition-all;
+  @apply font-bold py-3 text-color text-xl rounded-lg bg-black hover:shadow-black hover:bg-black/80 transition-all;
 }
 
 .form-card__textfield {
@@ -132,11 +139,11 @@ button {
 }
 
 .lable-badge {
-  @apply absolute flex justify-center items-center gap-2 -top-2.5 ml-6 bg-zinc-500/80 shadow-lg text-white rounded-lg px-2 text-sm font-semibold;
+  @apply absolute flex justify-center items-center gap-2 -top-2.5 ml-6 bg-zinc-500/80 shadow-lg text-color rounded-lg px-2 text-sm font-semibold;
 }
 
 .primary-btn {
-  @apply rounded-xl bg-radial-[at_50%_75%] from-primary-400 to-primary-600 text-white flex justify-center items-center flex-1 px-2;
+  @apply rounded-xl bg-radial-[at_50%_75%] from-primary-400 to-primary-600 text-color flex justify-center items-center flex-1 px-2;
 }
 
 .bg-radial-back {
@@ -160,7 +167,7 @@ button {
 }
 
 .role-badge-container {
-  @apply flex w-full shadow-lg gap-x-1 cursor-default justify-center items-center p-2 rounded-xl font-semibold text-lg text-white;
+  @apply flex w-full shadow-lg gap-x-1 cursor-default justify-center items-center p-2 rounded-xl font-semibold text-lg text-color;
 }
 
 .role-badge {

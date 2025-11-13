@@ -26,18 +26,18 @@ function ProjectsViewGrid() {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col mb-5">
-        <p className="text-black font-bold text-4xl mb-2">My Projects</p>
-        <span className="text-zinc-500 font-medium">
+        <p className="text-title font-bold text-4xl mb-2">My Projects</p>
+        <span className="text-subtitle font-medium">
           Manage and track your projects
         </span>
       </div>
       <div className="">
-        <ul className="flex flex-col sm:flex-row flex-wrap gap-5 p-4 rounded-xl items-center justify-center bg-white text-black shadow-md shadow-zinc-400/40 mb-7 transition-all duration-500">
+        <ul className="flex flex-col sm:flex-row flex-wrap gap-5 p-4 rounded-xl items-center justify-center bg-component text-title shadow-md shadow-zinc-400/40 mb-7 transition-all duration-500">
           <button
             onClick={() => setStatus('allproject')}
             className={`flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full ${
               status === 'allproject'
-                ? 'rounded-xl bg-linear-to-r from-blue-500 to-purple-600 text-white'
+                ? 'rounded-xl bg-linear-to-r from-blue-500 to-purple-600 text-color'
                 : 'bg-transparent rounded-xl'
             }`}
           >
@@ -49,7 +49,7 @@ function ProjectsViewGrid() {
             onClick={() => setStatus('open')}
             className={`flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full ${
               status === 'open'
-                ? 'rounded-xl bg-linear-to-r from-green-500 to-teal-600 text-white'
+                ? 'rounded-xl bg-linear-to-r from-green-500 to-teal-600 text-color'
                 : 'bg-transparent rounded-xl'
             }`}
           >
@@ -61,7 +61,7 @@ function ProjectsViewGrid() {
             onClick={() => setStatus('closed')}
             className={`flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full ${
               status === 'closed'
-                ? 'rounded-xl bg-linear-to-r from-red-500 to-primary-500 text-white'
+                ? 'rounded-xl bg-linear-to-r from-red-500 to-primary-500 text-color'
                 : 'bg-transparent rounded-xl'
             }`}
           >

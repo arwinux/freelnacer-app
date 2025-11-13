@@ -19,7 +19,7 @@ function ProjectCard({
   client,
 }) {
   return (
-    <article className="text-black flex flex-col bg-white rounded-2xl hover:scale-[1.04] border border-t-0 border-zinc-200/80 shadow hover:shadow-2xl hover:shadow-primary-500/20 hover:border-primary-600 transition-all duration-500 hover:-translate-y-2">
+    <article className="text-title flex flex-col bg-component rounded-2xl hover:scale-[1.04] border border-t-0 border-zinc-200/80 shadow hover:shadow-2xl hover:shadow-primary-500/20 hover:border-primary-600 transition-all duration-500 hover:-translate-y-2">
       <div className=" w-full h-3 rounded-t-xl bg-radial-back"></div>
       <div className=" flex flex-col justify-between gap-y-4  rounded-t-none p-5">
         <div className="project-card__header gap-4 w-full flex justify-between items-center">
@@ -50,7 +50,7 @@ function ProjectCard({
             <FaRegFolderOpen />
             <p>{category}</p>
           </div>
-          <p className="text-zinc-500 font-medium line-clamp-2 text-sm">
+          <p className="text-subtitle font-medium line-clamp-2 text-sm">
             {description}
           </p>
 
@@ -98,11 +98,11 @@ function ProjectCard({
           <div className="w-full h-px bg-zinc-200"></div>
 
           <div className="flex gap-x-3 items-center">
-            <div className="bg-primary-500 text-white p-3 rounded-full">
+            <div className="bg-primary-500 text-color p-3 rounded-full">
               <FaUserLarge className="size-4" />
             </div>
             <div className="flex flex-col">
-              <p className="text-sm font-semibold text-zinc-500">Posted by</p>
+              <p className="text-sm font-semibold text-subtitle">Posted by</p>
               <p className="text-sm font-bold">{client}</p>
             </div>
           </div>

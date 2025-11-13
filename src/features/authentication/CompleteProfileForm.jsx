@@ -54,25 +54,25 @@ function CompleteProfileForm() {
             <RiShieldUserFill className="size-10 mx-2 fill-white" />
           </div>
 
-          <p className="text-white text-2xl sm:text-3xl font-bold">
+          <p className="text-color text-2xl sm:text-3xl font-bold">
             Complete Profile
           </p>
-          <p className="text-white text-sm">
+          <p className="text-color text-sm">
             Just a few more details to get started
           </p>
         </div>
       </div>
 
-      <div className="bg-white">
+      <div className="bg-component">
         {/* Form */}
         <div className="p-6">
           <form className="flex gap-y-5 flex-col" action="">
             {/* Input */}
             <div className="form-card__input-tel py-2">
               {name === '' ? (
-                <FaRegUser className="size-6 w-14 text-zinc-500" />
+                <FaRegUser className="size-6 w-14 text-subtitle" />
               ) : (
-                <FaUser className="size-6 w-14 text-zinc-500" />
+                <FaUser className="size-6 w-14 text-subtitle" />
               )}
               <TextField
                 value={name}
@@ -85,9 +85,9 @@ function CompleteProfileForm() {
             </div>
             <div className="form-card__input-tel py-2">
               {email === '' ? (
-                <MdOutlineMail className="size-7 w-14 text-zinc-500" />
+                <MdOutlineMail className="size-7 w-14 text-subtitle" />
               ) : (
-                <MdEmail className="size-7 w-14 text-zinc-500" />
+                <MdEmail className="size-7 w-14 text-subtitle" />
               )}
 
               <TextField
@@ -111,14 +111,14 @@ function CompleteProfileForm() {
                 } disable-role-btn`}
               >
                 {role === 'FREELANCER' ? (
-                  <FaUserTie className="role-icon text-white" />
+                  <FaUserTie className="role-icon text-color" />
                 ) : (
-                  <FaUserTie className="role-icon text-zinc-500/70" />
+                  <FaUserTie className="role-icon text-subtitle/70" />
                 )}
 
                 <label
                   className={`text-lg font-semibold px-2 rounded-xl cursor-pointer ${
-                    role === 'FREELANCER' ? 'text-white' : 'text-zinc-500'
+                    role === 'FREELANCER' ? 'text-color' : 'text-subtitle'
                   }`}
                 >
                   Freelancer
@@ -135,14 +135,14 @@ function CompleteProfileForm() {
                 } disable-role-btn `}
               >
                 {role === 'OWNER' ? (
-                  <FaSuitcase className="role-icon text-white" />
+                  <FaSuitcase className="role-icon text-color" />
                 ) : (
-                  <FaSuitcase className="role-icon text-zinc-500/70" />
+                  <FaSuitcase className="role-icon text-subtitle/70" />
                 )}
 
                 <label
                   className={`text-lg font-semibold px-2 rounded-xl cursor-pointer ${
-                    role === 'OWNER' ? 'text-white' : 'text-zinc-500'
+                    role === 'OWNER' ? 'text-color' : 'text-subtitle'
                   }`}
                 >
                   Client

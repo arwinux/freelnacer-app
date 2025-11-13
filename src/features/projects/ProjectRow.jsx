@@ -19,15 +19,15 @@ function ProjectRow({
   client,
 }) {
   return (
-    <tr className="flex bg-white justify-between items-center whitespace-nowrap rounded-l-xl border-l-4 hover:border-l-8 w-full transition-all shadow-md hover:shadow-xl border-l-primary-500">
+    <tr className="flex bg-component justify-between items-center whitespace-nowrap rounded-l-xl border-l-4 hover:border-l-8 w-full transition-all shadow-md hover:shadow-xl border-l-primary-500">
       <th className="flex justify-center items-start gap-x-4 py-4 max-w-md">
-        <span className="size-14 p-6 ml-4 text-xl rounded-xl flex justify-center items-center text-white bg-radial-back">
+        <span className="size-14 p-6 ml-4 text-xl rounded-xl flex justify-center items-center text-color bg-radial-back">
           {title[0]}
         </span>
         <div className="flex flex-col gap-y-2">
           <div className="flex flex-col">
-            <p className="text-lg text-black">{title}</p>
-            <p className="text-wrap text-sm text-zinc-500 font-medium">
+            <p className="text-lg text-title">{title}</p>
+            <p className="text-wrap text-sm text-subtitle font-medium">
               {description}
             </p>
           </div>
@@ -46,7 +46,7 @@ function ProjectRow({
               <p>{category}</p>
             </div>
 
-            <p className="flex gap-x-1 text-zinc-500 text-xs font-medium justify-center items-center">
+            <p className="flex gap-x-1 text-subtitle text-xs font-medium justify-center items-center">
               <FiUser className="size-4" />
               {client}
             </p>
@@ -96,7 +96,7 @@ function ProjectRow({
       </th>
 
       <th className="flex justify-center items-center gap-x-4 py-4 px-3">
-        <button className="py-2 px-2 text-white flex gap-x-4 justify-center bg-radial-back rounded-lg items-center">
+        <button className="py-2 px-2 text-color flex gap-x-4 justify-center bg-radial-back rounded-lg items-center">
           <IoEyeOutline className="size-5" />
           View
           <MdKeyboardArrowRight />
