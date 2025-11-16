@@ -5,8 +5,7 @@ import { FiCalendar, FiUser } from 'react-icons/fi';
 import { GoTag } from 'react-icons/go';
 import { IoEyeOutline } from 'react-icons/io5';
 import { MdKeyboardArrowRight } from 'react-icons/md';
-import { RiDeleteBin6Line } from 'react-icons/ri';
-import { TiPencil } from 'react-icons/ti';
+import truncateText from '../../utils/truncateText';
 
 function ProjectRow({
   title,
@@ -26,9 +25,9 @@ function ProjectRow({
         </span>
         <div className="flex flex-col gap-y-2">
           <div className="flex flex-col">
-            <p className="text-lg text-title">{title}</p>
+            <p className="text-lg text-title">{truncateText(title, 30)}</p>
             <p className="text-wrap text-sm text-subtitle font-medium">
-              {description}
+              {truncateText(description, 100)}
             </p>
           </div>
           <div className="flex justify-start items-center gap-x-4">
@@ -95,20 +94,12 @@ function ProjectRow({
         </div>
       </th>
 
-      <th className="flex justify-center items-center gap-x-4 py-4 px-3">
+      <th className="flex justify-center items-center gap-x-4 py-4 px-6">
         <button className="py-2 px-2 text-color flex gap-x-4 justify-center bg-radial-back rounded-lg items-center">
           <IoEyeOutline className="size-5" />
           View
           <MdKeyboardArrowRight />
         </button>
-        <div className="flex gap-x-2">
-          <button className="size-9 flex justify-center border-2 border-blue-500 rounded-lg items-center">
-            <TiPencil className="text-blue-500 size-5" />
-          </button>
-          <button className="size-9 flex justify-center border-2 border-red-500 rounded-lg items-center">
-            <RiDeleteBin6Line className="text-red-500 size-5" />
-          </button>
-        </div>
       </th>
     </tr>
   );

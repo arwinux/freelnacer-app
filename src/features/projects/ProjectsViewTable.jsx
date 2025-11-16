@@ -11,7 +11,6 @@ import { useState } from 'react';
 import useAllProjects from './useAllProjects';
 import LoadingPage from '../../ui/LoadingPage';
 import ProjectRow from './ProjectRow';
-import truncateText from '../../utils/truncateText';
 import toDateShort from '../../utils/toDateShort';
 import toNumbersWithComma from '../../utils/toNumbersWithComma';
 
@@ -77,9 +76,9 @@ function ProjectsViewTable() {
             {projects.map((project) => (
               <ProjectRow
                 key={project._id}
-                title={truncateText(project.title, 30)}
+                title={project.title}
                 status={project.status}
-                description={truncateText(project.description, 100)}
+                description={project.description}
                 category={project.category.title}
                 budget={toNumbersWithComma(project.budget)}
                 deadline={toDateShort(project.deadline)}
