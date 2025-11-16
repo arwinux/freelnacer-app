@@ -1,4 +1,3 @@
-import { IoSettingsOutline } from 'react-icons/io5';
 import { GoTag } from 'react-icons/go';
 import { FiCalendar } from 'react-icons/fi';
 import { LuDollarSign } from 'react-icons/lu';
@@ -6,8 +5,13 @@ import { FaDollarSign, FaRegFolderOpen } from 'react-icons/fa';
 import { FaUserLarge } from 'react-icons/fa6';
 import { TiPencil } from 'react-icons/ti';
 import { RiDeleteBin6Line } from 'react-icons/ri';
+import { useState } from 'react';
+import Modal from '../../ui/Modal';
+import ConfirmDelete from '../../ui/ConfirmDelete';
+import useRemoveProject from './useRemoveProject';
 
 function ProjectCard({
+  id,
   number,
   title,
   status,
@@ -18,6 +22,10 @@ function ProjectCard({
   tags,
   client,
 }) {
+  const [isEditedOpen, setIsEditedOpen] = useState(false);
+  const [isDeletedOpen, setIsDeletedOpen] = useState(false);
+  const { removeProject, isDeleting } = useRemoveProject();
+
   return (
     <article className="text-title flex flex-col bg-component rounded-2xl hover:scale-[1.04] border border-t-0 border-zinc-200/80 shadow hover:shadow-2xl hover:shadow-primary-500/20 hover:border-primary-600 transition-all duration-500 hover:-translate-y-2">
       <div className=" w-full h-3 rounded-t-xl bg-radial-back"></div>
@@ -112,12 +120,65 @@ function ProjectCard({
               View Full Details
             </button>
             <div className="flex gap-x-2">
-              <button className="size-10 py-3 flex justify-center border-2 border-blue-500 rounded-lg items-center">
+              <button
+                onClick={() => setIsEditedOpen(true)}
+                className="size-9 flex justify-center border-2 border-blue-500 rounded-lg items-center"
+              >
                 <TiPencil className="text-blue-500 size-5" />
               </button>
-              <button className="size-10 py-3 flex justify-center border-2 border-red-500 rounded-lg items-center">
+              <Modal
+                open={isEditedOpen}
+                onClose={() => setIsEditedOpen(false)}
+                title={
+                  <div className="flex items-center gap-x-2">
+                    <div className="flex items-center gap-x-2">
+                      <div className="size-6 flex justify-center bg-title rounded-lg items-center">
+                        <TiPencil className="text-component size-4" />
+                      </div>
+                      <p className="text-xl">Edit</p>
+                    </div>
+                    <p className="text-md truncate text-blue-600 mr-2">
+                      "{title}"
+                    </p>
+                  </div>
+                }
+              >
+                jlajsdf
+              </Modal>
+              <button
+                onClick={() => setIsDeletedOpen(true)}
+                className="size-9 flex justify-center border-2 border-red-500 rounded-lg items-center"
+              >
                 <RiDeleteBin6Line className="text-red-500 size-5" />
               </button>
+              <Modal
+                open={isDeletedOpen}
+                onClose={() => setIsDeletedOpen(false)}
+                title={
+                  <div className="flex items-center gap-x-2">
+                    <div className="flex items-center gap-x-2">
+                      <div className="size-6 flex justify-center bg-title rounded-lg items-center">
+                        <TiPencil className="text-component size-4" />
+                      </div>
+                      <p className="text-xl">Delete</p>
+                    </div>
+                    <p className="text-md truncate text-red-600 mr-2">
+                      "{title}"
+                    </p>
+                  </div>
+                }
+              >
+                <ConfirmDelete
+                  resourceName={title}
+                  onClose={() => setIsDeletedOpen(false)}
+                  onConfirm={() =>
+                    removeProject(id, {
+                      onSuccess: () => setIsDeletedOpen(false),
+                    })
+                  }
+                  disabled={false}
+                />
+              </Modal>
             </div>
           </div>
         </div>

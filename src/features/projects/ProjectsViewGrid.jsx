@@ -74,6 +74,7 @@ function ProjectsViewGrid() {
         {projects.map((project, index) => (
           <ProjectCard
             key={project._id}
+            id={project._id}
             number={index + 1}
             title={project.title}
             status={project.status}
