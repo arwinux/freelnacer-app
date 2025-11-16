@@ -62,7 +62,7 @@ function ProjectCard({
             {description}
           </p>
 
-          <div className="flex gap-2 flex-wrap">
+          <div className="flex gap-2 h-16 flex-wrap items-start">
             {tags.map((tag, index) => (
               <span
                 key={tag + index}
