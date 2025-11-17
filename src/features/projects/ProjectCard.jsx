@@ -24,7 +24,7 @@ function ProjectCard({
 }) {
   const [isEditedOpen, setIsEditedOpen] = useState(false);
   const [isDeletedOpen, setIsDeletedOpen] = useState(false);
-  const { removeProject, isDeleting } = useRemoveProject();
+  const { removeProject } = useRemoveProject();
 
   return (
     <article className="text-title flex flex-col bg-component rounded-2xl hover:scale-[1.04] border border-t-0 border-zinc-200/80 shadow hover:shadow-2xl hover:shadow-primary-500/20 hover:border-primary-600 transition-all duration-500 hover:-translate-y-2">
