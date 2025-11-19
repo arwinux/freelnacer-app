@@ -70,7 +70,7 @@ function ProjectsViewGrid() {
           </button>
         </ul>
       </div>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(25rem,1fr))] gap-4">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-4">
         {projects.map((project, index) => (
           <ProjectCard
             key={project._id}

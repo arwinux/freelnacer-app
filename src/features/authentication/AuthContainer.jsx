@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import SendOTPForm from "./SendOTPForm";
-import CheckOTPForm from "./CheckOTPForm";
-import { useMutation } from "@tanstack/react-query";
-import toast from "react-hot-toast";
-import { getOTP } from "../../services/authServices";
+import React, { useState } from 'react';
+import SendOTPForm from './SendOTPForm';
+import CheckOTPForm from './CheckOTPForm';
+import { useMutation } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+import { getOTP } from '../../services/authServices';
 
 export const RESEND_TIME = 90;
 
 function AuthContainer() {
   const [step, setStep] = useState(1);
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState('');
   const { isPending: isSendingOtp, mutateAsync } = useMutation({
     mutationFn: getOTP,
   });
