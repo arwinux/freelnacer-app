@@ -27,10 +27,7 @@ function NotFound() {
             Go Home
           </button>
 
-          <button
-            onClick={navigateBack}
-            className="secondary-btn bg-zinc-100 text-slate-800 border-2 border-zinc-400/50 hover:border-subtitle flex gap-1 items-center justify-center transition-all"
-          >
+          <button onClick={navigateBack} className="secondary-btn">
             <IoArrowBack className="size-9 role-icon text-slate-800" />
             Go Back
           </button>
