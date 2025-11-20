@@ -20,7 +20,7 @@ function ProjectRow({
   return (
     <tr className="flex bg-component justify-between items-center whitespace-nowrap rounded-l-xl border-l-4 hover:border-l-8 w-full transition-all shadow-md hover:shadow-xl border-l-primary-500">
       <th className="flex justify-center items-start gap-x-4 py-4 max-w-md">
-        <span className="size-14 p-6 ml-4 text-xl rounded-xl flex justify-center items-center text-color bg-radial-back">
+        <span className="size-16 p-8 ml-4 text-xl rounded-xl flex justify-center items-center text-color bg-radial-back">
           {title[0]}
         </span>
         <div className="flex flex-col gap-y-2">
