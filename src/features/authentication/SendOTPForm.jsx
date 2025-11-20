@@ -4,7 +4,7 @@ import { TbSend2 } from 'react-icons/tb';
 import { MdOutlinePhoneInTalk } from 'react-icons/md';
 import Loading from '../../ui/Loading';
 
-function SendOTPForm({ onSendOtp, isSendingOtp, phoneNumber, onChange }) {
+function SendOTPForm({ onSendOtp, isSendingOtp, register }) {
   return (
     <div className="form-card">
       {/* Header with image */}
@@ -45,8 +45,7 @@ function SendOTPForm({ onSendOtp, isSendingOtp, phoneNumber, onChange }) {
               <MdOutlinePhoneInTalk className="size-8 w-14 text-subtitle" />
               <TextField
                 name="phoneNumber"
-                value={phoneNumber}
-                onChange={onChange}
+                register={register}
                 placeholder="Enter Phone Number"
                 type="tel"
               />

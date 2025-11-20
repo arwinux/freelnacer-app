@@ -1,11 +1,17 @@
-function TextField({ name, value, onChange, placeholder, type, classname }) {
+function TextField({
+  name,
+  validationSchema,
+  register,
+  placeholder,
+  type,
+  classname,
+}) {
   return (
     <div>
       <input
         id={name}
         name={name}
-        value={value}
-        onChange={onChange}
+        {...register(name, validationSchema)}
         autoComplete="off"
         className={`form-card__textfield ${classname}`}
         placeholder={placeholder}
