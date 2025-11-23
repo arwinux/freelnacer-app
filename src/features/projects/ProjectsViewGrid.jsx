@@ -8,10 +8,13 @@ import LoadingPage from '../../ui/LoadingPage';
 import toDateShort from '../../utils/toDateShort';
 import toNumbersWithComma from '../../utils/toNumbersWithComma';
 import truncateText from '../../utils/truncateText';
+import useNavigateCreateProject from '../../hooks/useNavigateCreateProject';
 
 function ProjectsViewGrid() {
   const { projects, isLoading } = useClientProjects();
   const [status, setStatus] = useState('allproject');
+
+  const navigateCreateProject = useNavigateCreateProject();
 
   if (isLoading) return <LoadingPage />;
   if (!projects.length)
@@ -20,6 +23,7 @@ function ProjectsViewGrid() {
         resourceName="No projects found"
         iconbtn={<PiPlusCircleBold className='size-6' />}
         textbtn="Create your first Project"
+        onClick={navigateCreateProject}
       />
     );
 

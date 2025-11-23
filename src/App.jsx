@@ -7,7 +7,7 @@ import NotFound from './pages/NotFound';
 import Home from './pages/Home';
 import ClientDashboard from './pages/ClientDashboard';
 import ClientProjects from './pages/Projects';
-import CreateProject from './features/projects/CreateProject';
+import CreateProject from './pages/CreateProject';
 import Project from './pages/Project';
 import AllProjects from './pages/AllProjects';
 import ClientLayout from './features/client/ClientLayout';
