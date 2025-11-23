@@ -167,6 +167,10 @@ button {
   @apply rounded-xl flex justify-center items-center py-1 flex-1 px-2 hover:bg-zinc-200;
 }
 
+.input-form {
+  @apply bg-zinc-100 text-sm placeholder-gray-500 border border-zinc-200 focus:ring-2 focus:ring-zinc-800 w-full px-2 py-1 rounded-lg;
+}
+
 .radial-text {
   @apply font-bold bg-[radial-gradient(circle_at_center,var(--color-primary-500),var(--color-primary-600))] bg-clip-text text-transparent;
 }
@@ -177,4 +181,62 @@ button {
 
 .role-badge {
   @apply flex justify-center border border-zinc-50/60 items-center hover:bg-zinc-300/30 gap-x-2 w-full rounded-md bg-zinc-50/15;
+}
+
+/* Tagify Component styles ---------- */
+.tagify {
+  @apply bg-zinc-100 border border-zinc-200 rounded-lg px-2 py-1 text-sm text-zinc-700;
+}
+
+/* -------------------------------
+   Tags themselves (badge style)
+---------------------------------*/
+.tagify__tag {
+  /* CSS variables for Tagify */
+  --tag-bg: theme(colors.primary.100);
+  --tag-text-color: theme(colors.primary.700);
+  --tag-border-radius: 1rem; /* rounded-xl */
+  --tag-pad: 0.25rem 0.5rem; /* py-1 px-2 */
+
+  /* Tailwind layout + border + typography */
+  @apply flex items-center justify-center gap-x-1 text-xs font-semibold border border-primary-400 rounded-xl;
+
+  /* Smooth hover transition */
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Hover state (override variables if needed) */
+.tagify__tag:hover {
+  --tag-bg: theme(colors.primary.100);
+  --tag-text-color: theme(colors.primary.700);
+}
+
+/* -------------------------------
+   Tag text wrapper
+---------------------------------*/
+.tagify__tag > div {
+  @apply text-xs font-semibold;
+}
+
+/* -------------------------------
+   Remove (X) button inside tag
+---------------------------------*/
+.tagify__tag__removeBtn {
+  @apply text-primary-700 hover:text-primary-900;
+  cursor: pointer;
+}
+
+/* -------------------------------
+   Placeholder text
+---------------------------------*/
+.tagify__input::placeholder {
+  @apply text-gray-600;
+}
+
+/* -------------------------------
+   Focus state for wrapper
+---------------------------------*/
+.tagify--focus {
+  @apply border-transparent;
+  box-shadow: 0 0 0 2px #27272a; /* matches your input focus ring */
 }
