@@ -3,7 +3,7 @@ import SendOTPForm from './SendOTPForm';
 import CheckOTPForm from './CheckOTPForm';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
-import { getOTP } from '../../services/authServices';
+import { getOTP } from '../../services/authService';
 import { useForm } from 'react-hook-form';
 
 export const RESEND_TIME = 90;

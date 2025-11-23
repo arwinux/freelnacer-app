@@ -4,7 +4,7 @@ import { TbClockHour5, TbPasswordFingerprint, TbSend2 } from 'react-icons/tb';
 import { RiShieldCheckFill } from 'react-icons/ri';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
-import { checkOTP } from '../../services/authServices';
+import { checkOTP } from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { RESEND_TIME } from './AuthContainer';
 import Loading from '../../ui/Loading';

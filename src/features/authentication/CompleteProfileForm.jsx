@@ -3,7 +3,7 @@ import TextField from '../../ui/TextField';
 import { RiShieldUserFill } from 'react-icons/ri';
 import { FaRegUser, FaSuitcase, FaUser, FaUserTie } from 'react-icons/fa';
 import { useMutation } from '@tanstack/react-query';
-import { completeProfile } from '../../services/authServices';
+import { completeProfile } from '../../services/authService';
 import toast from 'react-hot-toast';
 import Loading from '../../ui/Loading';
 import { BiSolidCheckCircle } from 'react-icons/bi';
