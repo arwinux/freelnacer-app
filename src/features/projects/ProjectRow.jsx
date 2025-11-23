@@ -58,7 +58,7 @@ function ProjectRow({
           {tags.map((tag, index) => (
             <span
               key={tag + index}
-              className="flex justify-center items-center gap-x-1 text-primary-700 font-semibold text-xs px-2 py-1 bg-primary-100 border border-primary-500/50 rounded-xl"
+              className="badge-tag"
             >
               <GoTag />
               {tag}

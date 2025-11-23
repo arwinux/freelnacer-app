@@ -26,7 +26,9 @@ function ProjectsViewTable() {
           <LuSparkles />
           <span>Browse All Projects</span>
         </div>
-        <p className="text-title font-bold text-3xl sm:text-5xl mb-2">All Projects</p>
+        <p className="text-title font-bold text-3xl sm:text-5xl mb-2">
+          All Projects
+        </p>
         <span className="text-subtitle font-medium">
           View and manage all platform projects
         </span>

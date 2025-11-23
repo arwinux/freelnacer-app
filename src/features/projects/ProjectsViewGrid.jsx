@@ -17,8 +17,8 @@ function ProjectsViewGrid() {
   if (!projects.length)
     return (
       <Empty
-        resourceName="Projects"
-        iconbtn={<PiPlusCircleBold />}
+        resourceName="No projects found"
+        iconbtn={<PiPlusCircleBold className='size-6' />}
         textbtn="Create your first Project"
       />
     );
@@ -26,7 +26,9 @@ function ProjectsViewGrid() {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col mb-5">
-        <p className="text-title font-bold text-3xl sm:text-5xl mb-2">My Projects</p>
+        <p className="text-title font-bold text-3xl sm:text-5xl mb-2">
+          My Projects
+        </p>
         <span className="text-subtitle font-medium">
           Manage and track your projects
         </span>
