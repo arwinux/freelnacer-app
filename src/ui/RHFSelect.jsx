@@ -24,7 +24,7 @@ function RHFSelect({
       >
         {options.map((option) => (
           <option className={className} key={option.value} value={option.value}>
-            {option}
+            {option.label}
           </option>
         ))}
       </select>

@@ -8,6 +8,7 @@ import RHFSelect from '../ui/RHFSelect';
 import Tags from '@yaireo/tagify/react'; // React-wrapper file
 import { useRef, useState } from 'react';
 import DatePickerField from '../ui/DatePickerField';
+import useCategories from '../features/categories/useCategories';
 function CreateProject() {
   const {
     register,
@@ -19,6 +20,8 @@ function CreateProject() {
   const tagifyRef = useRef(null);
 
   const [date, setDate] = useState(new Date());
+
+  const { categories } = useCategories();
 
   const onTagChange = (e) => {
     const parsed = JSON.parse(e.detail.value);
@@ -101,7 +104,7 @@ function CreateProject() {
             placeholder="Select a category"
             register={register}
             required={true}
-            options={['Frontend', 'Backend', 'react']}
+            options={categories}
           />
 
           <div>
