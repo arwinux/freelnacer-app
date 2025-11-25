@@ -9,11 +9,16 @@ import Tags from '@yaireo/tagify/react'; // React-wrapper file
 import { useRef, useState } from 'react';
 import DatePickerField from '../ui/DatePickerField';
 import useCategories from '../features/categories/useCategories';
+import useCreateProject from '../features/projects/useCreateProject';
+import useNavigateClientProject from '../hooks/useNavigateClientProjects';
+import Loading from '../ui/Loading';
+
 function CreateProject() {
   const {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   const [tags, setTags] = useState([]);
@@ -23,13 +28,28 @@ function CreateProject() {
 
   const { categories } = useCategories();
 
+  const { createProject, isCreating } = useCreateProject();
+
+  const navigateClientProjects = useNavigateClientProject();
+
   const onTagChange = (e) => {
     const parsed = JSON.parse(e.detail.value);
     setTags(parsed.map((t) => t.value));
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    const newProject = {
+      ...data,
+      deadline: new Date(date).toISOString(),
+      tags,
+    };
+
+    createProject(newProject, {
+      onSuccess: () => {
+        navigateClientProjects();
+        reset();
+      },
+    });
   };
 
   return (
@@ -99,7 +119,7 @@ function CreateProject() {
           ></TextAreaCreateProject>
 
           <RHFSelect
-            name="cateogry"
+            name="category"
             label="Cateogry"
             placeholder="Select a category"
             register={register}
@@ -124,7 +144,7 @@ function CreateProject() {
 
           <div className="flex flex-wrap sm:flex-nowrap w-full justify-between items-center gap-x-6">
             <TextFieldCreateProject
-              name="title"
+              name="budget"
               label="Budget ($)"
               placeholder="e.g., 5000"
               classname="flex-1 h-12 "
@@ -153,11 +173,13 @@ function CreateProject() {
           >
             Cancel
           </button>
+
           <button
-            type=""
+            type="submit"
             className="primary-btn flex-1 w-full py-2 font-medium text-lg"
           >
             Create Project
+            {isCreating ? <Loading /> : ''}
           </button>
         </div>
       </form>
