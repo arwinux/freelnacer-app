@@ -54,12 +54,9 @@ function ProjectRow({
       </th>
 
       <th className="py-4 px-3">
-        <div className="flex gap-2 flex-wrap truncate max-w-[250px]">
+        <div className="flex gap-2 flex-wrap truncate w-[250px]">
           {tags.map((tag, index) => (
-            <span
-              key={tag + index}
-              className="badge-tag"
-            >
+            <span key={tag + index} className="badge-tag">
               <GoTag />
               {tag}
             </span>
@@ -74,9 +71,11 @@ function ProjectRow({
           </span>
           <div className="flex flex-col">
             <p className="font-bold text-sm text-green-700">BUDGET</p>
-            <div className="flex text-green-800 justify-center items-center -translate-x-1">
+            <div className="flex items-center text-green-800 justify-center -translate-x-1">
               <FaDollarSign className="size-4" />
-              <span className="font-bold text-green-700">{budget}</span>
+              <span className="font-bold text-green-700 text-left min-w-[60px]">
+                {budget}
+              </span>
             </div>
           </div>
         </div>
