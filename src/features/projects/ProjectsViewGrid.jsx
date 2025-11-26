@@ -1,6 +1,6 @@
 import useClientProjects from './useClientProjects';
 import ProjectCard from './ProjectCard';
-import { LuCircleCheckBig, LuLayers3, LuLock } from 'react-icons/lu';
+import { LuCircleCheckBig, LuLayers3, LuLock, LuSparkles } from 'react-icons/lu';
 import { useState } from 'react';
 import Empty from '../../ui/Empty';
 import { PiPlusCircleBold } from 'react-icons/pi';
@@ -29,7 +29,11 @@ function ProjectsViewGrid() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col mb-5">
+      <div className="flex flex-col mb-5 gap-3 w-full justify-center items-center">
+        <div className="flex justify-center items-center gap-x-1 text-primary-700 font-semibold text-md px-2 py-1 bg-primary-100 border border-primary-500/50 rounded-xl">
+          <LuSparkles />
+          <span>Client Projects</span>
+        </div>
         <p className="text-title font-bold text-3xl sm:text-5xl mb-2">
           My Projects
         </p>
@@ -76,7 +80,7 @@ function ProjectsViewGrid() {
           </button>
         </ul>
       </div>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(22rem,1fr))] gap-4">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(22rem,1fr))] gap-4 gap-x-8 gap-y-12">
         {projects.map((project, index) => (
           <ProjectCard
             projectAll={project}

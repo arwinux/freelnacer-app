@@ -53,6 +53,18 @@
   --color-green-900: #0d542b;
   --color-green-950: #032e15;
 
+  --color-emerald-50: #ecfdf5;
+  --color-emerald-100: #d1fae5;
+  --color-emerald-200: #a7f3d0;
+  --color-emerald-300: #6ee7b7;
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+  --color-emerald-800: #065f46;
+  --color-emerald-900: #064e3b;
+  --color-emerald-950: #022c22;
+
   --color-blue-50: #eff6ff;
   --color-blue-100: #dbeafe;
   --color-blue-200: #bedbff;
@@ -94,8 +106,6 @@
   box-sizing: 0;
   outline: none;
 }
-
-
 
 body {
   @apply bg-background;
@@ -155,8 +165,12 @@ button {
 }
 
 .bg-radial-back {
-    @apply bg-[linear-gradient(135deg,#ff6b35_0%,#f7931e_50%,#ff4e50_100%)];
-  }
+  @apply bg-[linear-gradient(135deg,#ff6b35_0%,#f7931e_50%,#ff4e50_100%)];
+}
+
+.bg-emerald-back {
+  @apply bg-[linear-gradient(135deg,#ff6b35_0%,#f7931e_50%,#ff4e50_100%)];
+}
 
 .secondary-btn {
   @apply font-semibold py-2 px-4 rounded-xl text-lg bg-zinc-100 text-slate-800 border-2 border-zinc-400/50 hover:border-subtitle flex gap-1 items-center justify-center transition-all;
