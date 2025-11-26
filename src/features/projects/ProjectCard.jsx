@@ -9,8 +9,10 @@ import { useState } from 'react';
 import Modal from '../../ui/Modal';
 import ConfirmDelete from '../../ui/ConfirmDelete';
 import useRemoveProject from './useRemoveProject';
+import useNavigateCreateProject from '../../hooks/useNavigateCreateProject';
 
 function ProjectCard({
+  projectAll,
   id,
   number,
   title,
@@ -22,9 +24,9 @@ function ProjectCard({
   tags,
   client,
 }) {
-  const [isEditedOpen, setIsEditedOpen] = useState(false);
   const [isDeletedOpen, setIsDeletedOpen] = useState(false);
   const { removeProject } = useRemoveProject();
+  const navigateCreateProject = useNavigateCreateProject();
 
   return (
     <article className="text-title flex flex-col bg-component rounded-2xl hover:scale-[1.04] border-2 border-t-0 border-zinc-200/80 shadow hover:shadow-2xl hover:shadow-primary-500/20 hover:border-primary-600 transition-all duration-500 hover:-translate-y-2">
@@ -64,10 +66,7 @@ function ProjectCard({
 
           <div className="flex gap-2 h-16 flex-wrap items-start">
             {tags.map((tag, index) => (
-              <span
-                key={tag + index}
-                className="badge-tag"
-              >
+              <span key={tag + index} className="badge-tag">
                 <GoTag />
                 {tag}
               </span>
@@ -121,30 +120,14 @@ function ProjectCard({
             </button>
             <div className="flex gap-x-2">
               <button
-                onClick={() => setIsEditedOpen(true)}
+                onClick={() =>
+                  navigateCreateProject({ projctToEdit: projectAll })
+                }
                 className="size-9 flex justify-center border-2 border-blue-500 rounded-lg items-center"
               >
                 <TiPencil className="text-blue-500 size-5" />
               </button>
-              <Modal
-                open={isEditedOpen}
-                onClose={() => setIsEditedOpen(false)}
-                title={
-                  <div className="flex items-center gap-x-2">
-                    <div className="flex items-center gap-x-2">
-                      <div className="size-6 flex justify-center bg-title rounded-lg items-center">
-                        <TiPencil className="text-component size-4" />
-                      </div>
-                      <p className="text-xl">Edit</p>
-                    </div>
-                    <p className="text-md truncate text-blue-600 mr-2">
-                      "{title}"
-                    </p>
-                  </div>
-                }
-              >
-                jlajsdf
-              </Modal>
+
               <button
                 onClick={() => setIsDeletedOpen(true)}
                 className="size-9 flex justify-center border-2 border-red-500 rounded-lg items-center"

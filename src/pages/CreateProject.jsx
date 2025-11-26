@@ -12,25 +12,49 @@ import useCategories from '../features/categories/useCategories';
 import useCreateProject from '../features/projects/useCreateProject';
 import useNavigateClientProject from '../hooks/useNavigateClientProjects';
 import Loading from '../ui/Loading';
+import { useLocation } from 'react-router-dom';
+import useEditProject from '../features/projects/useEditProject ';
 
 function CreateProject() {
+  const navigateClientProjects = useNavigateClientProject();
+
+  const projectToEdit = useLocation().state?.projctToEdit || {};
+  const { _id: editId } = projectToEdit;
+  const isEditMode = Boolean(editId);
+
+  const {
+    title,
+    description,
+    budget,
+    category,
+    deadline,
+    tags: prevTags,
+  } = projectToEdit;
+
+  let editValues = {};
+
+  if (isEditMode) {
+    editValues = {
+      title,
+      description,
+      budget,
+      category: category._id,
+    };
+  }
+
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm();
+  } = useForm({ defaultValues: editValues });
 
-  const [tags, setTags] = useState([]);
-  const tagifyRef = useRef(null);
-
-  const [date, setDate] = useState(new Date());
-
+  const [tags, setTags] = useState(prevTags || []);
+  const [date, setDate] = useState(new Date(deadline || ''));
   const { categories } = useCategories();
-
   const { createProject, isCreating } = useCreateProject();
-
-  const navigateClientProjects = useNavigateClientProject();
+  const { editProject, isEditing } = useEditProject();
+  const tagifyRef = useRef(null);
 
   const onTagChange = (e) => {
     const parsed = JSON.parse(e.detail.value);
@@ -44,12 +68,24 @@ function CreateProject() {
       tags,
     };
 
-    createProject(newProject, {
-      onSuccess: () => {
-        navigateClientProjects();
-        reset();
-      },
-    });
+    if (isEditMode) {
+      editProject(
+        { id: editId, newProject },
+        {
+          onSuccess: () => {
+            navigateClientProjects();
+            reset();
+          },
+        }
+      );
+    } else {
+      createProject(newProject, {
+        onSuccess: () => {
+          navigateClientProjects();
+          reset();
+        },
+      });
+    }
   };
 
   return (
@@ -57,10 +93,10 @@ function CreateProject() {
       <div className="flex flex-col mb-5 gap-3 w-full justify-center items-center">
         <div className="flex justify-center items-center gap-x-1 text-green-700 font-semibold text-md px-2 py-1 bg-green-100 border border-green-500/50 rounded-xl">
           <LuRocket />
-          <span>New Project</span>
+          <span>{isEditMode ? 'Edit Project' : 'New Project'}</span>
         </div>
         <p className="text-title font-bold text-3xl sm:text-5xl mb-2">
-          Create Project
+          {isEditMode ? 'Update Project' : 'Create Project'}
         </p>
         <span className="text-subtitle font-medium">
           Describe your project and find the perfect freelancer
@@ -139,6 +175,7 @@ function CreateProject() {
                 placeholder: 'Add a tag',
               }}
               onChange={onTagChange}
+              value={tags.map((tag) => ({ value: tag }))}
             />
           </div>
 
@@ -168,7 +205,8 @@ function CreateProject() {
 
         <div className="flex w-full flex-col-reverse sm:flex-row px-6 gap-y-2 py-6 justify-center items-center gap-x-5">
           <button
-            onClick={console.log(tags)}
+            type="button"
+            onClick={useNavigateClientProject()}
             className="secondary-btn flex-1 w-full py-2 font-medium text-lg"
           >
             Cancel
@@ -178,8 +216,18 @@ function CreateProject() {
             type="submit"
             className="primary-btn flex-1 w-full py-2 font-medium text-lg"
           >
-            Create Project
-            {isCreating ? <Loading /> : ''}
+            {isEditMode ? 'Update Project' : 'Create Project'}
+            {isEditMode ? (
+              isEditing ? (
+                <Loading />
+              ) : (
+                ''
+              )
+            ) : isCreating ? (
+              <Loading />
+            ) : (
+              ''
+            )}
           </button>
         </div>
       </form>

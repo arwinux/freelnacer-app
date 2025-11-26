@@ -21,7 +21,7 @@ function ProjectsViewGrid() {
     return (
       <Empty
         resourceName="No projects found"
-        iconbtn={<PiPlusCircleBold className='size-6' />}
+        iconbtn={<PiPlusCircleBold className="size-6" />}
         textbtn="Create your first Project"
         onClick={navigateCreateProject}
       />
@@ -79,6 +79,7 @@ function ProjectsViewGrid() {
       <div className="grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(22rem,1fr))] gap-4">
         {projects.map((project, index) => (
           <ProjectCard
+            projectAll={project}
             key={project._id}
             id={project._id}
             number={index + 1}
