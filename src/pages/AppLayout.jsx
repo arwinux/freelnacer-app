@@ -23,7 +23,7 @@ function AppLayout({ children }) {
         <Header isNavOpen={isNavOpen} onNavOpen={onNavOpen} />
 
         {/* Content */}
-        <main className="p-6 w-full lg:max-w-[1380px] lg:mx-auto bg-background">
+        <main className="pt-0 w-full lg:mx-auto bg-background">
           <Outlet />
         </main>
       </div>

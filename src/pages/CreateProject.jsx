@@ -89,7 +89,7 @@ function CreateProject() {
   };
 
   return (
-    <div className="flex justify-center items-center flex-col w-full">
+    <div className="flex mt-12 justify-center items-center flex-col w-full page-set">
       <div className="flex flex-col mb-5 gap-3 w-full justify-center items-center">
         <div className="flex justify-center items-center gap-x-1 text-green-700 font-semibold text-md px-2 py-1 bg-green-100 border border-green-500/50 rounded-xl">
           <LuRocket />

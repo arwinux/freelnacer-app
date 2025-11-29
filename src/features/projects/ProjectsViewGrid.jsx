@@ -33,7 +33,7 @@ function ProjectsViewGrid() {
     );
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-12">
       <div className="flex flex-col mb-5 gap-3 w-full justify-center items-center">
         <div className="flex justify-center items-center gap-x-1 text-primary-700 font-semibold text-md px-2 py-1 bg-primary-100 border border-primary-500/50 rounded-xl">
           <LuSparkles />

@@ -105,7 +105,6 @@
   margin: 0;
   box-sizing: 0;
   outline: none;
-  
 }
 
 body {
@@ -122,6 +121,10 @@ button {
 
 .form-card {
   @apply shadow-md shadow-slate-300 flex flex-col w-full max-w-[420px] overflow-hidden rounded-3xl;
+}
+
+.page-set {
+  @apply lg:max-w-[1380px] mx-auto p-6;
 }
 
 .form-card__header {

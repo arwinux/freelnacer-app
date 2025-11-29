@@ -12,6 +12,7 @@ import useRemoveProject from './useRemoveProject';
 import useNavigateCreateProject from '../../hooks/useNavigateCreateProject';
 import Toggle from '../../ui/Toggle';
 import ToggleProjectStatus from './ToggleProjectStatus';
+import { Link } from 'react-router-dom';
 
 function ProjectCard({
   projectAll,
@@ -43,9 +44,7 @@ function ProjectCard({
               <span className="px-2 rounded-full flex justify-center items-center text-primary-700 bg-primary-100 border border-primary-500/50">
                 {number}
               </span>
-              <span className="text-base font-bold line-clamp-1">
-                {title}
-              </span>
+              <span className="text-base font-bold line-clamp-1">{title}</span>
             </div>
 
             <div className="flex justify-center items-center gap-x-4">
@@ -121,9 +120,10 @@ function ProjectCard({
             </div>
 
             <div className="flex justify-center items-center gap-x-2">
-              <button className="primary-btn py-2 font-bold">
+              <Link className="primary-btn py-2 font-bold" to={id}>
                 View Full Details
-              </button>
+              </Link>
+
               <div className="flex gap-x-2">
                 <button
                   onClick={() =>

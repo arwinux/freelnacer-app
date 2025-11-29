@@ -2,7 +2,7 @@ import ProjectsViewGrid from '../features/projects/ProjectsViewGrid';
 
 function Projects() {
   return (
-    <div>
+    <div className='page-set'>
       <ProjectsViewGrid />
     </div>
   );
