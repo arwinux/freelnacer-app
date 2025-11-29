@@ -1,6 +1,11 @@
 import useClientProjects from './useClientProjects';
 import ProjectCard from './ProjectCard';
-import { LuCircleCheckBig, LuLayers3, LuLock, LuSparkles } from 'react-icons/lu';
+import {
+  LuCircleCheckBig,
+  LuLayers3,
+  LuLock,
+  LuSparkles,
+} from 'react-icons/lu';
 import { useState } from 'react';
 import Empty from '../../ui/Empty';
 import { PiPlusCircleBold } from 'react-icons/pi';
@@ -42,7 +47,7 @@ function ProjectsViewGrid() {
         </span>
       </div>
       <div className="">
-        <ul className="flex flex-col sm:flex-row flex-wrap gap-5 p-4 rounded-xl items-center justify-center bg-component text-title shadow-md shadow-zinc-400/40 mb-7 transition-all duration-500">
+        <ul className="flex flex-col sm:flex-row flex-wrap gap-5 p-4 rounded-xl items-center justify-center bg-component text-title shadow-md shadow-zinc-400/40 mb-12 transition-all duration-500">
           <button
             onClick={() => setStatus('allproject')}
             className={`flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full ${
@@ -87,7 +92,7 @@ function ProjectsViewGrid() {
             key={project._id}
             id={project._id}
             number={index + 1}
-            title={project.title}
+            title={truncateText(project.title, 60)}
             status={project.status}
             description={truncateText(project.description, 100)}
             category={project.category.title}

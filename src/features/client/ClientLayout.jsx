@@ -11,8 +11,8 @@ function ClientLayout() {
   return (
     <div>
       <AppLayout>
-        <ul className="flex flex-col gap-y-3">
-          <li className="text-subtitle/85 ml-1 text-[14px] font-bold">
+        <ul className="flex flex-col gap-y-2">
+          <li className="text-subtitle/85 ml-1 mb-4 text-[14px] font-bold">
             NAVIGATION
           </li>
           <li>

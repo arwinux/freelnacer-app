@@ -32,16 +32,18 @@ function ProjectCard({
   const [localStatus, setLocalStatus] = useState(status);
 
   return (
-    <div className="flex flex-col">
-      <article className="text-title flex flex-col bg-component rounded-2xl hover:scale-[1.02] border-2 border-t-0 border-zinc-200/50 hover:shadow-2xl hover:border-2 hover:shadow-primary-500/20 hover:border-primary-600 transition-all duration-500 hover:-translate-y-6">
-        <div className=" w-full h-3 rounded-t-xl bg-radial-back"></div>
-        <div className=" flex flex-col justify-between gap-y-4  rounded-t-none p-5">
+    <div className="flex flex-col ">
+      <article className="text-title flex flex-col bg-component orange-container">
+        <div className="h-3">
+          <div className="w-full h-2 rounded-t-4xl bg-radial-back"></div>
+        </div>
+        <div className="flex flex-col justify-between gap-y-4  rounded-t-none p-5">
           <div className="project-card__header gap-4 w-full flex justify-between items-center">
-            <div className="flex justify-center items-center gap-x-4 truncate">
+            <div className="flex justify-center items-center gap-x-4 ">
               <span className="px-2 rounded-full flex justify-center items-center text-primary-700 bg-primary-100 border border-primary-500/50">
                 {number}
               </span>
-              <span className="text-base font-bold line-clamp-1 truncate">
+              <span className="text-base font-bold line-clamp-1">
                 {title}
               </span>
             </div>

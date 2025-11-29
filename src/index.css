@@ -105,6 +105,7 @@
   margin: 0;
   box-sizing: 0;
   outline: none;
+  
 }
 
 body {
@@ -125,6 +126,10 @@ button {
 
 .form-card__header {
   @apply relative h-52 w-full;
+}
+
+.orange-container {
+  @apply rounded-2xl hover:scale-[1.02] border-2 border-t-2 border-zinc-200/50 hover:shadow-2xl hover:border-2 hover:shadow-primary-500/20 hover:border-primary-400 transition-all duration-500 hover:-translate-y-6;
 }
 
 .badge {
