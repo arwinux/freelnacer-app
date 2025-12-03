@@ -135,12 +135,28 @@ button {
   @apply rounded-2xl hover:scale-[1.02] border-2 border-t-2 border-zinc-200/50 hover:shadow-2xl hover:border-2 hover:shadow-primary-500/20 hover:border-primary-400 transition-all duration-500 hover:-translate-y-6;
 }
 
+.orange-container-proposal {
+  @apply rounded-2xl hover:scale-[1.01] border-2 border-t-2 border-zinc-200/50 hover:shadow-2xl hover:border-2 hover:shadow-primary-500/20 hover:border-primary-400 transition-all duration-500 hover:-translate-y-2;
+}
+
+.static-container {
+  @apply bg-component rounded-3xl ring-2 ring-gray-100 hover:border-primary-500 border-2 border-component  hover:-translate-y-2 hover:scale-105 transition-all duration-500;
+}
+
 .badge {
   @apply size-16 flex justify-center items-center rounded-xl bg-component/40;
 }
 
 .badge-tag {
   @apply flex justify-center items-center gap-x-1 text-primary-700 font-semibold text-xs px-2 py-1 bg-primary-100 border border-primary-500/50 rounded-xl;
+}
+
+.badge-project-detail {
+  @apply flex justify-center items-center gap-x-1 text-primary-700 font-semibold text-sm px-4 py-3 bg-primary-100 border border-primary-500/50 rounded-full;
+}
+
+.badge-glass {
+  @apply text-color bg-component/15 border border-component/50;
 }
 
 .form-card__input-tel {
