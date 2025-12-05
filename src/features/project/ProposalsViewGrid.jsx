@@ -11,7 +11,7 @@ function ProposalsViewGrid({ proposals }) {
   const navigateBack = useNavigateBack();
   console.log(proposals);
 
-  if (proposals?.length)
+  if (!proposals?.length)
     return (
       <Empty
         className="mt-10"
@@ -25,7 +25,7 @@ function ProposalsViewGrid({ proposals }) {
   return (
     <div className="flex flex-col orange-container-proposal overflow-hidden bg-component">
       <div className="w-full h-2 bg-radial-back"></div>
-      <div className="w-full flex flex-col p-8 border-black shadow-xl">
+      <div className="w-full flex flex-col p-4 sm:p-8 border-black shadow-xl">
         <div className="flex items-center gap-x-3">
           <span className="flex justify-center items-center size-12 bg-radial-back rounded-2xl">
             <FiBriefcase className="size-7 text-component" />

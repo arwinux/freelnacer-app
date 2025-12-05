@@ -6,8 +6,10 @@ import { GoTag } from 'react-icons/go';
 import { IoEyeOutline } from 'react-icons/io5';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import truncateText from '../../utils/truncateText';
+import { Link } from 'react-router-dom';
 
 function ProjectRow({
+  id,
   title,
   status,
   description,
@@ -34,8 +36,6 @@ function ProjectRow({
             <span
               className={`badge-state ${
                 status === 'OPEN' ? 'badge-success' : 'badge-danger'
-                  ? 'bg-green-100 border-green-400 text-green-700'
-                  : 'bg-red-100 border-red-400 text-red-700'
               }  `}
             >
               {status}
@@ -94,11 +94,14 @@ function ProjectRow({
       </th>
 
       <th className="flex justify-center items-center gap-x-4 py-4 px-6">
-        <button className="py-2 px-2 text-color flex gap-x-4 justify-center bg-radial-back rounded-lg items-center">
+        <Link
+          to={id}
+          className="py-2 px-2 text-color flex gap-x-4 justify-center bg-radial-back rounded-lg items-center"
+        >
           <IoEyeOutline className="size-5" />
           View
           <MdKeyboardArrowRight />
-        </button>
+        </Link>
       </th>
     </tr>
   );

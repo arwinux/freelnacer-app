@@ -78,6 +78,7 @@ function ProjectsViewTable() {
             {projects.map((project) => (
               <ProjectRow
                 key={project._id}
+                id={project._id}
                 title={project.title}
                 status={project.status}
                 description={project.description}

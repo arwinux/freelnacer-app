@@ -2,6 +2,20 @@ import { LuClock2, LuDollarSign } from 'react-icons/lu';
 import { FaUserLarge } from 'react-icons/fa6';
 
 function ProjectCard({ status, description, price, duration, client }) {
+  const statusStyle = [
+    {
+      label: 'Accept',
+      className: 'badge-success',
+    },
+    {
+      label: 'Decline',
+      className: 'badge-danger',
+    },
+    {
+      label: 'Pending',
+      className: 'badge-secondary',
+    },
+  ];
   return (
     <div className="flex flex-col ">
       <article className="text-title flex flex-col bg-component orange-container-proposal !hover:scale-[1] mt-12">
@@ -21,14 +35,16 @@ function ProjectCard({ status, description, price, duration, client }) {
             </div>
 
             <div className="flex justify-center items-center gap-x-4">
-              <span>{status}</span>
+              <span className={`badge-state ${statusStyle[status].className}`}>
+                {statusStyle[status].label}
+              </span>
             </div>
           </div>
 
           <div className="w-full h-px bg-zinc-200"></div>
 
           <div className="flex flex-col mt-6 justify-center gap-y-6">
-            <p className="text-subtitle font-medium line-clamp-2 text-sm">
+            <p className="text-subtitle font-medium line-clamp-2 h-10 text-sm">
               {description}
             </p>
 
