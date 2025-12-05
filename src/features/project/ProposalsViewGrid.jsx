@@ -9,7 +9,6 @@ import { FaArrowLeft } from 'react-icons/fa';
 
 function ProposalsViewGrid({ proposals }) {
   const navigateBack = useNavigateBack();
-  console.log(proposals);
 
   if (!proposals?.length)
     return (

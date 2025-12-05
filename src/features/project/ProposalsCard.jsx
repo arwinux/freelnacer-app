@@ -1,12 +1,11 @@
 import { LuClock2, LuDollarSign } from 'react-icons/lu';
 import { FaUserLarge } from 'react-icons/fa6';
+import Modal from '../../ui/Modal';
+import { useState } from 'react';
+import ChangeProposalStatus from './ChangeProposalStatus';
 
-function ProjectCard({ status, description, price, duration, client }) {
+function ProjectCard({ id, status, description, price, duration, client }) {
   const statusStyle = [
-    {
-      label: 'Accept',
-      className: 'badge-success',
-    },
     {
       label: 'Decline',
       className: 'badge-danger',
@@ -15,7 +14,14 @@ function ProjectCard({ status, description, price, duration, client }) {
       label: 'Pending',
       className: 'badge-secondary',
     },
+    {
+      label: 'Accept',
+      className: 'badge-success',
+    },
   ];
+
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="flex flex-col ">
       <article className="text-title flex flex-col bg-component orange-container-proposal !hover:scale-[1] mt-12">
@@ -85,8 +91,25 @@ function ProjectCard({ status, description, price, duration, client }) {
               {/* <FiCalendar className="size-5 text-blue-700" /> */}
             </div>
           </div>
+          <button
+            onClick={() => setOpen(true)}
+            className="primary-btn py-2 font-bold"
+          >
+            Change Status
+          </button>
         </div>
       </article>
+      <Modal
+        title={'Manage Proposal Status'}
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <ChangeProposalStatus
+          proposalId={id}
+          proposalClient={client}
+          onClose={() => setOpen(false)}
+        />
+      </Modal>
     </div>
   );
 }

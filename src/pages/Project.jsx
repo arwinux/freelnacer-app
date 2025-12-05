@@ -1,5 +1,5 @@
 import ProposalsViewGrid from '../features/project/ProposalsViewGrid';
-import useProject from '../features/projects/useProject';
+import useProject from '../features/project/useProject';
 import LoadingPage from '../ui/LoadingPage';
 import ProjectViewDetails from '../features/project/ProjectViewDetails';
 import ProjectHeader from '../features/project/ProjectHeader';
