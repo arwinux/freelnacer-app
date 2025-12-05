@@ -49,10 +49,8 @@ function ProjectCard({
 
             <div className="flex justify-center items-center gap-x-4">
               <span
-                className={`flex justify-center items-center border-2 font-bold text-xs px-2 py-1 rounded-full ${
-                  localStatus === 'OPEN'
-                    ? 'bg-green-100 border-green-500/50 text-green-700'
-                    : 'bg-red-100 border-red-500/50 text-red-700'
+                className={`badge-state ${
+                  localStatus === 'OPEN' ? 'badge-success' : 'badge-danger'
                 }  `}
               >
                 {localStatus}
@@ -65,7 +63,7 @@ function ProjectCard({
               <FaRegFolderOpen />
               <p>{category}</p>
             </div>
-            <p className="text-subtitle font-medium line-clamp-2 text-sm">
+            <p className="text-subtitle font-medium line-clamp-2 h-10 text-sm">
               {description}
             </p>
 

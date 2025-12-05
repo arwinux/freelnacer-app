@@ -32,8 +32,8 @@ function ProjectRow({
           </div>
           <div className="flex justify-start items-center gap-x-4">
             <span
-              className={`flex justify-center items-center border-2 font-bold text-xs px-2.5 py-0.5 rounded-full ${
-                status === 'OPEN'
+              className={`badge-state ${
+                status === 'OPEN' ? 'badge-success' : 'badge-danger'
                   ? 'bg-green-100 border-green-400 text-green-700'
                   : 'bg-red-100 border-red-400 text-red-700'
               }  `}
