@@ -249,7 +249,7 @@ button {
 }
 
 .role-badge {
-  @apply flex cursor-default justify-center border border-zinc-50/60 items-center hover:bg-zinc-300/30 gap-x-2 w-full rounded-md bg-zinc-50/15;
+  @apply flex cursor-default justify-center border border-zinc-50/60 items-center hover:bg-zinc-300/30 gap-x-1 w-full rounded-md bg-zinc-50/15;
 }
 
 /* Tagify Component styles ---------- */

@@ -21,7 +21,7 @@ function Sidebar({ isNavOpen, setIsNavOpen, children }) {
       } h-screen absolute z-10 w-full bg-black/20 backdrop-blur-sm lg:w-72 lg:relative row-start-1 row-span-2`}
     >
       <div
-        className={`flex w-72 h-screen flex-col justify-between items-start overflow-y-auto  bg-component shadow-xl p-6`}
+        className={`flex w-72 h-screen flex-col justify-between items-start   bg-component shadow-xl p-6`}
       >
         <div className="flex gap-x-3 items-center w-full cursor-default">
           <div className="bg-radial-back text-color p-3 rounded-2xl [animation-duration:3s]">
