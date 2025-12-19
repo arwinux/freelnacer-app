@@ -15,7 +15,7 @@ function UserRole() {
             isLoading ? 'blur-sm opacity-50' : ''
           }`}
         >
-          <RiPoliceBadgeFill className="text-white" />
+          <RiPoliceBadgeFill className="text-component" />
           <span>{user?.role}</span>
         </div>
       </div>

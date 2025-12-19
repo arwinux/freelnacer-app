@@ -164,15 +164,14 @@ function CreateProject() {
           />
 
           <div>
-            <label className="mb-2 flex items-center text-sm font-medium gap-x-2">
+            <label className="mb-2 text-title flex items-center text-sm font-medium gap-x-2">
               Tags
             </label>
             <Tags
-              className="w-full input-form flex"
+              className="w-full input-form flex bg-inputs! text-title placeholder-subtitle!"
               tagifyRef={tagifyRef}
               settings={{
                 maxTags: 10,
-                placeholder: 'Add a tag',
               }}
               onChange={onTagChange}
               value={tags.map((tag) => ({ value: tag }))}

@@ -11,7 +11,7 @@ function ProjectViewDetails({ project }) {
             <FiBriefcase className="size-7 text-component" />
           </span>
 
-          <span className="text-2xl font-bold">Project Details</span>
+          <span className="text-2xl text-title font-bold">Project Details</span>
         </div>
 
         <div className="flex flex-col gap-y-8 mt-12">

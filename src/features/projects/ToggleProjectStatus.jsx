@@ -29,7 +29,7 @@ export default function ToggleProjectStatus({ project, onStatusChange }) {
         <span
           className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 bg-linear-to-br ${
             enabled
-              ? 'bg-linear-to-br from-emerald-400 to-emerald-600 shadow-lg shadow-emerald-200'
+              ? 'bg-linear-to-br from-emerald-400 to-emerald-600 shadow-md shadow-emerald-sh-200'
               : 'bg-linear-to-br from-gray-300 to-gray-400 shadow-lg shadow-gray-200'
           }  `}
         >

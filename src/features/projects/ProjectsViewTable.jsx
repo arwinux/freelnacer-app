@@ -34,7 +34,7 @@ function ProjectsViewTable() {
         </span>
       </div>
       <div>
-        <ul className="flex flex-col sm:flex-row flex-wrap gap-5 p-4 rounded-xl items-center justify-center bg-component text-title shadow-md shadow-zinc-400/40 mb-7 transition-all duration-500">
+        <ul className="flex flex-col sm:flex-row flex-wrap gap-5 p-4 rounded-xl items-center justify-center bg-component text-title shadow-md shadow-component-400/40 mb-7 transition-all duration-500">
           <button
             onClick={() => setStatus('allproject')}
             className={`flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full ${

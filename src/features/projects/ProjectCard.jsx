@@ -59,9 +59,9 @@ function ProjectCard({
           </div>
 
           <div className="flex flex-col mt-6 justify-center gap-y-6">
-            <div className="flex w-fit justify-center items-center text-sm border border-zinc-600/30 gap-x-2 rounded-xl bg-zinc-200/80 px-3 font-medium text-zinc-600">
+            <div className="flex w-fit justify-center items-center badge-category">
               <FaRegFolderOpen />
-              <p>{category}</p>
+              <p className="font-bold">{category}</p>
             </div>
             <p className="text-subtitle font-medium line-clamp-2 h-10 text-sm">
               {description}

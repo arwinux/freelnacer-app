@@ -13,14 +13,14 @@ export function TextFieldCreateProject({
 }) {
   return (
     <div className="w-full">
-      <label className="mb-2 flex items-center text-sm font-medium gap-x-2">
+      <label className="mb-2 flex items-center text-title text-sm font-medium gap-x-2">
         {label} {required && <FaStarOfLife className="text-red-500 size-2" />}
       </label>
       <input
         placeholder={placeholder}
         {...register(name, validationSchema)}
         autoComplete="off"
-        className={`input-form ${classname}`}
+        className={`input-form bg-inputs! text-title ${classname}`}
         type={type}
       />
       {errors && errors[name] && (
@@ -45,14 +45,14 @@ export function TextAreaCreateProject({
 }) {
   return (
     <div>
-      <label className="mb-2 flex items-center text-sm font-medium gap-x-2">
+      <label className="mb-2 flex text-title items-center text-sm font-medium gap-x-2">
         {label} {required && <FaStarOfLife className="text-red-500 size-2" />}
       </label>
       <textarea
         placeholder={placeholder}
         {...register(name, validationSchema)}
         autoComplete="off"
-        className={`input-form resize-none ${classname}`}
+        className={`input-form resize-none bg-inputs! text-title ${classname}`}
         type={type}
       />
       {errors && errors[name] && (

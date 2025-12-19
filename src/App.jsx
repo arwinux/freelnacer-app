@@ -11,33 +11,36 @@ import CreateProject from './pages/CreateProject';
 import Project from './pages/Project';
 import AllProjects from './pages/AllProjects';
 import ClientLayout from './features/client/ClientLayout';
+import { DarkModeProvider } from './context/DarkModeContext';
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Toaster />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<NotFound />} />
+    <DarkModeProvider>
+      <QueryClientProvider client={queryClient}>
+        <Toaster />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
 
-        <Route path="/client" element={<ClientLayout />}>
-          <Route index element={<Navigate to="dashboard" replace />} />
-          <Route path="dashboard" element={<ClientDashboard />} />
+          <Route path="/client" element={<ClientLayout />}>
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="dashboard" element={<ClientDashboard />} />
 
-          <Route path="projects" element={<AllProjects />} />
-          <Route path="projects/:id" element={<Project />} />
+            <Route path="projects" element={<AllProjects />} />
+            <Route path="projects/:id" element={<Project />} />
 
-          <Route path="client-projects" element={<ClientProjects />} />
-          <Route path="client-projects/:id" element={<Project />} />
+            <Route path="client-projects" element={<ClientProjects />} />
+            <Route path="client-projects/:id" element={<Project />} />
 
-          <Route path="create-project" element={<CreateProject />} />
-        </Route>
+            <Route path="create-project" element={<CreateProject />} />
+          </Route>
 
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/complete-profile" element={<CompleteProfile />} />
-      </Routes>
-    </QueryClientProvider>
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/complete-profile" element={<CompleteProfile />} />
+        </Routes>
+      </QueryClientProvider>
+    </DarkModeProvider>
   );
 }
 

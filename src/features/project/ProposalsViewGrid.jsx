@@ -30,7 +30,7 @@ function ProposalsViewGrid({ proposals }) {
             <FiBriefcase className="size-7 text-component" />
           </span>
 
-          <span className="text-2xl font-bold">Proposals</span>
+          <span className="text-2xl text-title font-bold">Proposals</span>
         </div>
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(22rem,1fr))] gap-4 gap-x-8 gap-y-12">

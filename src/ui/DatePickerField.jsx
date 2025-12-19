@@ -5,7 +5,7 @@ import { FaStarOfLife } from 'react-icons/fa';
 function DatePickerField({ label, required, date, setDate, className }) {
   return (
     <div className="flex flex-col w-full">
-      <label className="mb-2 flex items-center text-sm font-medium gap-x-2">
+      <label className="text-title  mb-2 flex items-center text-sm font-medium gap-x-2">
         {label} {required && <FaStarOfLife className="text-red-500 size-2" />}
       </label>
       <DatePicker
@@ -15,7 +15,7 @@ function DatePickerField({ label, required, date, setDate, className }) {
         onChange={(date) => setDate(date)}
         format="YYYY/MM/DD"
         calendar={gregorian}
-        inputClass={`input-form flex-1 h-12 ${className}`}
+        inputClass={`input-form flex-1 h-12 bg-inputs! text-title ${className}`}
       />
     </div>
   );

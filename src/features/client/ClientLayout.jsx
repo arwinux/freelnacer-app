@@ -6,8 +6,8 @@ import { FaRegFolderOpen } from 'react-icons/fa';
 import { PiPlusCircleBold } from 'react-icons/pi';
 import { CgAwards } from 'react-icons/cg';
 import { RiAccountCircle2Line } from 'react-icons/ri';
-import UserAvatar from '../../ui/UserAvatar';
 import UserRole from '../../ui/UserRole';
+import { LogoutSideBarBtn } from '../../ui/LogoutBtn';
 
 function ClientLayout() {
   return (
@@ -45,16 +45,10 @@ function ClientLayout() {
             </CustomNavlink>
           </li>
 
-          <UserRole/>
+          <UserRole />
         </ul>
 
-        <div className="flex flex-col gap-5 mt-5">
-          <UserAvatar />
-          <button className="flex text-md justify-center transition-all duration-300 hover:bg-primary-500/10 hover:border-primary-500 items-center gap-x-3 border-2 border-zinc-300/80 py-1 rounded-lg font-semibold">
-            <MdOutlineLogout className="size-5" />
-            <span>Logout</span>
-          </button>
-        </div>
+        <LogoutSideBarBtn />
       </AppLayout>
     </div>
   );
