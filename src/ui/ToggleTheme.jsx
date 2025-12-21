@@ -16,8 +16,8 @@ export default function ToggleTheme({ isDarkMode, toggleDarkMode }) {
         onClick={toggleDarkMode}
         className={`${
           isDarkMode
-            ? 'bg-linear-to-br from-yellow-300 to-primary-600'
-            : 'bg-linear-to-br from-blue-500 to-gray-600'
+            ? 'bg-linear-to-br from-blue-500 to-blue-600'
+            : 'bg-linear-to-br from-yellow-500 to-primary-500'
         }
           relative inline-flex h-9 w-18 shrink-0 cursor-pointer justify-start items-center rounded-full transition-colors duration-200 ease-in-out   focus-visible:ring-white/75`}
       >
@@ -31,9 +31,9 @@ export default function ToggleTheme({ isDarkMode, toggleDarkMode }) {
         `}
         >
           {isDarkMode ? (
-            <MdLightMode className="size-5 text-primary-400" />
-          ) : (
             <MdDarkMode className="size-4 text-blue-500" />
+          ) : (
+            <MdLightMode className="size-5 text-primary-400" />
           )}
         </div>
 
@@ -45,9 +45,9 @@ export default function ToggleTheme({ isDarkMode, toggleDarkMode }) {
             pointer-events-none size-7 flex justify-center items-center transform rounded-full `}
         >
           {isDarkMode ? (
-            <MdOutlineDarkMode className="size-4 text-component" />
-          ) : (
             <MdOutlineLightMode className="size-5 text-component" />
+          ) : (
+            <MdOutlineDarkMode className="size-4 text-component" />
           )}
         </div>
       </Switch>
