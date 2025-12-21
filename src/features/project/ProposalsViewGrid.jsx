@@ -3,7 +3,6 @@ import toNumbersWithComma from '../../utils/toNumbersWithComma';
 import ProposalsCard from './ProposalsCard';
 import useNavigateBack from '../../hooks/useNavigateBack';
 import Empty from '../../ui/Empty';
-import { PiPlusCircleBold } from 'react-icons/pi';
 import { FiBriefcase } from 'react-icons/fi';
 import { FaArrowLeft } from 'react-icons/fa';
 

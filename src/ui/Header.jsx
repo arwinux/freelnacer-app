@@ -1,5 +1,4 @@
 import { MdArrowBackIosNew } from 'react-icons/md';
-import { LogoutHeaderBtn } from './LogoutBtn';
 import ToggleTheme from './ToggleTheme';
 import { UserAvatarHeader } from './UserAvatar';
 import { useDarkMode } from '../context/DarkModeContext';

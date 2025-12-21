@@ -1,4 +1,3 @@
-import React from 'react';
 import toNumbersWithComma from '../../utils/toNumbersWithComma';
 import toDateShort from '../../utils/toDateShort';
 import { LuClock2, LuDollarSign, LuFileText } from 'react-icons/lu';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 function CustomNavlink({ children, to }) {
@@ -14,16 +14,18 @@ function CustomNavlink({ children, to }) {
     'transition-all h-8 duration-300 rounded-xl text-subtitle font-semibold border-l-4 border-primary-500 flex items-center ml-2 gap-x-2 px-2 w-60 py-1.5 bg-primary-500/5 transition-all duration-200';
 
   return (
-    <NavLink
-      to={to}
-      className={({ isActive }) =>
-        isActive ? navLinkActive : isHovered ? navLinkHover : navLinkNotActive
-      }
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {children}
-    </NavLink>
+    <li>
+      <NavLink
+        to={to}
+        className={({ isActive }) =>
+          isActive ? navLinkActive : isHovered ? navLinkHover : navLinkNotActive
+        }
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {children}
+      </NavLink>
+    </li>
   );
 }
 

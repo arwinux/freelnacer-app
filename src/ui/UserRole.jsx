@@ -1,7 +1,4 @@
-import React from 'react';
-import { CgAwards } from 'react-icons/cg';
 import useUser from '../features/authentication/useUser';
-import { HiCheckBadge } from 'react-icons/hi2';
 import { RiPoliceBadgeFill } from 'react-icons/ri';
 function UserRole() {
   const { isLoading, user } = useUser();

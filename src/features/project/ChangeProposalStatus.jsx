@@ -1,4 +1,3 @@
-import React from 'react';
 import RHFSelect from '../../ui/RHFSelect';
 import { useForm } from 'react-hook-form';
 import useChangeProposalStatus from './useChangeProposalStatus';

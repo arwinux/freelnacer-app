@@ -1,4 +1,3 @@
-import React from 'react';
 import { FiBriefcase } from 'react-icons/fi';
 
 function Empty({ resourceName, iconbtn, textbtn, onClick, className }) {

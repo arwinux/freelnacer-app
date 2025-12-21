@@ -1,8 +1,7 @@
 import { LuSparkles } from 'react-icons/lu';
-import { MdOutlineLogout } from 'react-icons/md';
-import { RiAccountCircle2Line } from 'react-icons/ri';
 import { AiTwotoneCloseCircle } from 'react-icons/ai';
 import { useEffect } from 'react';
+import { LogoutSideBarBtn } from './LogoutBtn';
 
 function Sidebar({ isNavOpen, setIsNavOpen, children }) {
   useEffect(() => {
@@ -44,7 +43,13 @@ function Sidebar({ isNavOpen, setIsNavOpen, children }) {
         </div>
 
         <div className="flex flex-1 justify-between mt-14 w-full flex-col">
-          {children}
+          <ul className="flex flex-col gap-y-2">
+            <li className="text-subtitle/85 ml-1 mb-4 text-[14px] font-bold">
+              NAVIGATION
+            </li>
+            {children}
+          </ul>
+          <LogoutSideBarBtn />
         </div>
       </div>
     </div>

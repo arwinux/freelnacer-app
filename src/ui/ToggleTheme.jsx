@@ -1,6 +1,4 @@
 import { Switch } from '@headlessui/react';
-import { IoCloseCircleOutline } from 'react-icons/io5';
-import { LuCircleCheckBig } from 'react-icons/lu';
 import {
   MdDarkMode,
   MdLightMode,
