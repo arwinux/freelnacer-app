@@ -17,6 +17,7 @@ import toNumbersWithComma from '../../utils/toNumbersWithComma';
 function ProjectsViewTable() {
   const [status, setStatus] = useState('allproject');
   const { projects, isLoading } = useAllProjects();
+  console.log(projects);
 
   if (isLoading) return <LoadingPage />;
   return (

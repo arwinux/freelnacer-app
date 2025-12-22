@@ -99,7 +99,7 @@ function ProjectsViewGrid() {
             budget={toNumbersWithComma(project.budget)}
             deadline={toDateShort(project.deadline)}
             tags={project.tags}
-            client={project.freelancer?.name || '-'}
+            client={project.owner?.name || '-'}
           />
         ))}
       </div>

@@ -4,7 +4,15 @@ import Modal from '../../ui/Modal';
 import { useState } from 'react';
 import ChangeProposalStatus from './ChangeProposalStatus';
 
-function ProjectCard({ id, status, description, price, duration, client }) {
+function ProposalCard({
+  id,
+  status,
+  description,
+  price,
+  duration,
+  client,
+  canChangeStatus,
+}) {
   const statusStyle = [
     {
       label: 'Decline',
@@ -91,27 +99,35 @@ function ProjectCard({ id, status, description, price, duration, client }) {
               {/* <FiCalendar className="size-5 text-blue-700" /> */}
             </div>
           </div>
-          <button
-            onClick={() => setOpen(true)}
-            className="primary-btn py-2 font-bold"
-          >
-            Change Status
-          </button>
+          {canChangeStatus ? (
+            <button
+              onClick={() => setOpen(true)}
+              className="primary-btn py-2 font-bold"
+            >
+              Change Status
+            </button>
+          ) : (
+            ''
+          )}
         </div>
       </article>
-      <Modal
-        title={'Manage Proposal Status'}
-        open={open}
-        onClose={() => setOpen(false)}
-      >
-        <ChangeProposalStatus
-          proposalId={id}
-          proposalClient={client}
+      {canChangeStatus ? (
+        <Modal
+          title={'Manage Proposal Status'}
+          open={open}
           onClose={() => setOpen(false)}
-        />
-      </Modal>
+        >
+          <ChangeProposalStatus
+            proposalId={id}
+            proposalClient={client}
+            onClose={() => setOpen(false)}
+          />
+        </Modal>
+      ) : (
+        ''
+      )}
     </div>
   );
 }
 
-export default ProjectCard;
+export default ProposalCard;

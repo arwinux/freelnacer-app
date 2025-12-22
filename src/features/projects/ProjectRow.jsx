@@ -96,6 +96,7 @@ function ProjectRow({
       <th className="flex justify-center items-center gap-x-4 py-4 px-6">
         <Link
           to={id}
+          state={{ canChangeStatus: false }}
           className="py-2 px-2 text-color flex gap-x-4 justify-center bg-radial-back rounded-lg items-center"
         >
           <IoEyeOutline className="size-5" />

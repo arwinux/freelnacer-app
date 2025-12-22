@@ -118,7 +118,11 @@ function ProjectCard({
             </div>
 
             <div className="flex justify-center items-center gap-x-2">
-              <Link className="primary-btn py-2 font-bold" to={id}>
+              <Link
+                className="primary-btn py-2 font-bold"
+                state={{ canChangeStatus: true }}
+                to={id}
+              >
                 View Full Details
               </Link>
 

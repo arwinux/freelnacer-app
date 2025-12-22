@@ -13,7 +13,7 @@ function UserRole() {
           }`}
         >
           <RiPoliceBadgeFill className="text-component" />
-          <span>{user?.role}</span>
+          <span>{user?.role === 'OWNER' ? 'CLIENT' : user?.role}</span>
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
 import { FiTarget } from 'react-icons/fi';
 import { LuCircleCheckBig } from 'react-icons/lu';
@@ -49,7 +48,7 @@ function ProjectHeader({ project }) {
             <div className="flex flex-col">
               <span className="text-color/70 text-sm">Posted by</span>
               <p className="text-color font-bold">
-                {project.freelancer?.name || '-'}
+                {project.owner?.name || '-'}
               </p>
             </div>
           </div>

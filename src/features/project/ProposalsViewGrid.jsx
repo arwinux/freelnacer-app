@@ -1,13 +1,16 @@
 import truncateText from '../../utils/truncateText';
 import toNumbersWithComma from '../../utils/toNumbersWithComma';
-import ProposalsCard from './ProposalsCard';
+import ProposalCard from './ProposalsCard';
 import useNavigateBack from '../../hooks/useNavigateBack';
 import Empty from '../../ui/Empty';
 import { FiBriefcase } from 'react-icons/fi';
 import { FaArrowLeft } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
 
 function ProposalsViewGrid({ proposals }) {
   const navigateBack = useNavigateBack();
+  const location = useLocation();
+  const canChangeStatus = location.state?.canChangeStatus ?? false;
 
   if (!proposals?.length)
     return (
@@ -34,7 +37,7 @@ function ProposalsViewGrid({ proposals }) {
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(22rem,1fr))] gap-4 gap-x-8 gap-y-12">
           {proposals.map((proposal) => (
-            <ProposalsCard
+            <ProposalCard
               key={proposal._id}
               id={proposal._id}
               title={proposal?.title}
@@ -43,6 +46,7 @@ function ProposalsViewGrid({ proposals }) {
               price={toNumbersWithComma(proposal.price)}
               duration={proposal.duration}
               client={proposal.user?.name || '-'}
+              canChangeStatus={canChangeStatus}
             />
           ))}
         </div>
