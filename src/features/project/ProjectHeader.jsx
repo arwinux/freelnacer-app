@@ -42,7 +42,7 @@ function ProjectHeader({ project }) {
 
           <div className="flex items-center gap-x-4">
             <div className="flex justify-center items-center size-12 text-xl rounded-xl font-bold backdrop-blur-xl badge-glass">
-              <span>{project.freelancer?.name[0] || '-'}</span>
+              <span>{project.owner?.name[0] || '-'}</span>
             </div>
 
             <div className="flex flex-col">

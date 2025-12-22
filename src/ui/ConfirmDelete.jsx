@@ -31,7 +31,7 @@ function ConfirmDelete({
         <button
           onClick={onConfirm}
           disabled={disabled}
-          className="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition disabled:opacity-50"
+          className="px-4 py-2 rounded-lg bg-red-600 text-color hover:bg-red-700 transition disabled:opacity-50"
         >
           Delete
         </button>
