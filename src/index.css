@@ -121,6 +121,7 @@
   --color-inputs: var(--inputs);
   --color-category: var(--category);
   --color-category-text: var(--category-text);
+  --color-notfound: #1d293d;
 
   /* Soft accent shadows */
   --color-emerald-sh-200: var(--emerald-sh-200);
@@ -250,6 +251,8 @@
   --inputs: #f9fafb;
   --category: #eef0f3;
   --category-text: #52525c;
+  --color-notfound: #1d293d;
+
 
   /* Soft accent shadows */
   --emerald-sh-200: #a7f3d0;
@@ -378,6 +381,8 @@
   --inputs: #18181b;
   --category: #1f1f23;
   --category-text: #d4d4d8;
+  --color-notfound: #d0e1ff;
+
 
   /* Shadows / Soft Accents */
   --emerald-sh-200: #065f46;
@@ -504,7 +509,7 @@ button {
 }
 
 .secondary-btn {
-  @apply font-semibold py-2 px-4 rounded-xl text-lg bg-zinc-100 text-slate-800 border-2 border-zinc-400/50 hover:border-subtitle flex gap-1 items-center justify-center transition-all;
+  @apply font-semibold py-2 px-4 rounded-xl text-lg bg-zinc-100 text-notfound border-2 border-notfound hover:border-subtitle flex gap-1 items-center justify-center transition-all;
 }
 
 .role-icon {
