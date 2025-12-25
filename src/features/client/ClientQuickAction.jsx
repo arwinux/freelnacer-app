@@ -57,7 +57,10 @@ function ClientQuickAction() {
             </div>
           </Link>
 
-          <div className="w-full ring-border flex flex-1 flex-col group justify-between gap-x-2 gap-y-5 p-8 cursor-pointer select-none dashboard-static-container">
+          <Link
+            to="#"
+            className="w-full ring-border flex flex-1 flex-col group justify-between gap-x-2 gap-y-5 p-8 cursor-pointer select-none dashboard-static-container"
+          >
             <div className="flex flex-col gap-y-2">
               <div className="flex justify-between mb-3">
                 <span className="flex justify-center items-center group-hover:scale-110 transition-all duration-300 size-14 bg-radial-back rounded-2xl">
@@ -76,7 +79,7 @@ function ClientQuickAction() {
               <span className="font-semibold">Open Profile </span>
               <IoMdArrowForward />
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
