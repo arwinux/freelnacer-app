@@ -15,7 +15,7 @@ function ClientStatics() {
           <div className="px-1">
             <div className="w-full h-2 rounded-t-4xl bg-radial-back"></div>
           </div>
-          <div className="w-full ring-border flex-1 flex flex-col gap-y-5 p-5 cursor-pointer select-none">
+          <div className="w-full ring-border flex-1 flex flex-col gap-y-5 p-5 select-none">
             <div className="flex justify-between gap-x-2">
               <div className="flex flex-col gap-y-2">
                 <span className="text-subtitle text-sm font-bold uppercase">
@@ -28,7 +28,7 @@ function ClientStatics() {
                   Total projects created
                 </span>
               </div>
-              <span className="flex justify-center items-center hover:rotate-12 hover:scale-110 shimmer-infinite transition-all size-14 bg-radial-back rounded-2xl">
+              <span className="flex justify-center items-center hover:rotate-12 hover:scale-125 hover:animate-spin shimmer-infinite transition-all size-14 bg-radial-back rounded-2xl">
                 <FiBriefcase className="size-7 text-component" />
               </span>
             </div>
@@ -43,7 +43,7 @@ function ClientStatics() {
           <div className="px-1">
             <div className="w-full h-2 rounded-t-4xl bg-radial-back"></div>
           </div>
-          <div className="w-full ring-border flex-1 flex flex-col gap-y-5 p-5 cursor-pointer select-none">
+          <div className="w-full ring-border flex-1 flex flex-col gap-y-5 p-5 select-none">
             <div className="flex justify-between gap-x-2">
               <div className="flex flex-col gap-y-2">
                 <span className="text-subtitle text-sm font-bold uppercase">
@@ -54,7 +54,7 @@ function ClientStatics() {
                   <span>{toNumbersWithComma(300000000)}</span>
                 </div>
               </div>
-              <span className="flex justify-center hover:rotate-12 hover:scale-110 shimmer-infinite transition-all items-center size-14 bg-radial-back rounded-2xl">
+              <span className="flex justify-center hover:rotate-12 hover:scale-125 hover:animate-spin shimmer-infinite transition-all items-center size-14 bg-radial-back rounded-2xl">
                 <LuDollarSign className="size-7 text-component" />
               </span>
             </div>
@@ -66,7 +66,7 @@ function ClientStatics() {
           <div className="px-1">
             <div className="w-full h-2 rounded-t-4xl bg-radial-back"></div>
           </div>
-          <div className="w-full ring-border flex-1 flex flex-col gap-y-5 p-5 cursor-pointer select-none">
+          <div className="w-full ring-border flex-1 flex flex-col gap-y-5 p-5 select-none">
             <div className="flex justify-between gap-x-2">
               <div className="flex flex-col gap-y-2">
                 <span className="text-subtitle text-sm font-bold uppercase">
@@ -79,7 +79,7 @@ function ClientStatics() {
                   From freelancers
                 </span>
               </div>
-              <span className="flex justify-center hover:rotate-12 hover:scale-110 shimmer-infinite transition-all items-center size-14 bg-radial-back rounded-2xl">
+              <span className="flex justify-center hover:rotate-12 hover:scale-125 hover:animate-spin shimmer-infinite transition-all items-center size-14 bg-radial-back rounded-2xl">
                 <LuFileText className="size-7 text-component" />
               </span>
             </div>
@@ -94,7 +94,7 @@ function ClientStatics() {
           <div className="px-1">
             <div className="w-full h-2 rounded-t-4xl bg-radial-back"></div>
           </div>
-          <div className="w-full ring-border flex-1 flex flex-col gap-y-5 p-5 cursor-pointer select-none">
+          <div className="w-full ring-border flex-1 flex flex-col gap-y-5 p-5 select-none">
             <div className="flex justify-between gap-x-2">
               <div className="flex flex-col gap-y-2">
                 <span className="text-subtitle text-sm font-bold uppercase">
@@ -105,7 +105,7 @@ function ClientStatics() {
                 </div>
                 <span className="text-xs text-subtitle/80">Available</span>
               </div>
-              <span className="flex justify-center hover:rotate-12 hover:scale-110 shimmer-infinite transition-all items-center size-14 bg-radial-back rounded-2xl">
+              <span className="flex justify-center hover:rotate-12 hover:scale-125 hover:animate-spin shimmer-infinite transition-all items-center size-14 bg-radial-back rounded-2xl">
                 <LuTarget className="size-7 text-component" />
               </span>
             </div>

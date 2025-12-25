@@ -19,6 +19,7 @@ function App() {
     <DarkModeProvider>
       <QueryClientProvider client={queryClient}>
         <Toaster />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
