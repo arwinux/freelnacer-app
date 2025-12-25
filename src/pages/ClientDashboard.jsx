@@ -1,5 +1,7 @@
+import DashboardLayout from '../features/client/DashboardLayout';
+
 function ClientDashboard() {
-  return <div>Client Dashboard </div>;
+  return <DashboardLayout />;
 }
 
 export default ClientDashboard;

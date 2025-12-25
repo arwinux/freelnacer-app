@@ -11,7 +11,7 @@ function ProjectStatics({ project }) {
       <div className="w-full relative bottom-10 flex flex-col md:flex-row flex-wrap gap-x-7 gap-y-5 lg:max-w-6xl mx-auto">
         <div className="w-full ring-border flex-1 flex flex-col gap-y-5 static-container p-5 cursor-pointer select-none">
           <div className="flex justify-between">
-            <span className="flex justify-center items-center size-14 bg-linear-to-br from-emerald-400 to-emerald-600 shadow-lg shadow-emerald-sh-200 rounded-2xl">
+            <span className="flex justify-center items-center shimmer-infinite size-14 bg-linear-to-br from-emerald-500 to-emerald-600 shadow-lg shadow-emerald-sh-200 rounded-2xl">
               <LuDollarSign className="size-7 text-component" />
             </span>
             <IoMdTrendingUp className="size-6 text-emerald-500" />
@@ -28,7 +28,7 @@ function ProjectStatics({ project }) {
         </div>
         <div className="w-full ring-border flex-1 flex flex-col gap-y-5 static-container p-5 cursor-pointer select-none">
           <div className="flex justify-between">
-            <span className="flex justify-center items-center size-14 bg-linear-to-br from-blue-400 to-blue-700 shadow-lg shadow-blue-sh-200 rounded-2xl">
+            <span className="flex justify-center items-center shimmer-infinite size-14 bg-linear-to-br from-blue-500 to-blue-700 shadow-lg shadow-blue-sh-200 rounded-2xl">
               <FiCalendar className="size-7 text-component" />
             </span>
             <LuClock2 className="size-6 text-blue-500" />
@@ -42,7 +42,7 @@ function ProjectStatics({ project }) {
         </div>
         <div className="w-full ring-border flex-1 flex flex-col gap-y-5 static-container p-5 cursor-pointer select-none">
           <div className="flex justify-between">
-            <span className="flex justify-center items-center size-14 bg-radial-back rounded-2xl shadow-lg shadow-primary-sh-200">
+            <span className="flex justify-center items-center shimmer-infinite size-14 bg-radial-back rounded-2xl shadow-lg shadow-primary-sh-200">
               <LuFileText className="size-7 text-component" />
             </span>
             <GoZap className="size-6 text-primary-500" />

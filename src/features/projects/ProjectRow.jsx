@@ -17,7 +17,6 @@ function ProjectRow({
   budget,
   deadline,
   tags,
-  client,
 }) {
   return (
     <tr className="flex bg-component justify-between items-center whitespace-nowrap rounded-xl border-l-4 hover:border-l-8 w-full transition-all shadow-md hover:shadow-xl border-l-primary-500">
@@ -44,11 +43,6 @@ function ProjectRow({
               <FaRegFolderOpen />
               <p>{category}</p>
             </div>
-
-            <p className="flex gap-x-1 text-subtitle text-xs font-medium justify-center items-center">
-              <FiUser className="size-4" />
-              {client}
-            </p>
           </div>
         </div>
       </th>
