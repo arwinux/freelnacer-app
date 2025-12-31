@@ -1,0 +1,72 @@
+import toNumbersWithComma from '../utils/toNumbersWithComma';
+import { FaDollarSign, FaRegFolderOpen } from 'react-icons/fa';
+import { LuDollarSign } from 'react-icons/lu';
+import { FiCalendar } from 'react-icons/fi';
+import { IoMdArrowForward } from 'react-icons/io';
+function RecentProjects() {
+  return (
+    <div className="w-full ring-border flex flex-1 flex-col group justify-between gap-x-2 gap-y-5 p-8 cursor-default select-none dashboard-static-container hover:-translate-y-3! duration-400!">
+      <div className="flex justify-between items-center">
+        <div className="flex flex-col gap-y-2">
+          <p className="font-bold text-xl sm:text-3xl text-title">
+            Recent Projects
+          </p>
+          <span className="text-sm text-subtitle">
+            Latest opportunities in the marketplace
+          </span>
+        </div>
+        <div className="flex items-center flex-nowrap gap-x-2 transition-all text-primary-500">
+          <span className="font-semibold text-nowrap">View All</span>
+          <IoMdArrowForward />
+        </div>
+      </div>
+
+      <div className="w-full ring-border flex flex-1 flex-col group justify-between gap-x-2 gap-y-5 p-6 cursor-pointer select-none dashboard-static-container hover:translate-y-0! duration-400!">
+        <div className="project-card__header gap-4 w-full flex justify-between items-center">
+          <div className="flex justify-center items-center  ">
+            <span className="text-base font-bold line-clamp-2 text-title">
+              Redesign Company update UI/UX more than me
+            </span>
+          </div>
+
+          <div className="flex justify-center items-center gap-x-4">
+            <span
+              className={`badge-state badge-success ${"CLOSED === 'OPEN' ? 'badge-success' : 'badge-danger'"}  `}
+            >
+              OPEN
+            </span>
+          </div>
+        </div>
+        <div className="flex w-fit justify-center items-center text-xs gap-x-2 rounded-xl px-2.5 py-0.5 font-medium text-primary-700 bg-primary-100 border-2 border-primary-300">
+          <FaRegFolderOpen />
+          <p className="font-semibold">Web Development</p>
+        </div>
+        <p className="text-wrap text-sm text-subtitle font-medium line-clamp-2">
+          Build a complete e-commerce solution with product management, shopping
+          cart, user authentication, and payment integration
+        </p>
+        <div className="flex flex-col sm:flex-row flex-wrap justify-between items-center gap-x-2 gap-y-3">
+          <div className="flex gap-x-3 flex-1">
+            <span className="flex justify-center items-center size-10 rounded-xl shadow-md bg-green-100">
+              <LuDollarSign className="size-5 text-green-600" />
+            </span>
+            <div className="flex justify-center items-center">
+              <FaDollarSign className="size-4 text-green-600" />
+              <span className="font-bold text-green-600">
+                {toNumbersWithComma(26000000000)}
+              </span>
+            </div>
+          </div>
+          <div className="flex items-center gap-x-2">
+            <FiCalendar className="size-4 text-subtitle" />
+            <span className="font-semibold text-sm text-subtitle">
+              2025 Dec 5
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default RecentProjects;
