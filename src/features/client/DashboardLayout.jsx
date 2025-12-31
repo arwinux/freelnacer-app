@@ -3,14 +3,16 @@ import ClientStatics from './ClientStatics';
 import ClientQuickAction from './ClientQuickAction';
 import RecentProjects from '../../ui/RecentProjects';
 import RecentProjectsProposals from '../../ui/RecentProjectsProposals';
+import useClientProjects from '../projects/useClientProjects';
 
 function DashboardLayout() {
+  const { isLoading, projects } = useClientProjects();
   return (
     <div>
       <DashboardHeader />
-      <ClientStatics />
-      <ClientQuickAction />
-      <RecentProjectsProposals />
+      <ClientStatics projects={projects} isLoading={isLoading} />
+      <ClientQuickAction projects={projects} />
+      <RecentProjectsProposals projects={projects} isLoading={isLoading} />
     </div>
   );
 }

@@ -2,7 +2,13 @@ import { LuFileText, LuUsers } from 'react-icons/lu';
 import { FiBriefcase } from 'react-icons/fi';
 import { IoMdArrowForward, IoMdTrendingUp } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-function ClientQuickAction() {
+import useAllProjects from '../projects/useAllProjects';
+function ClientQuickAction({ projects, isLoading }) {
+  const {isAllLoading,projects:AllProjects} = useAllProjects();
+  const numberOfProjects = isLoading ? null : projects.length;
+  const numberOfAllProjects = isAllLoading ? null : AllProjects.length;
+
+
   return (
     <div className="px-6 my-10">
       <div className="flex flex-col lg:max-w-7xl mx-auto">
@@ -26,7 +32,13 @@ function ClientQuickAction() {
               <span className="font-bold text-xl text-title">All Project</span>
 
               <span className=" text-subtitle/80">
-                7 projects available to explore
+                <span>
+                  {isAllLoading ? (
+                    <StatSkeleton width="w-12" />
+                  ) : (
+                    <span>{numberOfAllProjects} projects available to explore</span>
+                  )}
+                </span> 
               </span>
             </div>
             <div className="flex items-center gap-x-2 group-hover:translate-x-2 transition-all duration-500 text-primary-500">
@@ -49,7 +61,15 @@ function ClientQuickAction() {
 
               <span className="font-bold text-xl text-title">My Projects</span>
 
-              <span className=" text-subtitle/80">1 items to manage</span>
+              <span className=" text-subtitle/80">
+                <span>
+                  {isLoading ? (
+                    <StatSkeleton width="w-12" />
+                  ) : (
+                    <span>{numberOfProjects} items to manage</span>
+                  )}
+                </span>
+              </span>
             </div>
             <div className="flex items-center gap-x-2 group-hover:translate-x-2 transition-all duration-500 text-primary-500">
               <span className="font-semibold">View All</span>
