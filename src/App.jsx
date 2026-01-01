@@ -27,6 +27,7 @@ function App() {
           <Route path="/client" element={<ClientLayout />}>
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<ClientDashboard />} />
+            <Route path="dashboard/:id" element={<Project />} />
 
             <Route path="projects" element={<AllProjects />} />
             <Route path="projects/:id" element={<Project />} />

@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import useAllProjects from '../projects/useAllProjects';
 function ClientQuickAction({ projects, isLoading }) {
   const {isAllLoading,projects:AllProjects} = useAllProjects();
-  const numberOfProjects = isLoading ? null : projects.length;
-  const numberOfAllProjects = isAllLoading ? null : AllProjects.length;
+  const numberOfProjects = isLoading ? null : projects?.length;
+  const numberOfAllProjects = isAllLoading ? null : AllProjects?.length;
 
 
   return (

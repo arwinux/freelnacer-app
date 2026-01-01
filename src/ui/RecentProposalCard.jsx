@@ -1,7 +1,13 @@
 import toNumbersWithComma from '../utils/toNumbersWithComma';
 import { FaDollarSign, FaRegClock } from 'react-icons/fa';
 import { LuDollarSign } from 'react-icons/lu';
-function RecentProposalCard() {
+function RecentProposalCard({
+  projectitle,
+  description,
+  status,
+  price,
+  duration,
+}) {
   const statusStyle = [
     {
       label: 'Decline',
@@ -21,20 +27,19 @@ function RecentProposalCard() {
       <div className="project-card__header gap-4 w-full flex justify-between items-center">
         <div className="flex justify-center items-center">
           <span className="text-base font-bold line-clamp-2 text-title">
-            Redesign Company update UI/UX more than me
+            {projectitle.title}
           </span>
         </div>
 
         <div className="flex justify-center items-center gap-x-4">
-          <span className={`badge-state ${statusStyle[1].className}`}>
-            {statusStyle[1].label}
+          <span className={`badge-state ${statusStyle[status].className}`}>
+            {statusStyle[status].label}
           </span>
         </div>
       </div>
 
       <p className="text-wrap text-sm text-subtitle font-medium line-clamp-2">
-        Build a complete e-commerce solution with product management, shopping
-        cart, user authentication, and payment integration
+        {description}
       </p>
       <div className="flex flex-col sm:flex-row flex-wrap justify-between items-center gap-x-2 gap-y-3">
         <div className="flex gap-x-3 flex-1">
@@ -44,13 +49,15 @@ function RecentProposalCard() {
           <div className="flex justify-center items-center">
             <FaDollarSign className="size-4 text-green-600" />
             <span className="font-bold text-green-600">
-              {toNumbersWithComma(26000000000)}
+              {toNumbersWithComma(price)}
             </span>
           </div>
         </div>
         <div className="flex items-center gap-x-2">
           <FaRegClock className="size-4 text-subtitle" />
-          <span className="font-semibold text-sm text-subtitle">6 Days</span>
+          <span className="font-semibold text-sm text-subtitle">
+            {duration} days
+          </span>
         </div>
       </div>
     </div>

@@ -26,7 +26,6 @@ function ClientStatics({ projects, isLoading }) {
     : projects.reduce((acc, cur) => acc + cur.proposals.length, 0);
 
   const numberOfCategories = isCatLoading ? 0 : categories.length;
-  console.log(numberOfCategories);
 
   return (
     <div className="px-5">
