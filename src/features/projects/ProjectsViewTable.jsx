@@ -1,5 +1,3 @@
-import ProjectCard from './ProjectCard';
-
 import {
   LuCircleCheckBig,
   LuLayers3,
@@ -13,6 +11,7 @@ import LoadingPage from '../../ui/LoadingPage';
 import ProjectRow from './ProjectRow';
 import toDateShort from '../../utils/toDateShort';
 import toNumbersWithComma from '../../utils/toNumbersWithComma';
+import filteredProjects from '../../utils/filterProjectsByStatus';
 
 function ProjectsViewTable() {
   const [status, setStatus] = useState('allproject');
@@ -49,9 +48,9 @@ function ProjectsViewTable() {
           </button>
 
           <button
-            onClick={() => setStatus('open')}
+            onClick={() => setStatus('OPEN')}
             className={`flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full ${
-              status === 'open'
+              status === 'OPEN'
                 ? 'rounded-xl bg-linear-to-r from-green-500 to-teal-600 text-color'
                 : 'bg-transparent rounded-xl'
             }`}
@@ -61,9 +60,9 @@ function ProjectsViewTable() {
           </button>
 
           <button
-            onClick={() => setStatus('closed')}
+            onClick={() => setStatus('CLOSED')}
             className={`flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full ${
-              status === 'closed'
+              status === 'CLOSED'
                 ? 'rounded-xl bg-linear-to-r from-red-500 to-primary-500 text-color'
                 : 'bg-transparent rounded-xl'
             }`}
@@ -76,7 +75,7 @@ function ProjectsViewTable() {
       <div className="overflow-x-auto">
         <table className="w-full border-collapse border-spacing-0 rounded-md overflow-hidden text-left whitespace-nowrap">
           <tbody className="flex flex-col gap-y-4">
-            {projects.map((project) => (
+            {filteredProjects(projects, status).map((project) => (
               <ProjectRow
                 key={project._id}
                 id={project._id}

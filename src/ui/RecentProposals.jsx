@@ -4,7 +4,6 @@ import StatSkeleton from './StaticSkeleton';
 
 function RecentProposals() {
   const { isLoading, proposals } = useProposals();
-  console.log(proposals);
 
   return (
     <div className="w-full ring-border flex flex-1 flex-col group gap-x-2 gap-y-5 p-8 cursor-default select-none dashboard-static-container hover:-translate-y-3! duration-400!">

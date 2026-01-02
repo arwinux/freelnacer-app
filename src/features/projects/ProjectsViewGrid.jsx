@@ -14,6 +14,7 @@ import toDateShort from '../../utils/toDateShort';
 import toNumbersWithComma from '../../utils/toNumbersWithComma';
 import truncateText from '../../utils/truncateText';
 import useNavigateCreateProject from '../../hooks/useNavigateCreateProject';
+import filteredProjects from '../../utils/filterProjectsByStatus';
 
 function ProjectsViewGrid() {
   const { projects, isLoading } = useClientProjects();
@@ -61,9 +62,9 @@ function ProjectsViewGrid() {
           </button>
 
           <button
-            onClick={() => setStatus('open')}
+            onClick={() => setStatus('OPEN')}
             className={`flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full ${
-              status === 'open'
+              status === 'OPEN'
                 ? 'rounded-xl bg-linear-to-r from-green-500 to-teal-600 text-color'
                 : 'bg-transparent rounded-xl'
             }`}
@@ -73,9 +74,9 @@ function ProjectsViewGrid() {
           </button>
 
           <button
-            onClick={() => setStatus('closed')}
+            onClick={() => setStatus('CLOSED')}
             className={`flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full ${
-              status === 'closed'
+              status === 'CLOSED'
                 ? 'rounded-xl bg-linear-to-r from-red-500 to-primary-500 text-color'
                 : 'bg-transparent rounded-xl'
             }`}
@@ -86,7 +87,7 @@ function ProjectsViewGrid() {
         </ul>
       </div>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(22rem,1fr))] gap-4 gap-x-8 gap-y-12">
-        {projects.map((project, index) => (
+        {filteredProjects(projects, status).map((project, index) => (
           <ProjectCard
             projectAll={project}
             key={project._id}
