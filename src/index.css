@@ -1,7 +1,7 @@
-@import 'tailwindcss/theme';
-@import 'tailwindcss/utilities';
-@import 'tailwindcss/preflight';
-@import '@yaireo/tagify/dist/tagify.css';
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+@import "tailwindcss/preflight";
+@import "@yaireo/tagify/dist/tagify.css";
 
 @theme {
   /* semantic tokens used by Tailwind utilities */
@@ -127,6 +127,7 @@
   --color-emerald-sh-200: var(--emerald-sh-200);
   --color-blue-sh-200: var(--blue-sh-200);
   --color-primary-sh-200: var(--primary-sh-200);
+  --color-filter: var(--filter);
 }
 
 /* =============================== */
@@ -257,6 +258,8 @@
   --emerald-sh-200: #a7f3d0;
   --blue-sh-200: #bfdbfe;
   --primary-sh-200: #ffd1ae;
+
+  --filter: #faf7f743;
 }
 
 /* =============================== */
@@ -386,6 +389,8 @@
   --emerald-sh-200: #065f46;
   --blue-sh-200: #193cb8;
   --primary-sh-200: #74300f;
+
+  --filter: #0b0b0c30;
 }
 
 *,
@@ -552,7 +557,7 @@ button {
 
 /* shimmer layer */
 .shimmer-infinite::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   left: -120%;
@@ -584,7 +589,6 @@ button {
     left: 140%;
   }
 }
-
 
 /* -------------------------------
    Tags themselves (badge style)

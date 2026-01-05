@@ -1,6 +1,6 @@
-import useProposals from '../features/proposals/useProposals';
-import RecentProposalCard from './RecentProposalCard';
-import StatSkeleton from './StaticSkeleton';
+import useProposals from "../features/proposals/useProposals";
+import RecentProposalCard from "./RecentProposalCard";
+import StatSkeleton from "./StaticSkeleton";
 
 function RecentProposals() {
   const { isLoading, proposals } = useProposals();

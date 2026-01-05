@@ -11,6 +11,7 @@ import { AnimatePresence } from 'framer-motion';
 import AnimatedListItem from '../../ui/FrameMotion';
 import FilterProjects from '../../ui/FilterProjects';
 import PageHeader from '../../ui/PageHeader';
+import projectCounts from '../../utils/projectCounts';
 
 function ProjectsViewTable() {
   const [status, setStatus] = useState('allproject');
@@ -27,7 +28,7 @@ function ProjectsViewTable() {
         color="blue"
       />
 
-      <FilterProjects status={status} setStatus={setStatus} />
+      <FilterProjects status={status} setStatus={setStatus} counts={projectCounts(projects)}/>
 
       <div className="overflow-x-auto">
         <table className="w-full border-collapse border-spacing-0 rounded-md overflow-hidden text-left whitespace-nowrap">
