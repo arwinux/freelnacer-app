@@ -154,7 +154,7 @@ function ProjectCard({
                         <p className="text-xl">Delete</p>
                       </div>
                       <p className="text-md truncate text-red-600 mr-2">
-                        "{title}"
+                        {title}
                       </p>
                     </div>
                   }

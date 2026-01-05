@@ -1,9 +1,4 @@
-import {
-  LuCircleCheckBig,
-  LuLayers3,
-  LuLock,
-  LuSparkles,
-} from 'react-icons/lu';
+import { LuSparkles } from 'react-icons/lu';
 
 import { useState } from 'react';
 import useAllProjects from './useAllProjects';
@@ -12,6 +7,10 @@ import ProjectRow from './ProjectRow';
 import toDateShort from '../../utils/toDateShort';
 import toNumbersWithComma from '../../utils/toNumbersWithComma';
 import filteredProjects from '../../utils/filterProjectsByStatus';
+import { AnimatePresence } from 'framer-motion';
+import AnimatedListItem from '../../ui/FrameMotion';
+import FilterProjects from '../../ui/FilterProjects';
+import PageHeader from '../../ui/PageHeader';
 
 function ProjectsViewTable() {
   const [status, setStatus] = useState('allproject');
@@ -21,74 +20,35 @@ function ProjectsViewTable() {
   if (isLoading) return <LoadingPage />;
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col mb-5 gap-3 w-full justify-center items-center">
-        <div className="flex justify-center items-center gap-x-1 text-primary-700 font-semibold text-md px-2 py-1 bg-primary-100 border border-primary-500/50 rounded-xl">
-          <LuSparkles />
-          <span>Browse All Projects</span>
-        </div>
-        <p className="text-title font-bold text-3xl sm:text-5xl mb-2">
-          All Projects
-        </p>
-        <span className="text-subtitle font-medium">
-          View and manage all platform projects
-        </span>
-      </div>
-      <div>
-        <ul className="flex flex-col sm:flex-row flex-wrap gap-5 p-4 rounded-xl items-center justify-center bg-component text-title shadow-md shadow-component-400/40 mb-7 transition-all duration-500">
-          <button
-            onClick={() => setStatus('allproject')}
-            className={`flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full ${
-              status === 'allproject'
-                ? 'rounded-xl bg-linear-to-r from-blue-500 to-purple-600 text-color'
-                : 'bg-transparent rounded-xl'
-            }`}
-          >
-            <LuLayers3 />
-            <p>All Projects</p>
-          </button>
+      <PageHeader
+        badge="Browse All Projects"
+        title="All Projects"
+        description={'View and manage all platform projects'}
+        color="blue"
+      />
 
-          <button
-            onClick={() => setStatus('OPEN')}
-            className={`flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full ${
-              status === 'OPEN'
-                ? 'rounded-xl bg-linear-to-r from-green-500 to-teal-600 text-color'
-                : 'bg-transparent rounded-xl'
-            }`}
-          >
-            <LuCircleCheckBig />
-            <p>Open</p>
-          </button>
+      <FilterProjects status={status} setStatus={setStatus} />
 
-          <button
-            onClick={() => setStatus('CLOSED')}
-            className={`flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full ${
-              status === 'CLOSED'
-                ? 'rounded-xl bg-linear-to-r from-red-500 to-primary-500 text-color'
-                : 'bg-transparent rounded-xl'
-            }`}
-          >
-            <LuLock />
-            <p>Closed</p>
-          </button>
-        </ul>
-      </div>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse border-spacing-0 rounded-md overflow-hidden text-left whitespace-nowrap">
           <tbody className="flex flex-col gap-y-4">
-            {filteredProjects(projects, status).map((project) => (
-              <ProjectRow
-                key={project._id}
-                id={project._id}
-                title={project.title}
-                status={project.status}
-                description={project.description}
-                category={project.category.title}
-                budget={toNumbersWithComma(project.budget)}
-                deadline={toDateShort(project.deadline)}
-                tags={project.tags}
-                client={project.freelancer?.name || '-'}
-              />
-            ))}
+            <AnimatePresence mode="sync">
+              {filteredProjects(projects, status).map((project) => (
+                <AnimatedListItem key={project._id}>
+                  <ProjectRow
+                    id={project._id}
+                    title={project.title}
+                    status={project.status}
+                    description={project.description}
+                    category={project.category.title}
+                    budget={toNumbersWithComma(project.budget)}
+                    deadline={toDateShort(project.deadline)}
+                    tags={project.tags}
+                    client={project.freelancer?.name || '-'}
+                  />
+                </AnimatedListItem>
+              ))}
+            </AnimatePresence>
           </tbody>
         </table>
       </div>

@@ -14,6 +14,7 @@ import useNavigateClientProject from '../hooks/useNavigateClientProjects';
 import Loading from '../ui/Loading';
 import { useLocation } from 'react-router-dom';
 import useEditProject from '../features/projects/useEditProject ';
+import PageHeader from '../ui/PageHeader';
 
 function CreateProject() {
   const navigateClientProjects = useNavigateClientProject();
@@ -90,18 +91,12 @@ function CreateProject() {
 
   return (
     <div className="flex mt-12 justify-center items-center flex-col w-full page-set">
-      <div className="flex flex-col mb-5 gap-3 w-full justify-center items-center">
-        <div className="flex justify-center items-center gap-x-1 text-green-700 font-semibold text-md px-2 py-1 bg-green-100 border border-green-500/50 rounded-xl">
-          <LuRocket />
-          <span>{isEditMode ? 'Edit Project' : 'New Project'}</span>
-        </div>
-        <p className="text-title font-bold text-3xl sm:text-5xl mb-2">
-          {isEditMode ? 'Update Project' : 'Create Project'}
-        </p>
-        <span className="text-subtitle font-medium">
-          Describe your project and find the perfect freelancer
-        </span>
-      </div>
+      <PageHeader
+        badge={isEditMode ? 'Edit Project' : 'New Project'}
+        title={isEditMode ? 'Update Project' : 'Create Project'}
+        description={'Describe your project and find the perfect freelancer'}
+        color='orange'
+      />
 
       <form
         onSubmit={handleSubmit(onSubmit)}

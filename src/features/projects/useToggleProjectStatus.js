@@ -11,7 +11,7 @@ export default function useToggleProjectStatus() {
       toast.success(data.message);
 
       queryClient.invalidateQueries({
-        queryKey: ['owner-projects'],
+        queryKey: ['client-projects'],
       });
     },
 
