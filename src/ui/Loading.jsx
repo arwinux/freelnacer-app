@@ -1,12 +1,12 @@
-import { RotatingLines } from "react-loader-spinner";
+import { RotatingLines } from 'react-loader-spinner';
 
-function Loading({ width = "28", height = "28" }) {
+function Loading({ width = '28', height = '28', color = 'white' }) {
   return (
     <RotatingLines
       visible={true}
       height={width}
       width={height}
-      color="white"
+      color={color}
       strokeWidth="5"
       animationDuration="0.75"
       ariaLabel="rotating-lines-loading"

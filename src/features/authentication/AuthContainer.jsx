@@ -1,28 +1,30 @@
-import React, { useState } from "react";
-import SendOTPForm from "./SendOTPForm";
-import CheckOTPForm from "./CheckOTPForm";
-import { useMutation } from "@tanstack/react-query";
-import toast from "react-hot-toast";
-import { getOTP } from "../../services/authServices";
+import React, { useState } from 'react';
+import SendOTPForm from './SendOTPForm';
+import CheckOTPForm from './CheckOTPForm';
+import { useMutation } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+import { getOTP } from '../../services/authService';
+import { useForm } from 'react-hook-form';
 
 export const RESEND_TIME = 90;
 
 function AuthContainer() {
   const [step, setStep] = useState(1);
-  const [phoneNumber, setPhoneNumber] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState('');
   const { isPending: isSendingOtp, mutateAsync } = useMutation({
     mutationFn: getOTP,
   });
 
+  const { handleSubmit, register, getValues } = useForm();
+
   const [time, setTime] = useState(RESEND_TIME);
 
-  const sendOtpHandler = async (e) => {
-    e.preventDefault();
+  const sendOtpHandler = async (data) => {
     try {
-      const data = await mutateAsync({ phoneNumber });
+      const { message } = await mutateAsync(data);
       setStep(2);
       setTime(RESEND_TIME);
-      toast.success(data.message);
+      toast.success(message);
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -34,10 +36,9 @@ function AuthContainer() {
         return (
           <SendOTPForm
             setStep={setStep}
-            phoneNumber={phoneNumber}
-            onSendOtp={sendOtpHandler}
+            onSendOtp={handleSubmit(sendOtpHandler)}
             isSendingOtp={isSendingOtp}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            register={register}
           />
         );
       case 2:
@@ -45,8 +46,8 @@ function AuthContainer() {
           <CheckOTPForm
             time={time}
             setTime={setTime}
-            onReSendOtp={sendOtpHandler}
-            phoneNumber={phoneNumber}
+            onSendOtp={handleSubmit(sendOtpHandler)}
+            phoneNumber={getValues('phoneNumber')}
             onBack={() => setStep((s) => s - 1)}
           />
         );
