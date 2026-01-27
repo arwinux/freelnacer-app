@@ -5,7 +5,7 @@ import RecentProjects from '../../ui/RecentProjects';
 import RecentProjectsProposals from '../../ui/RecentProjectsProposals';
 import useClientProjects from '../projects/useClientProjects';
 
-function DashboardLayout() {
+function ClientDashboardLayout() {
   const { isLoading, projects } = useClientProjects();
   return (
     <div>
@@ -17,4 +17,4 @@ function DashboardLayout() {
   );
 }
 
-export default DashboardLayout;
+export default ClientDashboardLayout;
