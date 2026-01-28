@@ -16,7 +16,7 @@ function SendOTPForm({ onSendOtp, isSendingOtp, register }) {
         />
         <div className="absolute inset-0 p-6 gap-y-2 cursor-default select-none">
           <div className="badge mb-5">
-            <RiShieldKeyholeFill className="size-10 mx-2 fill-white" />
+            <RiShieldKeyholeFill className="size-10 mx-2 fill-color" />
           </div>
 
           <p className="text-color text-3xl font-bold">Wellcome</p>
@@ -35,7 +35,7 @@ function SendOTPForm({ onSendOtp, isSendingOtp, register }) {
             action=""
           >
             <div className="form-card__details my-4 cursor-default select-none">
-              <p className="text-lg font-semibold">Login or Sign Up</p>
+              <p className="text-lg font-semibold text-title">Login or Sign Up</p>
               <p className="text-md text-slate-500">
                 We'll send you a verification code
               </p>

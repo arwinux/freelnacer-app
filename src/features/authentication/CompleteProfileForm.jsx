@@ -161,7 +161,7 @@ function CompleteProfileForm() {
                 onClick={() => setValue('role', 'FREELANCER')}
                 className={`rounded-xl text-color flex justify-center items-center flex-1 px-2 py-1  ${
                   selectedRole === 'FREELANCER'
-                    ? 'primary-btn'
+                    ? 'primary-btn font-semibold'
                     : 'bg-zinc-700/20 text-subtitle'
                 }`}
               >
@@ -181,7 +181,7 @@ function CompleteProfileForm() {
                 onClick={() => setValue('role', 'OWNER')}
                 className={`rounded-xl text-color flex justify-center items-center flex-1 px-2 py-1  ${
                   selectedRole === 'OWNER'
-                    ? 'primary-btn'
+                    ? 'primary-btn font-semibold'
                     : 'bg-zinc-700/20 text-subtitle'
                 }`}
               >

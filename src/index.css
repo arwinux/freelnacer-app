@@ -411,11 +411,11 @@ button {
 }
 
 .page {
-  @apply relative min-h-screen flex flex-col items-center justify-center p-4;
+  @apply relative bg-zinc-200 min-h-screen flex flex-col items-center justify-center p-4;
 }
 
 .form-card {
-  @apply shadow-md shadow-slate-300 flex flex-col w-full max-w-[420px] overflow-hidden rounded-3xl;
+  @apply shadow-md shadow-zinc-300 flex flex-col w-full max-w-[420px] overflow-hidden rounded-3xl;
 }
 
 .page-set {
@@ -479,7 +479,7 @@ button {
 }
 
 .form-card__btn {
-  @apply font-bold py-3 text-color text-xl rounded-lg bg-black hover:shadow-black hover:bg-black/80 transition-all;
+  @apply font-bold py-3 text-color text-xl rounded-lg bg-title hover:shadow-title hover:bg-title/80 transition-all;
 }
 
 .form-card__textfield {
