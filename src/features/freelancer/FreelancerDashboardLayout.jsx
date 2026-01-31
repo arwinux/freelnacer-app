@@ -4,6 +4,7 @@ import { FiBriefcase } from 'react-icons/fi';
 import FreelancerStatics from './FreelancerStatics';
 import useProposals from '../proposals/useProposals';
 import useAllProjects from '../projects/useAllProjects';
+import FreelancerQuickAction from './FreelancerQuickAction';
 
 function FreelancerDashboardLayout() {
   const { isLoading: proposalsIsLoading, proposals } = useProposals();
@@ -18,6 +19,13 @@ function FreelancerDashboardLayout() {
         controlBtnLinkTo='/freelancer/projects'
       />
       <FreelancerStatics
+        proposals={proposals}
+        proposalsIsLoading={proposalsIsLoading}
+        projects={projects}
+        projectsIsLoading={projectsIsLoading}
+      />
+
+      <FreelancerQuickAction
         proposals={proposals}
         proposalsIsLoading={proposalsIsLoading}
         projects={projects}

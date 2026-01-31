@@ -40,7 +40,7 @@ export default function DashboardHeader({
         <div className='flex w-full items-center gap-y-4 flex-col sm:flex-row gap-x-3'>
           <Link
             to={controlBtnLinkTo}
-            className='flex w-full sm:w-fit cursor-pointer hover:-translate-y-1.5 transition-all duration-300 hover:bg-primary-50 shadow-xl hover:shadow-primary-400 items-center justify-center gap-x-4 font-bold rounded-xl text-red-500 bg-component py-3 px-6'
+            className='flex w-full sm:w-fit cursor-pointer hover:-translate-y-1.5 transition-all duration-300 hover:bg-primary-50 shadow-xl hover:shadow-primary-400 items-center justify-center gap-x-4 font-bold rounded-xl text-primary-600 bg-component py-3 px-6'
           >
             {controlBtnIcon}
 
