@@ -5,6 +5,7 @@ import FreelancerStatics from './FreelancerStatics';
 import useProposals from '../proposals/useProposals';
 import useAllProjects from '../projects/useAllProjects';
 import FreelancerQuickAction from './FreelancerQuickAction';
+import RecentProjectsProposals from '../../ui/RecentProjectsProposals';
 
 function FreelancerDashboardLayout() {
   const { isLoading: proposalsIsLoading, proposals } = useProposals();
@@ -31,6 +32,7 @@ function FreelancerDashboardLayout() {
         projects={projects}
         projectsIsLoading={projectsIsLoading}
       />
+      <RecentProjectsProposals projects={projects} isLoading={projectsIsLoading} />
     </div>
   );
 }

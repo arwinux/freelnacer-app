@@ -48,8 +48,11 @@ function App() {
           <Route path='/freelancer' element={<FreelancerLayout />}>
             <Route index element={<Navigate to={'dashboard'} replace />} />
             <Route path='dashboard' element={<FreelancerDashboard />} />
+            <Route path='dashboard/:id' element={<Project />} />
+
             <Route path='projects' element={<SubmittedProjects />} />
             <Route path='projects/:id' element={<Project />} />
+
             <Route path='proposals' element={<ClientProposals />} />
           </Route>
 
