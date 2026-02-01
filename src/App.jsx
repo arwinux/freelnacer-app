@@ -16,6 +16,7 @@ import FreelancerLayout from './features/freelancer/FreelancerLayout';
 import FreelancerDashboard from './features/freelancer/FreelancerDashboardLayout';
 import ClientProposals from './pages/ClientProposals';
 import SubmittedProjects from './pages/SubmittedProjects';
+import CreateProposal from './pages/CreateProposal';
 const queryClient = new QueryClient();
 
 function App() {
@@ -48,12 +49,11 @@ function App() {
           <Route path='/freelancer' element={<FreelancerLayout />}>
             <Route index element={<Navigate to={'dashboard'} replace />} />
             <Route path='dashboard' element={<FreelancerDashboard />} />
-            <Route path='dashboard/:id' element={<Project />} />
 
             <Route path='projects' element={<SubmittedProjects />} />
-            <Route path='projects/:id' element={<Project />} />
 
             <Route path='proposals' element={<ClientProposals />} />
+            <Route path='create-proposal' element={<CreateProposal />} />
           </Route>
 
           {/* ------------------- Authentication Layout ------------------- */}
