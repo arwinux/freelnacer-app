@@ -15,11 +15,12 @@ function RecentProjectCard({
   budget,
   deadline,
 }) {
-  const { isLoading, user } = useUser();
-  const userRole = isLoading ? 'loading ...' : user.role;
-
   return (
-    <LinktoProjectBasedOnRole id={id} role={userRole}>
+    <Link
+      className='w-full hover:bg-primary-100 ring-border flex flex-col group justify-between gap-x-2 gap-y-5 p-6 cursor-pointer select-none dashboard-static-container hover:translate-y-0! duration-400!'
+      to={id}
+      state={{ canChangeStatus: false }}
+    >
       <div className='project-card__header gap-4 w-full flex justify-between items-center'>
         <div className='flex justify-center items-center  '>
           <span className='text-base font-bold line-clamp-2 text-title'>
@@ -63,30 +64,8 @@ function RecentProjectCard({
           </span>
         </div>
       </div>
-    </LinktoProjectBasedOnRole>
+    </Link>
   );
 }
 
 export default RecentProjectCard;
-
-function LinktoProjectBasedOnRole({ id, role, children }) {
-  const isClientOrOwner = role === 'OWNER' || role === 'CLIENT';
-
-  if (isClientOrOwner) {
-    return (
-      <Link
-        className='w-full hover:bg-primary-100 ring-border flex flex-col group justify-between gap-x-2 gap-y-5 p-6 cursor-pointer select-none dashboard-static-container hover:translate-y-0! duration-400!'
-        to={id}
-        state={{ canChangeStatus: false }}
-      >
-        {children}
-      </Link>
-    );
-  }
-
-  return (
-    <div className='w-full hover:bg-primary-100 ring-border flex flex-col group justify-between gap-x-2 gap-y-5 p-6 select-none dashboard-static-container hover:translate-y-0! duration-400!'>
-      {children}
-    </div>
-  );
-}

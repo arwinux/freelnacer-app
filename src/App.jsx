@@ -14,9 +14,10 @@ import ClientLayout from './features/client/ClientLayout';
 import { DarkModeProvider } from './context/DarkModeContext';
 import FreelancerLayout from './features/freelancer/FreelancerLayout';
 import FreelancerDashboard from './features/freelancer/FreelancerDashboardLayout';
-import ClientProposals from './pages/ClientProposals';
 import SubmittedProjects from './pages/SubmittedProjects';
 import CreateProposal from './pages/CreateProposal';
+import ProjectFr from './pages/ProjectFr';
+import FreelancerProposals from './pages/freelancerProposals';
 const queryClient = new QueryClient();
 
 function App() {
@@ -49,10 +50,12 @@ function App() {
           <Route path='/freelancer' element={<FreelancerLayout />}>
             <Route index element={<Navigate to={'dashboard'} replace />} />
             <Route path='dashboard' element={<FreelancerDashboard />} />
+            <Route path='dashboard/:id' element={<ProjectFr />} />
 
             <Route path='projects' element={<SubmittedProjects />} />
+            <Route path='projects/:id' element={<ProjectFr />} />
 
-            <Route path='proposals' element={<ClientProposals />} />
+            <Route path='proposals' element={<FreelancerProposals />} />
             <Route path='create-proposal' element={<CreateProposal />} />
           </Route>
 

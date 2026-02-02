@@ -27,7 +27,7 @@ function FreelancerLayout() {
 
         <CustomNavlink to='/freelancer/create-proposal'>
           <PiPlusCircleBold className='size-[18px]' />
-          <span>Create Project</span>
+          <span>Create Proposal</span>
         </CustomNavlink>
 
         <UserRole />
