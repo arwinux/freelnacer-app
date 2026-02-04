@@ -1,7 +1,7 @@
-@import "tailwindcss/theme";
-@import "tailwindcss/utilities";
-@import "tailwindcss/preflight";
-@import "@yaireo/tagify/dist/tagify.css";
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
+@import 'tailwindcss/preflight';
+@import '@yaireo/tagify/dist/tagify.css';
 
 @theme {
   /* semantic tokens used by Tailwind utilities */
@@ -128,6 +128,10 @@
   --color-blue-sh-200: var(--blue-sh-200);
   --color-primary-sh-200: var(--primary-sh-200);
   --color-filter: var(--filter);
+
+  --color-greenfull: var(--greenfull);
+  --color-bluefull: var(--bluefull);
+  --color-orangefull: var(--orangefull);
 }
 
 /* =============================== */
@@ -255,11 +259,15 @@
   --color-notfound: #1d293d;
 
   /* Soft accent shadows */
-  --emerald-sh-200: #a7f3d0;
+  --emerald-sh-200: #bfdbfe;
   --blue-sh-200: #bfdbfe;
   --primary-sh-200: #ffd1ae;
 
   --filter: #faf7f743;
+
+  --greenfull: #bbf7d0;
+  --bluefull: #93c5fd;
+  --orangefull: #ffd1ae;
 }
 
 /* =============================== */
@@ -391,6 +399,10 @@
   --primary-sh-200: #74300f;
 
   --filter: #0b0b0c30;
+
+  --greenfull: #00c950;
+  --bluefull: #3b82f6;
+  --orangefull: #ff6900;
 }
 
 *,
@@ -456,6 +468,10 @@ button {
 
 .badge-project-detail {
   @apply flex justify-center items-center gap-x-1 text-primary-700 font-semibold text-sm px-4 py-3 bg-primary-100 border border-primary-500/50 rounded-full;
+}
+
+.badge-projectfr-detail {
+  @apply flex justify-center items-center gap-x-1 text-primary-700 font-semibold text-sm px-3 py-1 bg-primary-100/60 border border-primary-500/50 rounded-full;
 }
 
 .badge-glass {
@@ -557,7 +573,7 @@ button {
 
 /* shimmer layer */
 .shimmer-infinite::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   left: -120%;
@@ -604,7 +620,9 @@ button {
   @apply flex items-center justify-center gap-x-1 text-xs font-semibold border border-primary-400 rounded-xl;
 
   /* Smooth hover transition */
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
 }
 
 /* Hover state (override variables if needed) */
