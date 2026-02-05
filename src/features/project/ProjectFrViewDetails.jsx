@@ -6,7 +6,7 @@ import toDateShort from '../../utils/toDateShort';
 
 function ProjectFrViewDetails({ project }) {
   return (
-    <div className='flex flex-col orange-container-proposal overflow-hidden bg-component shadow-title shadow-2xl/10'>
+    <div className='flex flex-col orange-container-proposal overflow-hidden bg-component shadow-title shadow-2xl/5'>
       <div className='w-full h-2 bg-radial-back'></div>
       <div className='w-full flex flex-col p-8 border-black shadow-xl'>
         <div className='flex items-center gap-x-3'>
