@@ -20,7 +20,7 @@ function ProjectFr() {
   console.log(isProposalSubmited);
 
   return (
-    <div className='flex flex-col w-full'>
+    <div className='flex flex-col w-full mt-14'>
       <div className='px-5'>
         <div className='w-full flex flex-col gap-y-10 lg:max-w-7xl mx-auto mb-5'>
           <ProjectFrViewDetails project={project} />

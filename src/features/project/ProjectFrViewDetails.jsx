@@ -3,10 +3,16 @@ import { GoTag } from 'react-icons/go';
 import { LuClock2, LuDollarSign } from 'react-icons/lu';
 import toNumbersWithComma from '../../utils/toNumbersWithComma';
 import toDateShort from '../../utils/toDateShort';
+import toast from 'react-hot-toast';
 
 function ProjectFrViewDetails({ project }) {
+  const handleCopyProjectId = async () => {
+    navigator.clipboard.writeText(project._id);
+    toast.success('Copied!');
+  };
+
   return (
-    <div className='flex flex-col orange-container-proposal overflow-hidden bg-component shadow-title shadow-2xl/5'>
+    <div className='flex flex-col orange-container-proposal overflow-hidden bg-component shadow-lg shadow-title-400/45'>
       <div className='w-full h-2 bg-radial-back'></div>
       <div className='w-full flex flex-col p-8 border-black shadow-xl'>
         <div className='flex items-center gap-x-3'>
@@ -20,6 +26,12 @@ function ProjectFrViewDetails({ project }) {
               {project?.status}
             </span>
           </div>
+          <button
+            onClick={handleCopyProjectId}
+            className='rounded-xl cursor-pointer px-2 font-mono font-bold tracking-wider border-2 border-gray-500 text-gray-700 hover:bg-gray-600 hover:text-component transition-all duration-300'
+          >
+            {project._id}
+          </button>
         </div>
         <div className='mt-6 flex flex-col justify-center'>
           <p className='text-2xl sm:text-3xl md:text-4xl lg:text-4xl w-full sm:max-w-4xl font-bold text-title text-shadow'>

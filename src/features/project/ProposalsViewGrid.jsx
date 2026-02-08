@@ -24,7 +24,7 @@ function ProposalsViewGrid({ proposals }) {
     );
 
   return (
-    <div className="flex flex-col orange-container-proposal overflow-hidden bg-component">
+    <div className="flex flex-col orange-container-proposal overflow-hidden bg-component shadow-lg shadow-title-400/45">
       <div className="w-full h-2 bg-radial-back"></div>
       <div className="w-full flex flex-col p-4 sm:p-8 border-black shadow-xl">
         <div className="flex items-center gap-x-3">
