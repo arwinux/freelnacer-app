@@ -28,6 +28,7 @@ function ProjectFr() {
             project={project}
             isProposalSubmited={isProposalSubmited}
           />
+
           <ProposalsViewGrid proposals={project.proposals} />
         </div>
       </div>

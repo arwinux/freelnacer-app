@@ -15,7 +15,6 @@ import { DarkModeProvider } from './context/DarkModeContext';
 import FreelancerLayout from './features/freelancer/FreelancerLayout';
 import FreelancerDashboard from './features/freelancer/FreelancerDashboardLayout';
 import SubmittedProjects from './pages/SubmittedProjects';
-import CreateProposal from './pages/CreateProposal';
 import ProjectFr from './pages/ProjectFr';
 import FreelancerProposals from './pages/freelancerProposals';
 const queryClient = new QueryClient();
@@ -56,7 +55,6 @@ function App() {
             <Route path='projects/:id' element={<ProjectFr />} />
 
             <Route path='proposals' element={<FreelancerProposals />} />
-            <Route path='create-proposal' element={<CreateProposal />} />
           </Route>
 
           {/* ------------------- Authentication Layout ------------------- */}

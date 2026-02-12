@@ -25,11 +25,6 @@ function FreelancerLayout() {
           <span>My Proposals</span>
         </CustomNavlink>
 
-        <CustomNavlink to='/freelancer/create-proposal'>
-          <PiPlusCircleBold className='size-[18px]' />
-          <span>Create Proposal</span>
-        </CustomNavlink>
-
         <UserRole />
       </AppLayout>
     </div>

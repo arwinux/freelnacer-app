@@ -2,8 +2,28 @@ import { LuClock2, LuSend } from 'react-icons/lu';
 import useUser from '../features/authentication/useUser';
 import { Link } from 'react-router-dom';
 import { MdLockOutline } from 'react-icons/md';
+import {
+  TextAreaCreateProposal,
+  TextFieldCreateProposal,
+} from './TextFieldCreateProposal';
+import { useForm } from 'react-hook-form';
+import Loading from './Loading';
+import useNavigateClientProject from '../hooks/useNavigateClientProjects';
+import { useState } from 'react';
 
 function SendProposalBtn({ project, isProposalSubmited }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmitting = () => {
+    setSubmitting(!submitting);
+  };
+
   // Check if project is OPEN first
   if (project.status === 'OPEN') {
     return (
@@ -16,13 +36,105 @@ function SendProposalBtn({ project, isProposalSubmited }) {
             </span>
           </div>
         ) : (
-          <Link
-            to='/freelancer/create-proposal'
-            className='hover:scale-105 transition-all duration-300 inline-flex items-center gap-x-3 bg-radial-back px-4 py-3 rounded-xl text-component font-bold text-lg'
-          >
-            <LuSend />
-            <span>Submit Proposal</span>
-          </Link>
+          <div>
+            <button
+              onClick={handleSubmitting}
+              className={`${
+                submitting ? 'hidden' : 'inline-flex'
+              } hover:scale-105 transition-all duration-300 items-center gap-x-3 bg-radial-back px-4 py-3 rounded-xl text-component font-bold text-lg`}
+            >
+              <LuSend />
+              <span>Submit Proposal</span>
+            </button>
+
+            <div
+              className={`${submitting === true ? 'flex flex-col' : 'hidden'} p-5 mt-2 orange-container-proposal overflow-hidden bg-component shadow-lg shadow-title-400/45`}
+            >
+              <p className='text-title font-bold text-xl md:text-2xl xl:text-3xl mb-7'>
+                Submit your Proposal
+              </p>
+              <form>
+                <TextAreaCreateProposal
+                  name='description'
+                  label='Proposal Description'
+                  placeholder="Describe how you'll complete this project"
+                  classname='h-24'
+                  register={register}
+                  required={true}
+                  validationSchema={{
+                    required: 'proposal description is required',
+                    minLength: {
+                      value: 30,
+                      message: 'At least 30 characters',
+                    },
+                    maxLength: {
+                      value: 200,
+                      message: 'Max 200 characters',
+                    },
+                  }}
+                  errors={errors}
+                />
+
+                <div className='flex flex-wrap sm:flex-nowrap mt-5 w-full justify-between items-center gap-x-6'>
+                  <TextFieldCreateProposal
+                    name='price'
+                    label='Your Price ($)'
+                    placeholder='e.g., 3000'
+                    classname='flex-1 h-12 '
+                    type='number'
+                    register={register}
+                    required={true}
+                    validationSchema={{
+                      required: 'Budget is required',
+                    }}
+                    errors={errors}
+                  />
+
+                  <TextFieldCreateProposal
+                    name='duration'
+                    label='Duration (days)'
+                    placeholder='e.g., 30'
+                    classname='flex-1 h-12 '
+                    type='number'
+                    register={register}
+                    required={true}
+                    validationSchema={{
+                      required: 'Budget is required',
+                    }}
+                    errors={errors}
+                  />
+                </div>
+
+                <div className='inline-flex flex-col-reverse sm:flex-row gap-y-2 py-6 justify-center items-center gap-x-5'>
+                  <button
+                    type='button'
+                    onClick={handleSubmitting}
+                    className='inline secondary-btn py-2 font-semibold text-lg'
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    type='submit'
+                    className='inline primary-btn py-2 font-bold text-lg'
+                  >
+                    {true ? 'Update Project' : 'Create Project'}
+                    {/* {isEditMode ? (
+                      isEditing ? (
+                        <Loading />
+                      ) : (
+                        ''
+                      )
+                    ) : isCreating ? (
+                      <Loading />
+                    ) : (
+                      ''
+                    )} */}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         )}
       </div>
     );
