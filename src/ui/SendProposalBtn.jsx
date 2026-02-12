@@ -10,8 +10,9 @@ import { useForm } from 'react-hook-form';
 import Loading from './Loading';
 import useNavigateClientProject from '../hooks/useNavigateClientProjects';
 import { useState } from 'react';
+import useCreateProposal from '../features/proposals/useCreateProposal';
 
-function SendProposalBtn({ project, isProposalSubmited }) {
+function SendProposalBtn({ projectId, project, isProposalSubmited }) {
   const {
     register,
     handleSubmit,
@@ -22,6 +23,17 @@ function SendProposalBtn({ project, isProposalSubmited }) {
 
   const handleSubmitting = () => {
     setSubmitting(!submitting);
+  };
+
+  const { createProposal, isCreating } = useCreateProposal();
+
+  const onSubmitForm = (data) => {
+    createProposal(
+      { ...data, projectId },
+      {
+        onSuccess: () => onclose(),
+      },
+    );
   };
 
   // Check if project is OPEN first
@@ -53,7 +65,7 @@ function SendProposalBtn({ project, isProposalSubmited }) {
               <p className='text-title font-bold text-xl md:text-2xl xl:text-3xl mb-7'>
                 Submit your Proposal
               </p>
-              <form>
+              <form onSubmit={handleSubmit(onSubmitForm)}>
                 <TextAreaCreateProposal
                   name='description'
                   label='Proposal Description'
@@ -105,7 +117,7 @@ function SendProposalBtn({ project, isProposalSubmited }) {
                   />
                 </div>
 
-                <div className='inline-flex flex-col-reverse sm:flex-row gap-y-2 py-6 justify-center items-center gap-x-5'>
+                <div className='inline-flex flex-col-reverse sm:flex-row gap-y-2 py-6 justify-center  gap-x-5'>
                   <button
                     type='button'
                     onClick={handleSubmitting}
@@ -118,9 +130,9 @@ function SendProposalBtn({ project, isProposalSubmited }) {
                     type='submit'
                     className='inline primary-btn py-2 font-bold text-lg'
                   >
-                    {true ? 'Update Project' : 'Create Project'}
-                    {/* {isEditMode ? (
-                      isEditing ? (
+                    Create Proposal
+                    {isCreating ? (
+                      isCreating ? (
                         <Loading />
                       ) : (
                         ''
@@ -129,7 +141,7 @@ function SendProposalBtn({ project, isProposalSubmited }) {
                       <Loading />
                     ) : (
                       ''
-                    )} */}
+                    )}
                   </button>
                 </div>
               </form>

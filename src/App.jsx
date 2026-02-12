@@ -16,7 +16,7 @@ import FreelancerLayout from './features/freelancer/FreelancerLayout';
 import FreelancerDashboard from './features/freelancer/FreelancerDashboardLayout';
 import SubmittedProjects from './pages/SubmittedProjects';
 import ProjectFr from './pages/ProjectFr';
-import FreelancerProposals from './pages/freelancerProposals';
+import FreelancerProposals from './pages/FreelancerProposals';
 const queryClient = new QueryClient();
 
 function App() {

@@ -7,17 +7,15 @@ import { LuClock2 } from 'react-icons/lu';
 import SendProposalBtn from '../ui/SendProposalBtn';
 
 function ProjectFr() {
-  const { isLoading, project } = useProject();
+  let { isLoading, project } = useProject();
   const { isLoading: userProfileIsLoading, user } = useUser();
   const userId = userProfileIsLoading ? null : user._id;
 
-  const isProposalSubmited = isLoading
+  let isProposalSubmited = isLoading
     ? null
     : project.proposals.filter((p) => p.user._id === userId).length > 0;
 
   if (isLoading) return <LoadingPage />;
-  console.log(project.proposals);
-  console.log(isProposalSubmited);
 
   return (
     <div className='flex flex-col w-full mt-14'>
@@ -26,6 +24,7 @@ function ProjectFr() {
           <ProjectFrViewDetails project={project} />
           <SendProposalBtn
             project={project}
+            projectId={project._id}
             isProposalSubmited={isProposalSubmited}
           />
 
