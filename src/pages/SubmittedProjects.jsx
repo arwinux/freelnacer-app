@@ -10,53 +10,65 @@ import filteredProjects from '../utils/filterProjectsByStatus';
 import projectCounts from '../utils/projectCounts';
 import toNumbersWithComma from '../utils/toNumbersWithComma';
 import toDateShort from '../utils/toDateShort';
+import { useSearchParams } from 'react-router-dom';
+import { filterProjectsByCategory } from '../utils/filterProjectsByCategory';
 
 function SubmittedProjects() {
-  const [status, setStatus] = useState('allproject');
-  const { projects, isLoading } = useAllProjects();
-  console.log(projects);
+  const [status, setStatus] = useState('All_Project');
+  const { projects = [], isLoading } = useAllProjects();
+  const [searchParams] = useSearchParams();
+  const urlCategory = searchParams.get('category') || 'All';
+
+  // Filter projects by category only
+  const projectsByCategory = filterProjectsByCategory(projects, urlCategory);
+
+  // Calculate counts for tabs BEFORE filtering by status
+  const counts = projectCounts(projectsByCategory);
+
+  // Then filter by status for display
+  const finalProjects = filteredProjects(projectsByCategory, status);
 
   if (isLoading) return <LoadingPage />;
+
   return (
-    <div className='flex flex-col mt-12 page-set'>
+    <div className="flex flex-col mt-12 page-set">
       <PageHeader
-        badge='Browse All Projects'
-        title='All Projects'
-        description={'View and manage all platform projects'}
-        color='blue'
+        badge="Browse All Projects"
+        title="All Projects"
+        description="View and manage all platform projects"
+        color="blue"
       />
 
       <FilterProjects
         status={status}
         setStatus={setStatus}
-        counts={projectCounts(projects)}
+        counts={counts} // counts now correct for all tabs
       />
 
-      <div className='overflow-x-auto'>
-        <table className='w-full border-collapse border-spacing-0 rounded-md overflow-hidden text-left whitespace-nowrap'>
-          <tbody className='flex flex-col gap-y-4'>
-            <AnimatePresence mode='sync'>
-              {filteredProjects(projects, status).map((project) => (
-                <AnimatedListItem key={project._id}>
-                  <ProjectRow
-                    id={project._id}
-                    title={project.title}
-                    status={project.status}
-                    description={project.description}
-                    category={project.category.title}
-                    budget={toNumbersWithComma(project.budget)}
-                    deadline={toDateShort(project.deadline)}
-                    tags={project.tags}
-                    client={project.freelancer?.name || '-'}
-                  />
-                </AnimatedListItem>
-              ))}
-            </AnimatePresence>
-          </tbody>
-        </table>
+      <div className="overflow-x-auto w-full mt-4">
+        <div className="flex flex-col gap-y-4 w-full">
+          <AnimatePresence mode="sync">
+            {finalProjects.map((project) => (
+              <AnimatedListItem key={project._id}>
+                <ProjectRow
+                  id={project._id}
+                  title={project.title}
+                  status={project.status}
+                  description={project.description}
+                  category={project.category?.title}
+                  budget={toNumbersWithComma(project.budget)}
+                  deadline={toDateShort(project.deadline)}
+                  tags={project.tags}
+                  client={project.freelancer?.name || '-'}
+                />
+              </AnimatedListItem>
+            ))}
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );
 }
+
 
 export default SubmittedProjects;

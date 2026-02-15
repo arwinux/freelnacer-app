@@ -19,8 +19,8 @@ function ProjectRow({
   tags,
 }) {
   return (
-    <tr className='flex bg-component justify-between items-center whitespace-nowrap rounded-xl border-l-4 hover:border-l-8 w-full transition-all shadow-md hover:shadow-xl border-l-primary-500'>
-      <th className='flex justify-center items-start gap-x-4 py-4 max-w-md'>
+    <div className='overflow-x-auto flex font-bold bg-component justify-between items-center whitespace-nowrap rounded-xl border-l-4 hover:border-l-8 w-full transition-all shadow-md hover:shadow-xl border-l-primary-500'>
+      <div className='flex justify-center items-start gap-x-4 py-4 max-w-md'>
         <span className='size-16 p-8 ml-4 text-xl rounded-xl flex justify-center items-center text-color bg-radial-back'>
           {title[0]}
         </span>
@@ -45,9 +45,9 @@ function ProjectRow({
             </div>
           </div>
         </div>
-      </th>
+      </div>
 
-      <th className='py-4 px-3'>
+      <div className='py-4 px-3'>
         <div className='flex gap-2 flex-wrap truncate w-[250px]'>
           {tags.map((tag, index) => (
             <span key={tag + index} className='badge-tag'>
@@ -56,9 +56,9 @@ function ProjectRow({
             </span>
           ))}
         </div>
-      </th>
+      </div>
 
-      <th className='flex justify-center items-center gap-x-2 py-4 px-3'>
+      <div className='flex justify-center items-center gap-x-2 py-4 px-3'>
         <div className='flex gap-x-2 flex-1 justify-center items-center bg-green-100 border border-green-300 p-3 rounded-md'>
           <span className='flex justify-center items-center size-8 rounded-xl'>
             <LuDollarSign className='size-5 text-green-700' />
@@ -85,9 +85,9 @@ function ProjectRow({
             </div>
           </div>
         </div>
-      </th>
+      </div>
 
-      <th className='flex justify-center items-center gap-x-4 py-4 px-6'>
+      <div className='flex justify-center items-center gap-x-4 py-4 px-6'>
         <Link
           to={id}
           state={{ canChangeStatus: false }}
@@ -97,8 +97,8 @@ function ProjectRow({
           View
           <MdKeyboardArrowRight />
         </Link>
-      </th>
-    </tr>
+      </div>
+    </div>
   );
 }
 

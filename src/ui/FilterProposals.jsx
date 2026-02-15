@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { BiCircle } from 'react-icons/bi';
 import {
   LuChevronDown,
   LuCircle,

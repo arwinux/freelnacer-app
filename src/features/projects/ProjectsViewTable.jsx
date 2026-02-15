@@ -14,26 +14,30 @@ import PageHeader from '../../ui/PageHeader';
 import projectCounts from '../../utils/projectCounts';
 
 function ProjectsViewTable() {
-  const [status, setStatus] = useState('allproject');
+  const [status, setStatus] = useState('All_Project');
   const { projects, isLoading } = useAllProjects();
   console.log(projects);
 
   if (isLoading) return <LoadingPage />;
   return (
-    <div className="flex flex-col">
+    <div className='flex flex-col'>
       <PageHeader
-        badge="Browse All Projects"
-        title="All Projects"
+        badge='Browse All Projects'
+        title='All Projects'
         description={'View and manage all platform projects'}
-        color="blue"
+        color='blue'
       />
 
-      <FilterProjects status={status} setStatus={setStatus} counts={projectCounts(projects)}/>
+      <FilterProjects
+        status={status}
+        setStatus={setStatus}
+        counts={projectCounts(projects)}
+      />
 
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse border-spacing-0 rounded-md overflow-hidden text-left whitespace-nowrap">
-          <tbody className="flex flex-col gap-y-4">
-            <AnimatePresence mode="sync">
+      <div className='overflow-x-auto'>
+        <table className='w-full border-collapse border-spacing-0 rounded-md overflow-hidden text-left whitespace-nowrap'>
+          <tbody className='flex flex-col gap-y-4'>
+            <AnimatePresence mode='sync'>
               {filteredProjects(projects, status).map((project) => (
                 <AnimatedListItem key={project._id}>
                   <ProjectRow

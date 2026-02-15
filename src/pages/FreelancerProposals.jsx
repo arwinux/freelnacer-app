@@ -19,6 +19,9 @@ import useUser from '../features/authentication/useUser';
 import proposalCounts from '../utils/proposalCounts';
 import useNavigateBrowseProjects from '../hooks/useNavigateBrowseProjects';
 import FilterProposals from '../ui/filterProposals';
+import ProposalCard from '../features/proposals/FreelancerProposalCard';
+import ProposalsViewGrid from '../features/project/ProposalsViewGrid';
+import FreelancerProposalsViewGrid from '../features/proposals/FreelancerProposalsViewGrid';
 
 function FreelancerProposals() {
   const { isLoading: userProfileIsLoading, user } = useUser();
@@ -58,28 +61,7 @@ function FreelancerProposals() {
         counts={proposalCounts(userProposals)}
       />
 
-      {/* <div className='grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(22rem,1fr))] gap-4 gap-x-8 gap-y-12'>
-        <AnimatePresence mode='sync'>
-          {filteredProjects(projects, status).map((project, index) => (
-            <AnimatedListItem key={project._id}>
-              <ProjectCard
-                projectAll={project}
-                key={project._id}
-                id={project._id}
-                number={index + 1}
-                title={truncateText(project.title, 60)}
-                status={project.status}
-                description={truncateText(project.description, 100)}
-                category={project.category.title}
-                budget={toNumbersWithComma(project.budget)}
-                deadline={toDateShort(project.deadline)}
-                tags={project.tags}
-                client={project.owner?.name || '-'}
-              />
-            </AnimatedListItem>
-          ))}
-        </AnimatePresence>
-      </div> */}
+      <FreelancerProposalsViewGrid proposals={userProposals} status={status} />
     </div>
   );
 }

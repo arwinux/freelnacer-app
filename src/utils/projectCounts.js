@@ -1,7 +1,7 @@
 export default function projectCounts(projects = []) {
-  let allproject = projects.length;
-  let OPEN = projects.filter((p) => p.status === "OPEN").length;
-  let CLOSED = projects.filter((p) => p.status === "CLOSED").length;
+  let All_Project = projects.length;
+  let Open = projects.filter((p) => p.status === 'OPEN').length;
+  let Closed = projects.filter((p) => p.status === 'CLOSED').length;
 
-  return { allproject, OPEN, CLOSED };
+  return { All_Project, Open, Closed };
 }
