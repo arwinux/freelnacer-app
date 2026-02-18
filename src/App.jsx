@@ -20,6 +20,8 @@ import FreelancerProposals from './pages/FreelancerProposals';
 
 import { Theme } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
+import ProtectedRoute from './ui/ProtectedRoute';
+import NotAccess from './pages/NotAccess';
 
 const queryClient = new QueryClient();
 
@@ -40,9 +42,17 @@ function AppContent() {
           {/* ------------------------ Home Layout ------------------------ */}
           <Route path='/' element={<Home />} />
           <Route path='*' element={<NotFound />} />
+          <Route path='/not-access' element={<NotAccess />} />
 
           {/* ----------------------- Client Layout ----------------------- */}
-          <Route path='/client' element={<ClientLayout />}>
+          <Route
+            path='/client'
+            element={
+              <ProtectedRoute>
+                <ClientLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate to='dashboard' replace />} />
             <Route path='dashboard' element={<ClientDashboard />} />
             <Route path='dashboard/:id' element={<Project />} />
@@ -57,7 +67,14 @@ function AppContent() {
           </Route>
 
           {/* --------------------- Freelancer Layout --------------------- */}
-          <Route path='/freelancer' element={<FreelancerLayout />}>
+          <Route
+            path='/freelancer'
+            element={
+              <ProtectedRoute>
+                <FreelancerLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate to={'dashboard'} replace />} />
             <Route path='dashboard' element={<FreelancerDashboard />} />
             <Route path='dashboard/:id' element={<ProjectFr />} />

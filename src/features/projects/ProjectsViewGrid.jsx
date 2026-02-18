@@ -23,12 +23,10 @@ function ProjectsViewGrid() {
   const { search } = useLocation();
   const queryObject = queryString.parse(search);
   const status = queryObject.status;
-  
+
   const { projects, isLoading } = useClientProjects();
   const { projectsCounts, isLoading: isLoadingCount } =
     useClientProjectsCounts();
-
-  console.log(status);
 
   return (
     <div className='flex flex-col mt-12'>
