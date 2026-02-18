@@ -1,75 +1,175 @@
-import { LuCircleCheckBig, LuLayers3, LuLock } from "react-icons/lu";
-import { motion } from "framer-motion";
+import { LuCircleCheckBig, LuLayers3, LuLock } from 'react-icons/lu';
+import { motion } from 'framer-motion';
+import FilterDropDown from './FilterDropDown';
+import { FiFilter } from 'react-icons/fi';
+import useCategories from '../features/categories/useCategories';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { MdOutlineCategory } from 'react-icons/md';
+import queryString from 'query-string';
 
-const tabs = [
-  { id: "allproject", label: "All Projects", icon: LuLayers3 },
-  { id: "OPEN", label: "Open", icon: LuCircleCheckBig },
-  { id: "CLOSED", label: "Closed", icon: LuLock },
+const TABS = [
+  {
+    label: 'All Projects',
+    value: 'ALL',
+    icon: LuLayers3,
+    color: 'from-blue-500 to-purple-600',
+  },
+  {
+    label: 'Open',
+    value: 'OPEN',
+    icon: LuCircleCheckBig,
+    color: 'from-green-500 to-teal-600',
+  },
+  {
+    label: 'Closed',
+    value: 'CLOSED',
+    icon: LuLock,
+    color: 'from-red-500 to-primary-500',
+  },
 ];
 
-function FilterProjects({ status, setStatus, counts }) {
+const sortOptions = [
+  {
+    label: 'Sort by (Latest)',
+    value: 'latest',
+  },
+  {
+    label: 'Sort by (Earliest)',
+    value: 'earliest',
+  },
+];
+
+function FilterProjects({ counts }) {
+  const { transformedCategories } = useCategories();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const urlStatus = searchParams.get('status') || TABS.at(0).value;
+
+  const handleTabChange = (value) => {
+    searchParams.set('status', value);
+    setSearchParams(searchParams);
+  };
+
+  const { search } = useLocation();
+  const queryObject = queryString.parse(search);
+
   return (
-    <div className="flex flex-col gap-y-2 mb-7">
-      <ul className="relative w-full flex flex-col sm:flex-row gap-5 p-2 rounded-xl items-center justify-center bg-component shadow-md shadow-component-400/40">
-        {tabs.map(({ id, label, icon: Icon }) => {
-          const isActive = status === id;
+    <div className='flex flex-col gap-y-6 mb-7'>
+      {/* Custom Tabs */}
+      <div className='flex gap-5 p-2 rounded-xl items-center justify-center bg-component shadow-md shadow-component-400/40'>
+        {TABS.map(({ value, label, icon: Icon, color }) => {
+          const isActive = value === urlStatus;
 
           return (
             <button
-              key={id}
-              onClick={() => setStatus(id)}
-              className="relative flex-1 text-xl flex justify-center items-center gap-x-2 py-4 font-semibold w-full rounded-xl z-10"
+              key={value}
+              disabled={isActive}
+              onClick={() => handleTabChange(value)}
+              className={`
+                relative flex-1 flex items-center justify-center gap-2
+                px-2 sm:px-4 py-3 rounded-lg font-medium
+                transition-all duration-200
+                ${isActive ? 'text-white' : 'text-gray-700 hover:bg-gray-300/40'}
+              `}
             >
-              {/* Animated background */}
               {isActive && (
                 <motion.div
-                  layoutId="active-filter"
-                  className={`
-                    absolute inset-0 rounded-xl
-                    ${
-                      id === "allproject"
-                        ? "bg-linear-to-r from-blue-500 to-purple-600"
-                        : id === "OPEN"
-                        ? "bg-linear-to-r from-green-500 to-teal-600"
-                        : "bg-linear-to-r from-red-500 to-primary-500"
-                    }
-                  `}
-                  transition={{
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 30,
-                  }}
+                  layoutId='active-tab'
+                  className={`absolute inset-0 rounded-lg bg-linear-to-r ${color}`}
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                 />
               )}
 
-              {/* Content */}
-              <span
-                className={`relative flex items-center gap-x-2 ${
-                  isActive ? "text-color" : "text-title"
-                }`}
-              >
-                <Icon />
-                {label}
-                <div className="relative flex justify-center items-center">
-                  <div
-                    className={`relative size-7 rounded-full ${
-                      isActive ? "bg-filter" : "bg-gray-500/25"
-                    }`}
-                  ></div>
+              <span className='relative z-10 flex items-center gap-2'>
+                <Icon className='hidden sm:inline size-5 text-xl' />
+                <span className='hidden sm:inline text-lg'>{label}</span>
+                <span className='sm:hidden sm:text-lg '>
+                  {label.split(' ')[0]}
+                </span>
+
+                {counts?.[value] > 0 && (
                   <span
-                    className={`absolute text-[16px] font-bold ${
-                      isActive ? "text-color" : "text-title"
-                    }`}
+                    className={`
+                    ml-1 px-2 py-0.5 text-xs rounded-full
+                    ${isActive ? 'bg-white/20' : 'bg-gray-200'}
+                  `}
                   >
-                    {counts?.[id] ?? 0}
+                    {counts[value]}
                   </span>
-                </div>
+                )}
               </span>
             </button>
           );
         })}
-      </ul>
-      <div className="flex"></div>
+      </div>
+
+      <div className='flex items-center gap-x-2 justify-end xl:justify-between'>
+        <div className='flex items-center gap-x-2 justify-end xl:justify-between'>
+          <div className='hidden xl:flex gap-x-2 justify-center items-center'>
+            <FiFilter className='text-gray-600' />
+            <span className='font-medium text-gray-600'>Filtered by:</span>
+
+            <div className='flex items-center gap-x-2 flex-wrap'>
+              {/* Category filter */}
+              {queryObject.category && queryObject.category !== 'ALL' && (
+                <>
+                  <span className='font-medium text-title bg-gray-400 px-2 italic rounded-md'>
+                    {queryObject.category}
+                  </span>
+                  <span className='text-gray-300 font-bold'>|</span>
+                </>
+              )}
+
+              {/* Sort filter */}
+              {queryObject.sort && (
+                <>
+                  <span className='font-medium text-title bg-gray-400 px-2 italic rounded-md'>
+                    {queryObject.sort === 'latest' ? 'Newest' : 'Oldest'}
+                  </span>
+                  <span className='text-gray-300 font-bold'>|</span>
+                </>
+              )}
+
+              {/* Status filter - only show if not 'ALL' */}
+              {queryObject.status && queryObject.status !== 'ALL' && (
+                <span className='font-medium text-title bg-gray-400 px-2 italic rounded-md'>
+                  {queryObject.status}
+                </span>
+              )}
+
+              {/* If no filters are active */}
+              {!queryObject.category &&
+                !queryObject.sort &&
+                (!queryObject.status || queryObject.status === 'ALL') && (
+                  <span className='text-gray-500 italic'>
+                    No filters applied
+                  </span>
+                )}
+            </div>
+          </div>
+        </div>
+
+        <div className='flex flex-col justify-end sm:flex w-full sm:w-auto sm:flex-row gap-x-4 gap-y-2'>
+          <FilterDropDown
+            filterField='sort'
+            options={sortOptions}
+            icon={<MdOutlineCategory />}
+            defaultVaue={'latest'}
+          />
+          <FilterDropDown
+            filterField='category'
+            options={[
+              {
+                value: 'ALL',
+                label: 'All categories',
+              },
+              ...transformedCategories,
+            ]}
+            icon={<MdOutlineCategory />}
+            defaultVaue={'ALL'}
+          />
+        </div>
+      </div>
     </div>
   );
 }

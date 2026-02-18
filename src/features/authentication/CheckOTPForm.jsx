@@ -95,7 +95,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
             action=""
           >
             <div className="form-card__details my-2  cursor-default select-none">
-              <p className="text-lg font-semibold">Enter 6-digit code</p>
+              <p className="text-lg font-semibold text-title">Enter 6-digit code</p>
               <p
                 className={`px-2 border border-zinc-300 bg-zinc-100 rounded-md font-semibold text-sm ${
                   time > 70

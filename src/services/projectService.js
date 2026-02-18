@@ -1,11 +1,11 @@
 import { http } from './httpService';
 
-export function getAllProjectsApi() {
-  return http.get('/project/list').then(({ data }) => data.data);
+export function getAllProjectsApi(qs) {
+  return http.get(`/project/list${qs}`).then(({ data }) => data.data);
 }
 
-export function getClientProjectsApi() {
-  return http.get('/project/owner-projects').then(({ data }) => data.data);
+export function getClientProjectsApi(qs) {
+  return http.get(`/project/owner-projects${qs}`).then(({ data }) => data.data);
 }
 
 export function removeProjectApi(id) {

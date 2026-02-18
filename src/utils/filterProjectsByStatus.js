@@ -1,4 +1,4 @@
-export default function filteredProjects(projects, projectsStatus) {
+export default function filteredProjects(projects = [], projectsStatus) {
   const allProjects = [...projects];
   const openProjects = [...projects].filter((p) => p.status === 'OPEN');
   const closedProjects = [...projects].filter((p) => p.status === 'CLOSED');
