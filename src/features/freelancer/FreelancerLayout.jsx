@@ -4,6 +4,7 @@ import { MdOutlineDashboard } from 'react-icons/md';
 import { FiBriefcase } from 'react-icons/fi';
 import { FaRegFolderOpen } from 'react-icons/fa';
 import UserRole from '../../ui/UserRole';
+import { PiPlusCircleBold } from 'react-icons/pi';
 
 function FreelancerLayout() {
   return (

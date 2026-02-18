@@ -44,7 +44,6 @@ function CompleteProfileForm() {
     try {
       const { user, message } = await mutateAsync(data);
       toast.success(message);
-      console.log(user);
 
       if (user.status !== 2) {
         moveHome();
@@ -60,48 +59,48 @@ function CompleteProfileForm() {
   };
 
   return (
-    <div className="form-card">
+    <div className='form-card'>
       {/* Header */}
-      <div className="form-card__header">
+      <div className='form-card__header'>
         <img
-          className="w-full h-full object-cover"
-          src="/src/assets/images/login-header.jpg"
-          alt=""
+          className='w-full h-full object-cover'
+          src='/src/assets/images/login-header.jpg'
+          alt=''
         />
-        <div className="absolute inset-0 p-6 gap-y-2 cursor-default select-none">
-          <div className="badge mb-5">
-            <RiShieldUserFill className="size-10 mx-2 fill-white" />
+        <div className='absolute inset-0 p-6 gap-y-2 cursor-default select-none'>
+          <div className='badge mb-5'>
+            <RiShieldUserFill className='size-10 mx-2 fill-white' />
           </div>
-          <p className="text-color text-2xl sm:text-3xl font-bold">
+          <p className='text-color text-2xl sm:text-3xl font-bold'>
             Complete Profile
           </p>
-          <p className="text-color text-sm">
+          <p className='text-color text-sm'>
             Just a few more details to get started
           </p>
         </div>
       </div>
 
       {/* Body */}
-      <div className="bg-component">
-        <div className="p-6">
+      <div className='bg-component'>
+        <div className='p-6'>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex gap-y-5 flex-col"
+            className='flex gap-y-5 flex-col'
           >
             {/* FULL NAME */}
-            <div className="flex flex-col">
-              <div className="form-card__input-tel py-2">
+            <div className='flex flex-col'>
+              <div className='form-card__input-tel py-2'>
                 {nameLable === '' ? (
-                  <FaRegUser className="size-6 w-14 text-subtitle" />
+                  <FaRegUser className='size-6 w-14 text-subtitle' />
                 ) : (
-                  <FaUser className="size-6 w-14 text-subtitle" />
+                  <FaUser className='size-6 w-14 text-subtitle' />
                 )}
                 <TextField
-                  name="name"
+                  name='name'
                   register={register}
-                  placeholder="Enter your full name"
-                  type="text"
-                  classname="font-semibold pl-4"
+                  placeholder='Enter your full name'
+                  type='text'
+                  classname='font-semibold pl-4'
                   validationSchema={{
                     required: 'Name is required',
                     minLength: {
@@ -117,26 +116,26 @@ function CompleteProfileForm() {
                 />
               </div>
               {errors && errors['name'] && (
-                <span className="text-red-500 ml-2 text-sm mt-2">
+                <span className='text-red-500 ml-2 text-sm mt-2'>
                   {errors['name']?.message}
                 </span>
               )}
             </div>
 
             {/* EMAIL */}
-            <div className="flex flex-col">
-              <div className="form-card__input-tel py-2">
+            <div className='flex flex-col'>
+              <div className='form-card__input-tel py-2'>
                 {emailLable === '' ? (
-                  <MdOutlineMail className="size-7 w-14 text-subtitle" />
+                  <MdOutlineMail className='size-7 w-14 text-subtitle' />
                 ) : (
-                  <MdEmail className="size-7 w-14 text-subtitle" />
+                  <MdEmail className='size-7 w-14 text-subtitle' />
                 )}
                 <TextField
-                  name="email"
+                  name='email'
                   register={register}
-                  placeholder="example@gmail.com"
-                  type="email"
-                  classname="font-semibold pl-4"
+                  placeholder='example@gmail.com'
+                  type='email'
+                  classname='font-semibold pl-4'
                   validationSchema={{
                     required: 'Email is required',
                     pattern: {
@@ -148,20 +147,20 @@ function CompleteProfileForm() {
                 />
               </div>
               {errors && errors['email'] && (
-                <span className="text-red-500 ml-2 text-sm mt-2">
+                <span className='text-red-500 ml-2 text-sm mt-2'>
                   {errors['email']?.message}
                 </span>
               )}
             </div>
 
-            <div className="flex flex-wrap text-lg font-medium justify-start sm:justify-center gap-x-2 gap-y-3 items-center">
+            <div className='flex flex-wrap text-lg font-medium justify-start sm:justify-center gap-x-2 gap-y-3 items-center'>
               {/* FREELANCER */}
               <button
-                type="button"
+                type='button'
                 onClick={() => setValue('role', 'FREELANCER')}
                 className={`rounded-xl text-color flex justify-center items-center flex-1 px-2 py-1  ${
                   selectedRole === 'FREELANCER'
-                    ? 'primary-btn'
+                    ? 'primary-btn font-semibold'
                     : 'bg-zinc-700/20 text-subtitle'
                 }`}
               >
@@ -177,11 +176,11 @@ function CompleteProfileForm() {
 
               {/* CLIENT */}
               <button
-                type="button"
+                type='button'
                 onClick={() => setValue('role', 'OWNER')}
                 className={`rounded-xl text-color flex justify-center items-center flex-1 px-2 py-1  ${
                   selectedRole === 'OWNER'
-                    ? 'primary-btn'
+                    ? 'primary-btn font-semibold'
                     : 'bg-zinc-700/20 text-subtitle'
                 }`}
               >
@@ -196,19 +195,19 @@ function CompleteProfileForm() {
 
             {/* SUBMIT BUTTON */}
             <button
-              type="submit"
-              className="form-card__btn flex justify-center items-center gap-x-2"
+              type='submit'
+              className='form-card__btn flex justify-center items-center gap-x-2'
             >
               Complete Profile
               {isPending ? (
                 <Loading />
               ) : (
-                <BiSolidCheckCircle className="size-6 mx-1 text-[#2afe41]" />
+                <BiSolidCheckCircle className='size-6 mx-1 text-[#2afe41]' />
               )}
             </button>
 
-            <div className="bg-gray-300 w-full h-px"></div>
-            <p className="w-full text-center text-gray-500 text-[13px]">
+            <div className='bg-gray-300 w-full h-px'></div>
+            <p className='w-full text-center text-gray-500 text-[13px]'>
               By continuing, you agree to our Terms & Privacy Policy
             </p>
           </form>
