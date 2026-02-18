@@ -1,39 +1,38 @@
-import { Field, Select } from '@headlessui/react';
-import React from 'react';
-import { MdOutlineCategory } from 'react-icons/md';
+import { Flex, Select } from '@radix-ui/themes';
 import { useSearchParams } from 'react-router-dom';
 
-function FilterDropDown({ options, filterField }) {
+function FilterDropDown({ options, filterField, icon, defaultVaue }) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const filterValue = searchParams.get(filterField) || defaultVaue;
 
-  const filterValue = searchParams.get(filterField) || "All";
-
-  function handleChange(e) {
-    searchParams.set(filterField, e.target.value);
+  function handleChange(value) {
+    searchParams.set(filterField, value);
     setSearchParams(searchParams);
   }
 
+  // Find the selected option label
+  const selectedOption = options.find((opt) => opt.value === filterValue);
+  const displayLabel = selectedOption?.label || '';
+
   return (
-    <Field className='flex justify-center items-center gap-x-2 rounded-xl px-4 text-title  bg-component shadow-md shadow-component-400/40'>
-      <MdOutlineCategory className='text-title' />
-      <Select
-        onChange={handleChange}
-        value={filterValue}
-        options={options}
-        className='py-2 px-2 cursor-pointer'
-      >
-        {options.map((item) => (
-          <option
-            key={item.value}
-            value={item.value}
-            className='bg-component px-2 cursor-pointer'
-          >
-            {item.label}
-          </option>
-        ))}
-      </Select>
-    </Field>
+    <Flex className='w-full sm:w-64'>
+      <Select.Root value={filterValue} onValueChange={handleChange}>
+        <Select.Trigger className='w-full pl-6 sm:w-64 h-12 text-title'>
+          <Flex as='span' align='center' gap='2'>
+            {icon}
+            <span>{displayLabel}</span>
+          </Flex>
+        </Select.Trigger>
+
+        <Select.Content position='popper'>
+          {options.map((opt) => (
+            <Select.Item key={opt.value} value={opt.value}>
+              {opt.label}
+            </Select.Item>
+          ))}
+        </Select.Content>
+      </Select.Root>
+    </Flex>
   );
 }
-
 export default FilterDropDown;

@@ -52,7 +52,7 @@ function FilterProposals({ status, setStatus, counts = {} }) {
             <button
               key={id}
               onClick={() => setStatus(id)}
-              className='relative flex-1 text-lg flex justify-center items-center gap-x-2 py-4 font-semibold w-full rounded-xl z-10 hover:scale-[1.02] transition-transform'
+              className='relative flex-1 text-base flex justify-center items-center gap-x-2 py-4 font-medium w-full rounded-xl z-10 hover:scale-[1.02] transition-transform'
             >
               {isActive && (
                 <motion.div
@@ -76,7 +76,7 @@ function FilterProposals({ status, setStatus, counts = {} }) {
                     }`}
                   />
                   <span
-                    className={`absolute text-xs font-bold ${
+                    className={`absolute text-xs font-medium ${
                       isActive ? 'text-color' : 'text-title'
                     }`}
                   >
@@ -102,9 +102,7 @@ function FilterProposals({ status, setStatus, counts = {} }) {
             <LuFilter className='size-4' />
             <span>
               Filtered by:{' '}
-              <span className='font-semibold text-title'>
-                {activeTab.label}
-              </span>
+              <span className='font-medium text-title'>{activeTab.label}</span>
             </span>
           </div>
           <button

@@ -14,38 +14,34 @@ import PageHeader from '../../ui/PageHeader';
 import projectCounts from '../../utils/projectCounts';
 
 function ProjectsViewTable() {
-  const [status, setStatus] = useState('All_Project');
-  const { projects, isLoading } = useAllProjects();
-  console.log(projects);
+  const { projects = [], isLoading } = useAllProjects();
+  const counts = projectCounts(projects);
 
-  if (isLoading) return <LoadingPage />;
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col mt-12 page-set'>
       <PageHeader
         badge='Browse All Projects'
         title='All Projects'
-        description={'View and manage all platform projects'}
+        description='View and manage all platform projects'
         color='blue'
       />
 
-      <FilterProjects
-        status={status}
-        setStatus={setStatus}
-        counts={projectCounts(projects)}
-      />
+      <FilterProjects counts={counts} />
 
-      <div className='overflow-x-auto'>
-        <table className='w-full border-collapse border-spacing-0 rounded-md overflow-hidden text-left whitespace-nowrap'>
-          <tbody className='flex flex-col gap-y-4'>
+      {isLoading ? (
+        <LoadingPage />
+      ) : (
+        <div className='overflow-x-auto w-full mt-4'>
+          <div className='flex flex-col gap-y-4 w-full'>
             <AnimatePresence mode='sync'>
-              {filteredProjects(projects, status).map((project) => (
+              {projects.map((project) => (
                 <AnimatedListItem key={project._id}>
                   <ProjectRow
                     id={project._id}
                     title={project.title}
                     status={project.status}
                     description={project.description}
-                    category={project.category.title}
+                    category={project.category?.title}
                     budget={toNumbersWithComma(project.budget)}
                     deadline={toDateShort(project.deadline)}
                     tags={project.tags}
@@ -54,9 +50,9 @@ function ProjectsViewTable() {
                 </AnimatedListItem>
               ))}
             </AnimatePresence>
-          </tbody>
-        </table>
-      </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

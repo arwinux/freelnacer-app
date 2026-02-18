@@ -11,20 +11,31 @@ import CreateProject from './pages/CreateProject';
 import Project from './pages/Project';
 import AllProjects from './pages/AllProjects';
 import ClientLayout from './features/client/ClientLayout';
-import { DarkModeProvider } from './context/DarkModeContext';
+import { DarkModeProvider, useDarkMode } from './context/DarkModeContext';
 import FreelancerLayout from './features/freelancer/FreelancerLayout';
 import FreelancerDashboard from './features/freelancer/FreelancerDashboardLayout';
 import SubmittedProjects from './pages/SubmittedProjects';
 import ProjectFr from './pages/ProjectFr';
 import FreelancerProposals from './pages/FreelancerProposals';
+
+import { Theme } from '@radix-ui/themes';
+import '@radix-ui/themes/styles.css';
+
 const queryClient = new QueryClient();
 
-function App() {
+function AppContent() {
+  const { isDarkMode } = useDarkMode();
+
   return (
-    <DarkModeProvider>
+    <Theme
+      appearance={isDarkMode ? 'dark' : 'light'}
+      hasBackground={false}
+      accentColor='iris'
+      grayColor='slate'
+      radius='large'
+    >
       <QueryClientProvider client={queryClient}>
         <Toaster />
-
         <Routes>
           {/* ------------------------ Home Layout ------------------------ */}
           <Route path='/' element={<Home />} />
@@ -62,18 +73,14 @@ function App() {
           <Route path='/complete-profile' element={<CompleteProfile />} />
         </Routes>
       </QueryClientProvider>
-    </DarkModeProvider>
+    </Theme>
   );
 }
 
-export default App;
-
-// auth
-// Tasks #1 : authenticate user via OTP : One-Time-Password
-//? 1. form -> getOTP -> input + button => phoneNumber => send OTP
-//? 2. form checkOTP -> request -> (otp, phoneNumber)
-
-// request
-//? 1. axios (useState, useEffect)
-//? 2. useFetch (data, loading, error)
-//? 3. react-query => redux alternative (remote states), fetch (get), mutate (post)
+export default function App() {
+  return (
+    <DarkModeProvider>
+      <AppContent />
+    </DarkModeProvider>
+  );
+}
