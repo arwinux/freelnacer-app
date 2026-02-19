@@ -30,8 +30,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
         toast('پروفایل شما در انتظار تایید است', { icon: 'ℹ️' });
         return;
       }
-      if (user.role === 'OWNER') return navigate('/client');
-      if (user.role === 'FREELANCER') return navigate('/freelancer');
+      navigate(navigateBaseRole(user.role));
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -51,60 +50,62 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
   };
 
   return (
-    <div className="form-card">
+    <div className='form-card'>
       {/* Header with image */}
-      <div className="form-card__header">
+      <div className='form-card__header'>
         <img
-          className="w-full h-full object-cover"
-          src="/src/assets/images/login-header.jpg"
-          alt=""
+          className='w-full h-full object-cover'
+          src='/src/assets/images/login-header.jpg'
+          alt=''
         />
-        <div className="absolute inset-0 p-6 gap-y-2 cursor-default select-none">
-          <div className="badge mb-5">
-            <TbPasswordFingerprint className="size-10 mx-2 text-color" />
+        <div className='absolute inset-0 p-6 gap-y-2 cursor-default select-none'>
+          <div className='badge mb-5'>
+            <TbPasswordFingerprint className='size-10 mx-2 text-color' />
           </div>
 
-          <p className="text-color text-3xl font-bold">Verify OTP</p>
-          <div className="flex gap-1 text-color text-sm">
-            <p className="font-medium">Code sent to </p>
-            <span className="font-bold">{phoneNumber}</span>
+          <p className='text-color text-3xl font-bold'>Verify OTP</p>
+          <div className='flex gap-1 text-color text-sm'>
+            <p className='font-medium'>Code sent to </p>
+            <span className='font-bold'>{phoneNumber}</span>
           </div>
         </div>
       </div>
 
-      <div className="bg-component">
-        <div className="bg-zinc-300 h-[7px] rounded-b-md overflow-hidden">
+      <div className='bg-component'>
+        <div className='bg-zinc-300 h-[7px] rounded-b-md overflow-hidden'>
           <div
             className={`h-full transition-all duration-1000 ease-linear ${
               time > 70
                 ? 'bg-linear-to-r from-[#cafe48] to-[#2afe41]'
                 : time > 50
-                ? 'bg-linear-to-r from-[#02b5d7] to-[#0184b1]'
-                : time > 10
-                ? 'bg-linear-to-r from-primary-500 to-amber-500'
-                : 'bg-linear-to-r from-red-500 to-rose-500'
+                  ? 'bg-linear-to-r from-[#02b5d7] to-[#0184b1]'
+                  : time > 10
+                    ? 'bg-linear-to-r from-primary-500 to-amber-500'
+                    : 'bg-linear-to-r from-red-500 to-rose-500'
             }`}
             style={{ width: `${(time / RESEND_TIME) * 100}%` }}
           ></div>
         </div>
         {/* Form */}
-        <div className="p-6">
+        <div className='p-6'>
           <form
             onSubmit={checkOtpHandler}
-            className="flex gap-y-5 flex-col"
-            action=""
+            className='flex gap-y-5 flex-col'
+            action=''
           >
-            <div className="form-card__details my-2  cursor-default select-none">
-              <p className="text-lg font-semibold text-title">Enter 6-digit code</p>
+            <div className='form-card__details my-2  cursor-default select-none'>
+              <p className='text-lg font-semibold text-title'>
+                Enter 6-digit code
+              </p>
               <p
                 className={`px-2 border border-zinc-300 bg-zinc-100 rounded-md font-semibold text-sm ${
                   time > 70
                     ? 'text-lime-600'
                     : time > 50
-                    ? 'text-sky-500'
-                    : time > 10
-                    ? 'text-amber-600'
-                    : 'text-red-500'
+                      ? 'text-sky-500'
+                      : time > 10
+                        ? 'text-amber-600'
+                        : 'text-red-500'
                 } `}
               >
                 {time > 0
@@ -114,7 +115,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
             </div>
             {/*OTP Input */}
 
-            <div className="w-full flex justify-center items-center">
+            <div className='w-full flex justify-center items-center'>
               <OTPInput
                 value={otp}
                 onChange={setOtp}
@@ -122,10 +123,10 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
                 renderInput={(props) => (
                   <input
                     {...props}
-                    className="otp-no-selection border border-zinc-300 focus:ring-2 focus:ring-primary-600"
+                    className='otp-no-selection border border-zinc-300 focus:ring-2 focus:ring-primary-600'
                   />
                 )}
-                containerStyle="flex gap-x-2 flex-row justify-center items-center"
+                containerStyle='flex gap-x-2 flex-row justify-center items-center'
                 inputStyle={{
                   width: '2.8rem',
                   height: '3.5rem',
@@ -142,18 +143,18 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
             {/* Button */}
             <button
               onClick={checkOtpHandler}
-              type="submit"
-              className="form-card__btn flex justify-center items-center gap-x-2"
+              type='submit'
+              className='form-card__btn flex justify-center items-center gap-x-2'
             >
               Verify Code
               {isPending ? (
                 <Loading />
               ) : (
-                <RiShieldCheckFill className="size-6 mx-1 text-color" />
+                <RiShieldCheckFill className='size-6 mx-1 text-color' />
               )}
             </button>
 
-            <div className="flex flex-col gap-y-2 justify-center items-center">
+            <div className='flex flex-col gap-y-2 justify-center items-center'>
               <button
                 onClick={onReSendOtp}
                 disabled={time > 0}
@@ -170,7 +171,7 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
 
               <button
                 onClick={onBack}
-                className="text-gray-600 text-sm hover:text-title"
+                className='text-gray-600 text-sm hover:text-title'
               >
                 Change Phone Number
               </button>

@@ -17,11 +17,15 @@ import FreelancerDashboard from './features/freelancer/FreelancerDashboardLayout
 import SubmittedProjects from './pages/SubmittedProjects';
 import ProjectFr from './pages/ProjectFr';
 import FreelancerProposals from './pages/FreelancerProposals';
-
 import { Theme } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
 import ProtectedRoute from './ui/ProtectedRoute';
 import NotAccess from './pages/NotAccess';
+import AdminLayout from './features/admin/AdminLayout';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminProjects from './pages/AdminProjects';
+import ManageCategories from './pages/ManageCategories';
+import ManageUsers from './pages/ManageUsers';
 
 const queryClient = new QueryClient();
 
@@ -38,13 +42,49 @@ function AppContent() {
     >
       <QueryClientProvider client={queryClient}>
         <Toaster />
+
         <Routes>
+          {/* ------------------------------------------------------------- */}
           {/* ------------------------ Home Layout ------------------------ */}
+          {/* ------------------------------------------------------------- */}
+
           <Route path='/' element={<Home />} />
           <Route path='*' element={<NotFound />} />
           <Route path='/not-access' element={<NotAccess />} />
 
+          {/* ------------------------------------------------------------- */}
+          {/* ------------------------ Admin Layout ----------------------- */}
+          {/* ------------------------------------------------------------- */}
+
+          <Route
+            path='/admin'
+            element={
+              <ProtectedRoute>
+                <AdminLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Navigate to='dashboard' replace />} />
+            <Route path='dashboard' element={<AdminDashboard />} />
+            <Route path='dashboard/:id' element={<Project />} />
+
+            <Route path='projects' element={<AllProjects />} />
+            <Route path='projects/:id' element={<Project />} />
+
+            <Route path='admin-projects' element={<AdminProjects />} />
+            <Route path='admin-projects/:id' element={<Project />} />
+
+            <Route path='create-project' element={<CreateProject />} />
+
+            <Route path='manage-categories' element={<ManageCategories />} />
+
+            <Route path='manage-users' element={<ManageUsers />} />
+          </Route>
+
+          {/* ------------------------------------------------------------- */}
           {/* ----------------------- Client Layout ----------------------- */}
+          {/* ------------------------------------------------------------- */}
+
           <Route
             path='/client'
             element={
@@ -66,7 +106,10 @@ function AppContent() {
             <Route path='create-project' element={<CreateProject />} />
           </Route>
 
+          {/* ------------------------------------------------------------- */}
           {/* --------------------- Freelancer Layout --------------------- */}
+          {/* ------------------------------------------------------------- */}
+
           <Route
             path='/freelancer'
             element={
@@ -85,7 +128,10 @@ function AppContent() {
             <Route path='proposals' element={<FreelancerProposals />} />
           </Route>
 
+          {/* ------------------------------------------------------------- */}
           {/* ------------------- Authentication Layout ------------------- */}
+          {/* ------------------------------------------------------------- */}
+
           <Route path='/auth' element={<Auth />} />
           <Route path='/complete-profile' element={<CompleteProfile />} />
         </Routes>
