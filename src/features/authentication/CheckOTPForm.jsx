@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import OTPInput from 'react-otp-input';
-import { TbClockHour5, TbPasswordFingerprint, TbSend2 } from 'react-icons/tb';
+import { TbPasswordFingerprint } from 'react-icons/tb';
 import { RiShieldCheckFill } from 'react-icons/ri';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { RESEND_TIME } from './AuthContainer';
 import Loading from '../../ui/Loading';
 import useNavigateHome from '../../hooks/useNavigateHome';
+import navigateBaseRole from '../../utils/navigateBaseRole';
 
 function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, time, setTime }) {
   const [otp, setOtp] = useState('');

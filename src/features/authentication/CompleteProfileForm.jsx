@@ -10,6 +10,7 @@ import { BiSolidCheckCircle } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import useNavigateHome from '../../hooks/useNavigateHome';
 import { useForm } from 'react-hook-form';
+import navigateBaseRole from '../../utils/navigateBaseRole';
 
 function CompleteProfileForm() {
   const {
@@ -51,8 +52,7 @@ function CompleteProfileForm() {
         return;
       }
 
-      if (user.role === 'OWNER') return navigate('/client');
-      if (user.role === 'FREELANCER') return navigate('/freelancer');
+      navigate(navigateBaseRole(user.role));
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
