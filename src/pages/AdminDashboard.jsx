@@ -1,5 +1,7 @@
+import AdminDashboardLayout from '../features/admin/AdminDashboardLayout';
+
 function AdminDashboard() {
-  return <div>AdminDashboard</div>;
+  return <AdminDashboardLayout />;
 }
 
 export default AdminDashboard;

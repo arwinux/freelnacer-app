@@ -2,6 +2,7 @@ import useUser from '../features/authentication/useUser';
 import { RiPoliceBadgeFill } from 'react-icons/ri';
 function UserRole() {
   const { isLoading, user } = useUser();
+  console.log(user)
 
   return (
     <div className="flex gap-y-3 flex-col mt-10 w-full">

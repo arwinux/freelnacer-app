@@ -26,6 +26,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import AdminProjects from './pages/AdminProjects';
 import ManageCategories from './pages/ManageCategories';
 import ManageUsers from './pages/ManageUsers';
+import Profile from './pages/Profile';
 
 const queryClient = new QueryClient();
 
@@ -79,6 +80,8 @@ function AppContent() {
             <Route path='manage-categories' element={<ManageCategories />} />
 
             <Route path='manage-users' element={<ManageUsers />} />
+
+            <Route path='profile' element={<Profile />} />
           </Route>
 
           {/* ------------------------------------------------------------- */}
@@ -104,6 +107,8 @@ function AppContent() {
             <Route path='client-projects/:id' element={<Project />} />
 
             <Route path='create-project' element={<CreateProject />} />
+
+            <Route path='profile' element={<Profile />} />
           </Route>
 
           {/* ------------------------------------------------------------- */}
@@ -126,6 +131,8 @@ function AppContent() {
             <Route path='projects/:id' element={<ProjectFr />} />
 
             <Route path='proposals' element={<FreelancerProposals />} />
+
+            <Route path='profile' element={<Profile />} />
           </Route>
 
           {/* ------------------------------------------------------------- */}
