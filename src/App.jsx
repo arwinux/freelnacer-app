@@ -6,7 +6,7 @@ import CompleteProfile from './pages/CompleteProfile';
 import NotFound from './pages/NotFound';
 import Home from './pages/Home';
 import ClientDashboard from './pages/ClientDashboard';
-import ClientProjects from './pages/ClientProjects';
+
 import CreateProject from './pages/CreateProject';
 import Project from './pages/Project';
 import AllProjects from './pages/AllProjects';
@@ -27,6 +27,7 @@ import AdminProjects from './pages/AdminProjects';
 import ManageCategories from './pages/ManageCategories';
 import ManageUsers from './pages/ManageUsers';
 import Profile from './pages/Profile';
+import ClientProjects from './pages/ClientProjects';
 
 const queryClient = new QueryClient();
 

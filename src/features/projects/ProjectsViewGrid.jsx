@@ -1,22 +1,16 @@
 import useClientProjects from './useClientProjects';
 import ProjectCard from './ProjectCard';
-import { useState } from 'react';
-import Empty from '../../ui/Empty';
-import { PiPlusCircleBold } from 'react-icons/pi';
 import LoadingPage from '../../ui/LoadingPage';
 import toDateShort from '../../utils/toDateShort';
 import toNumbersWithComma from '../../utils/toNumbersWithComma';
 import truncateText from '../../utils/truncateText';
-import useNavigateCreateProject from '../../hooks/useNavigateCreateProject';
 import AnimatedListItem from '../../ui/FrameMotion';
 import { AnimatePresence } from 'framer-motion';
 import FilterProjects from '../../ui/FilterProjects';
 import PageHeader from '../../ui/PageHeader';
-import projectCounts from '../../utils/projectCounts';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import filteredProjects from '../../utils/filterProjectsByStatus';
-import useProjectsCounts from './useAllProjectsCounts';
 import useClientProjectsCounts from './useClientProjectsCounts';
 
 function ProjectsViewGrid() {

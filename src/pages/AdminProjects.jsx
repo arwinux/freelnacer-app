@@ -1,5 +1,11 @@
+import ProjectsViewGrid from "../features/projects/ProjectsViewGrid";
+
 function AdminProjects() {
-  return <div>AdminProjects</div>;
+  return (
+    <div className='page-set'>
+      <ProjectsViewGrid />
+    </div>
+  );
 }
 
 export default AdminProjects;
