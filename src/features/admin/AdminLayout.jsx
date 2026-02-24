@@ -27,6 +27,11 @@ function AdminLayout() {
           <span>My Projects</span>
         </CustomNavlink>
 
+        <CustomNavlink to='/admin/admin-proposals'>
+          <FaRegFolderOpen className='size-[18px]' />
+          <span>My Proposals</span>
+        </CustomNavlink>
+
         <CustomNavlink to='/admin/create-project'>
           <PiPlusCircleBold className='size-[18px]' />
           <span>Create Project</span>
@@ -38,7 +43,7 @@ function AdminLayout() {
         </CustomNavlink>
 
         <CustomNavlink to='/admin/manage-users'>
-          <LuUsers  className='size-[18px]' />
+          <LuUsers className='size-[18px]' />
           <span>Manage Users</span>
         </CustomNavlink>
 
