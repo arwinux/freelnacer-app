@@ -33,7 +33,7 @@ function ProjectCard({
   const [localStatus, setLocalStatus] = useState(status);
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col gap-y-2">
       <article className="text-title flex flex-col bg-component orange-container">
         <div className="h-3">
           <div className="w-full h-2 rounded-t-4xl bg-radial-back"></div>

@@ -439,11 +439,11 @@ button {
 }
 
 .orange-container {
-  @apply rounded-2xl hover:scale-[1.02] border-2 border-t-2 border-zinc-200/50 hover:shadow-2xl hover:border-2 hover:shadow-primary-500/20 hover:border-primary-400 transition-all duration-500 hover:-translate-y-6;
+  @apply rounded-2xl hover:scale-[1.02] border-2 border-t-2 border-zinc-200/50 shadow shadow-black/15 hover:shadow-2xl hover:border-2 hover:shadow-primary-500/20 hover:border-primary-400 transition-all duration-500 hover:-translate-y-6;
 }
 
 .orange-container-proposal {
-  @apply rounded-2xl hover:scale-[1.01] border-2 border-t-2 border-zinc-200/50 hover:shadow-2xl hover:border-2 hover:shadow-primary-500/20 hover:border-primary-400 transition-all duration-500 hover:-translate-y-2;
+  @apply rounded-2xl hover:scale-[1.01] border-2 border-t-2 border-zinc-200/50 shadow-xl hover:shadow-2xl hover:border-2 hover:shadow-primary-500/20 hover:border-primary-400 transition-all duration-500 hover:-translate-y-2;
 }
 
 .static-container {

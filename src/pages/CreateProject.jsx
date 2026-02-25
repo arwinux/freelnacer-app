@@ -1,4 +1,3 @@
-import { LuRocket } from 'react-icons/lu';
 import { useForm } from 'react-hook-form';
 import {
   TextAreaCreateProject,
@@ -15,7 +14,6 @@ import Loading from '../ui/Loading';
 import { useLocation } from 'react-router-dom';
 import useEditProject from '../features/projects/useEditProject ';
 import PageHeader from '../ui/PageHeader';
-import queryString from 'query-string';
 
 function CreateProject() {
   const navigateClientProjects = useNavigateClientProject();
