@@ -1,5 +1,5 @@
 import { IoIosAdd } from 'react-icons/io';
-import AddCategory from '../ui/AddCategory';
+import AddCategory from '../features/categories/AddCategory';
 import { useState } from 'react';
 import Category from '../ui/Category';
 import useCategories from '../features/categories/useCategories';
@@ -8,12 +8,12 @@ import { AnimatePresence } from 'framer-motion';
 
 function ManageCategories() {
   const [showCategoryForm, setShowCategory] = useState(false);
-  const {
-    categories,
-    isLoading: categoryIsLoading,
-    transformedCategories,
-  } = useCategories();
+
+  const { categories, isLoading: categoryIsLoading } = useCategories();
+  const [categoryValue, setCategoryValue] = useState();
+  
   console.log(categories);
+  console.log(categoryValue);
 
   const onSubmitSowCateogry = () => {
     setShowCategory(!showCategoryForm);
@@ -53,10 +53,14 @@ function ManageCategories() {
         <div className='grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] gap-4 gap-x-8 gap-y-12'>
           {categories.map((item, index) => (
             <Category
+              index={index}
+              key={item.value}
+              value={item.value}
               title={item.label}
               titleEnglish={item.englishTitle}
               description={item.description}
-              type={item.type}
+              categoryValue={categoryValue}
+              setcategoryValue={setCategoryValue}
             />
           ))}
         </div>

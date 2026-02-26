@@ -1,11 +1,80 @@
 import { LuFolderOpen } from 'react-icons/lu';
+import { MdEdit } from 'react-icons/md';
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import useRemoveCategory from '../features/categories/useRemoveCategory';
+import ConfirmDelete from './ConfirmDelete';
+import { useState } from 'react';
+import { TiPencil } from 'react-icons/ti';
+import Modal from './Modal';
 
-function Category({ title, titleEnglish, description,type }) {
+function Category({
+  value,
+  index,
+  title,
+  titleEnglish,
+  description,
+  categoryValue,
+  setcategoryValue,
+}) {
+  const { removeCategory, isRemoveCategory } = useRemoveCategory();
+  const [isDeletedOpen, setIsDeletedOpen] = useState(false);
+
   return (
-    <div className='flex flex-col gap-y-2 justify-start hover:scale-105 transition-all duration-300 cursor-default select-none bg-component shadow-xl shadow-black/15 overflow-hidden rounded-xl'>
+    <div className='group flex flex-col gap-y-2 overflow-hidden justify-start hover:scale-105 transition-all duration-300 cursor-default select-none bg-component shadow-lg shadow-zinc-500/40 rounded-xl'>
       <div
-        className={`bg-linear-to-r from-gray-500 to-primary-500 py-6 flex justify-center items-center`}
+        className={`${getRandomGradient(index)} relative py-6 flex justify-center items-center`}
       >
+        <div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.2,
+            ease: 'easeOut',
+          }}
+          className='group-hover:flex hidden absolute right-0 top-0 p-3 justify-center items-center gap-x-2'
+        >
+          <div className='flex gap-x-2'>
+            <button
+              onClick={()=> setcategoryValue(value)}
+              className='size-9 flex justify-center bg-component rounded-lg items-center'
+            >
+              <TiPencil className='text-title size-5' />
+            </button>
+
+            <button
+              onClick={() => setIsDeletedOpen(true)}
+              className='size-9 flex justify-center bg-red-500 text-white rounded-lg items-center'
+            >
+              <RiDeleteBin6Line className='text-white size-5' />
+            </button>
+            <Modal
+              open={isDeletedOpen}
+              onClose={() => setIsDeletedOpen(false)}
+              title={
+                <div className='flex items-center gap-x-2'>
+                  <div className='flex items-center gap-x-2'>
+                    <div className='size-6 flex justify-center bg-title rounded-lg items-center'>
+                      <TiPencil className='text-component size-4' />
+                    </div>
+                    <p className='text-xl'>Delete</p>
+                  </div>
+                  <p className='text-md truncate text-red-600 mr-2'>{title}</p>
+                </div>
+              }
+            >
+              <ConfirmDelete
+                resourceName={title}
+                onClose={() => setIsDeletedOpen(false)}
+                onConfirm={() =>
+                  removeCategory(value, {
+                    onSuccess: () => setIsDeletedOpen(false),
+                  })
+                }
+                disabled={false}
+              />
+            </Modal>
+          </div>
+        </div>
         <LuFolderOpen className='size-14 text-component' />
       </div>
       <div className='p-4 flex flex-col justify-center gap-y-2'>
@@ -14,7 +83,6 @@ function Category({ title, titleEnglish, description,type }) {
           {titleEnglish}
         </p>
         <p className='text-subtitle'>{description}</p>
-        <p className='flex w-fit justify-center items-center badge-category'>{type}</p>
       </div>
     </div>
   );
@@ -22,18 +90,22 @@ function Category({ title, titleEnglish, description,type }) {
 
 export default Category;
 
-function getRandomGradient() {
+function getRandomGradient(index) {
+  index = index >= 10 ? index.toString()[1] : index.toString()[0];
   const gradients = {
-    red: ['bg-linear-to-r from-[#F66B11] to-[#E83923]'],
-    blue: ['bg-linear-to-r from-[#42B7FE] to-[#0BE8FE]'],
-    yellow: ['bg-linear-to-r from-[#FFBA35] to-[#FD892D]'],
-    green: ['bg-linear-to-r from-[#41ED90] to-[#3AF6C8]'],
-    indigo: ['bg-linear-to-r from-[#6976DF] to-[#7353AE]'],
+    red: 'bg-linear-to-r from-[hsl(0,70%,50%)] to-[hsl(18,70%,55%)]',
+    orange: 'bg-linear-to-r from-[hsl(36,70%,50%)] to-[hsl(54,70%,55%)]',
+    yellow: 'bg-linear-to-r from-[hsl(72,70%,48%)] to-[hsl(90,70%,52%)]',
+    lime: 'bg-linear-to-r from-[hsl(108,70%,45%)] to-[hsl(126,70%,50%)]',
+    green: 'bg-linear-to-r from-[hsl(144,70%,42%)] to-[hsl(162,70%,47%)]',
+    cyan: 'bg-linear-to-r from-[hsl(180,70%,45%)] to-[hsl(198,70%,50%)]',
+    blue: 'bg-linear-to-r from-[hsl(216,70%,50%)] to-[hsl(234,70%,55%)]',
+    indigo: 'bg-linear-to-r from-[hsl(252,70%,52%)] to-[hsl(270,70%,58%)]',
+    violet: 'bg-linear-to-r from-[hsl(288,70%,52%)] to-[hsl(306,70%,58%)]',
+    pink: 'bg-linear-to-r from-[hsl(324,70%,52%)] to-[hsl(342,70%,58%)]',
   };
 
-  // Get all gradients as a flat array
-  const allGradients = Object.values(gradients).flat();
-  const randomIndex = Math.floor(Math.random() * allGradients.length);
+  const randomIndex = Object.values(gradients)[index];
 
-  return allGradients[randomIndex];
+  return randomIndex;
 }
