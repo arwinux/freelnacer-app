@@ -6,37 +6,99 @@ import {
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import useAddCategory from './useAddCategory';
+import useUpdateCategory from './useUpdateCategory';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import RHFSelect from '../../ui/RHFSelect';
 
-function AddCategory({ showCategoryForm, setShowCategory }) {
+function AddCategory({
+  showCategoryForm,
+  setShowCategory,
+  isEditMode,
+  categoryToEdit,
+}) {
   const { addCategory: onAddCategory, isAddingCategory } = useAddCategory();
+  const { updateCategory, isUpdateCategory } = useUpdateCategory();
+  const navigate = useNavigate();
+
+  const typeOptions = [
+    { value: 'project', label: 'Project' },
+    { value: 'comment', label: 'Comment' },
+    { value: 'post', label: 'Post' },
+    { value: 'ticket', label: 'Ticket' },
+  ];
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+    setValue,
+  } = useForm({
+    defaultValues: {
+      title: '',
+      englishTitle: '',
+      description: '',
+    },
+  });
+
+  // Populate form when editing
+  useEffect(() => {
+    if (isEditMode && categoryToEdit) {
+      setValue('title', categoryToEdit.label || '');
+      setValue('englishTitle', categoryToEdit.englishTitle || '');
+      setValue('description', categoryToEdit.description || '');
+    }
+  }, [isEditMode, categoryToEdit, setValue]);
 
   const onSubmit = (data) => {
-    console.log('FORM DATA:', data);
     const categoryData = {
       title: data.title,
       englishTitle: data.englishTitle,
-      type: 'project',
+      type: data.type,
       description: data.description,
     };
-    onAddCategory(categoryData, {
-      onSuccess: () => {
-        reset();
-      },
-    });
+
+    if (isEditMode && categoryToEdit) {
+      updateCategory(
+        {
+          categoryId: categoryToEdit.value,
+          categoryData,
+        },
+        {
+          onSuccess: () => {
+            reset();
+            setShowCategory(false);
+            navigate('/admin/manage-categories'); // Navigate back after update
+          },
+        },
+      );
+    } else {
+      onAddCategory(categoryData, {
+        onSuccess: () => {
+          reset();
+          setShowCategory(false);
+        },
+      });
+    }
   };
+
+  const handleCancel = () => {
+    reset();
+    setShowCategory(false);
+    if (isEditMode) {
+      navigate('/admin/manage-categories');
+    }
+  };
+
+  const isProcessing = isAddingCategory || isUpdateCategory;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
         transition={{
           duration: 0.2,
           ease: 'easeOut',
@@ -44,7 +106,7 @@ function AddCategory({ showCategoryForm, setShowCategory }) {
         className='w-full bg-component rounded-xl shadow-xl shadow-black/15 scroll-auto'
       >
         <div className='text-title text-xl font-bold border-b p-6 border-gray-300 pb-2'>
-          Add Category
+          {isEditMode ? 'Edit Category' : 'Add Category'}
         </div>
 
         <div className='w-full flex flex-col justify-center gap-y-8 px-6 mt-4'>
@@ -56,10 +118,10 @@ function AddCategory({ showCategoryForm, setShowCategory }) {
               register={register}
               required={true}
               validationSchema={{
-                required: 'title is required',
+                required: 'Title is required',
                 minLength: {
-                  value: 10,
-                  message: 'Title must be at least 10 characters',
+                  value: 3, // Changed from 10 to 3 (more reasonable)
+                  message: 'Title must be at least 3 characters',
                 },
                 maxLength: {
                   value: 60,
@@ -88,6 +150,15 @@ function AddCategory({ showCategoryForm, setShowCategory }) {
               }}
               errors={errors}
             />
+
+            <RHFSelect
+              name='type'
+              label='Type'
+              placeholder='Select a Type'
+              register={register}
+              required={true}
+              options={typeOptions}
+            />
           </div>
 
           <TextAreaCreateProject
@@ -98,14 +169,14 @@ function AddCategory({ showCategoryForm, setShowCategory }) {
             register={register}
             required={true}
             validationSchema={{
-              required: 'description is required',
+              required: 'Description is required',
               minLength: {
-                value: 30,
-                message: 'At least 30 characters',
+                value: 10, // Changed from 30 to 10
+                message: 'At least 10 characters',
               },
               maxLength: {
-                value: 200,
-                message: 'Max 200 characters',
+                value: 500, // Increased from 200
+                message: 'Max 500 characters',
               },
             }}
             errors={errors}
@@ -115,17 +186,25 @@ function AddCategory({ showCategoryForm, setShowCategory }) {
         <div className='inline-flex px-6 flex-col-reverse sm:flex-row gap-y-2 py-6 justify-center gap-x-5'>
           <button
             type='button'
-            onClick={() => setShowCategory(false)}
-            className='inline secondary-btn py-2 font-medium text-md'
+            onClick={handleCancel}
+            disabled={isProcessing}
+            className='inline secondary-btn py-2 font-medium text-md disabled:opacity-50'
           >
             Cancel
           </button>
 
           <button
             type='submit'
-            className='inline primary-btn py-2 font-bold text-md'
+            disabled={isProcessing}
+            className='inline primary-btn py-2 font-bold text-md disabled:opacity-50'
           >
-            Create Category
+            {isProcessing
+              ? isEditMode
+                ? 'Updating...'
+                : 'Creating...'
+              : isEditMode
+                ? 'Update Category'
+                : 'Create Category'}
           </button>
         </div>
       </motion.div>

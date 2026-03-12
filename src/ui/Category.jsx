@@ -6,18 +6,32 @@ import ConfirmDelete from './ConfirmDelete';
 import { useState } from 'react';
 import { TiPencil } from 'react-icons/ti';
 import Modal from './Modal';
+import { Link } from 'react-router-dom';
 
 function Category({
   value,
   index,
   title,
   titleEnglish,
+  type,
   description,
   categoryValue,
   setcategoryValue,
+  editCategoryValues,
 }) {
-  const { removeCategory, isRemoveCategory } = useRemoveCategory();
+  const { removeCategory } = useRemoveCategory();
   const [isDeletedOpen, setIsDeletedOpen] = useState(false);
+
+  const onChange = () => {
+    setcategoryValue(value);
+    editCategoryValues = {
+      title,
+      englishTitle: titleEnglish,
+      type,
+      description,
+    };
+    console.log(type)
+  };
 
   return (
     <div className='group flex flex-col gap-y-2 overflow-hidden justify-start hover:scale-105 transition-all duration-300 cursor-default select-none bg-component shadow-lg shadow-zinc-500/40 rounded-xl'>
@@ -34,12 +48,14 @@ function Category({
           className='group-hover:flex hidden absolute right-0 top-0 p-3 justify-center items-center gap-x-2'
         >
           <div className='flex gap-x-2'>
-            <button
-              onClick={()=> setcategoryValue(value)}
+            <Link
+              to={`/admin/manage-categories/${value}`}
+              state={{ canChangeStatus: false }}
+              onClick={() => onChange()}
               className='size-9 flex justify-center bg-component rounded-lg items-center'
             >
               <TiPencil className='text-title size-5' />
-            </button>
+            </Link>
 
             <button
               onClick={() => setIsDeletedOpen(true)}

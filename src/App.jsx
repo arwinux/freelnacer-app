@@ -82,6 +82,10 @@ function AppContent() {
             <Route path='create-project' element={<CreateProject />} />
 
             <Route path='manage-categories' element={<ManageCategories />} />
+            <Route
+              path='manage-categories/:id'
+              element={<ManageCategories />}
+            />
 
             <Route path='manage-users' element={<ManageUsers />} />
 

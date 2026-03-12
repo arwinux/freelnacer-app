@@ -13,3 +13,13 @@ export function deleteCategoryApi(id) {
     .delete(`admin/category/remove/${id}`)
     .then(({ data }) => data.data);
 }
+
+export function updateCategoryApi(id, newCategory) {
+  return http
+    .patch(`admin/category/update/${id}`, newCategory)
+    .then(({ data }) => data.data);
+}
+
+export function getOneCategoryApi() {
+  return http.get(`category/${id}`).then(({ data }) => data.data);
+}

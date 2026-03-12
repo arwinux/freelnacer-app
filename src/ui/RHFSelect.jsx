@@ -10,7 +10,7 @@ function RHFSelect({
   className,
 }) {
   return (
-    <div>
+    <div className='w-full'>
       <label htmlFor="">
         <label className="mb-2 text-title bg-for flex items-center text-sm font-medium gap-x-2">
           {label} {required && <FaStarOfLife className="text-red-500 size-2" />}
