@@ -15,23 +15,10 @@ function Category({
   titleEnglish,
   type,
   description,
-  categoryValue,
   setcategoryValue,
-  editCategoryValues,
 }) {
   const { removeCategory } = useRemoveCategory();
   const [isDeletedOpen, setIsDeletedOpen] = useState(false);
-
-  const onChange = () => {
-    setcategoryValue(value);
-    editCategoryValues = {
-      title,
-      englishTitle: titleEnglish,
-      type,
-      description,
-    };
-    console.log(type)
-  };
 
   return (
     <div className='group flex flex-col gap-y-2 overflow-hidden justify-start hover:scale-105 transition-all duration-300 cursor-default select-none bg-component shadow-lg shadow-zinc-500/40 rounded-xl'>
@@ -51,7 +38,6 @@ function Category({
             <Link
               to={`/admin/manage-categories/${value}`}
               state={{ canChangeStatus: false }}
-              onClick={() => onChange()}
               className='size-9 flex justify-center bg-component rounded-lg items-center'
             >
               <TiPencil className='text-title size-5' />
@@ -95,7 +81,12 @@ function Category({
       </div>
       <div className='p-4 flex flex-col justify-center gap-y-2'>
         <p className='text-xl font-bold'>{title}</p>
-        <p className='flex w-fit text-base! justify-center items-center badge-category'>
+        <p className='flex w-fit text-base! justify-center items-center badge-category pl-0!'>
+          <p
+            className={`${getRandomGradient(index)} flex w-fit text-base! justify-center items-center text-color font-bold rounded-xl px-2`}
+          >
+            {type}
+          </p>
           {titleEnglish}
         </p>
         <p className='text-subtitle'>{description}</p>

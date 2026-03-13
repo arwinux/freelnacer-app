@@ -21,12 +21,18 @@ function AddCategory({
   const { updateCategory, isUpdateCategory } = useUpdateCategory();
   const navigate = useNavigate();
 
-  const typeOptions = [
-    { value: 'project', label: 'Project' },
-    { value: 'comment', label: 'Comment' },
-    { value: 'post', label: 'Post' },
-    { value: 'ticket', label: 'Ticket' },
-  ];
+  const typeOptions = isEditMode
+    ? [
+        { value: 'comment', label: 'Comment' },
+        { value: 'post', label: 'Post' },
+        { value: 'ticket', label: 'Ticket' },
+      ]
+    : [
+        { value: 'project', label: 'Project' },
+        { value: 'comment', label: 'Comment' },
+        { value: 'post', label: 'Post' },
+        { value: 'ticket', label: 'Ticket' },
+      ];
 
   const {
     register,
@@ -39,6 +45,7 @@ function AddCategory({
       title: '',
       englishTitle: '',
       description: '',
+      type: 'project',
     },
   });
 
@@ -48,6 +55,7 @@ function AddCategory({
       setValue('title', categoryToEdit.label || '');
       setValue('englishTitle', categoryToEdit.englishTitle || '');
       setValue('description', categoryToEdit.description || '');
+      setValue('type', categoryToEdit.type || '');
     }
   }, [isEditMode, categoryToEdit, setValue]);
 
@@ -69,7 +77,7 @@ function AddCategory({
           onSuccess: () => {
             reset();
             setShowCategory(false);
-            navigate('/admin/manage-categories'); // Navigate back after update
+            navigate('/admin/manage-categories');
           },
         },
       );
