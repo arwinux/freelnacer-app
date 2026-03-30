@@ -11,7 +11,7 @@ function TextField({
       <input
         id={name}
         name={name}
-        {...register(name, validationSchema)}
+        {...register(name, validationSchema) }
         autoComplete="off"
         className={`form-card__textfield text-title ${classname}`}
         placeholder={placeholder}
