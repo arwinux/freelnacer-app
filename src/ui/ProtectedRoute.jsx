@@ -2,16 +2,22 @@ import { useEffect } from 'react';
 import useAuthorize from '../features/authentication/useAuthorize';
 import { useNavigate } from 'react-router-dom';
 import Loading from './Loading';
+import toast from 'react-hot-toast';
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
 
   // 1. load the authenticated user
-  const { isLoading, user, isAuthenticated, isAuthorized } = useAuthorize();
+  const { isLoading, user, isAuthenticated, isAuthorized, isVerified } =
+    useAuthorize();
 
   // 2. check if is Authorized or not, check is Authenticated or not
   useEffect(() => {
     if (!isAuthenticated && !isLoading) navigate('/auth');
+    if (!isVerified && !isLoading) {
+      toast.error('Your profile status is still pending');
+      navigate('/not-access');
+    }
     if (!isAuthorized && !isLoading) navigate('/not-access');
   }, [isLoading, isAuthenticated, isAuthorized, navigate]);
 
