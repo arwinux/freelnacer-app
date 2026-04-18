@@ -1,13 +1,16 @@
-import { useLocation } from 'react-router-dom';
 import useUser from './useUser';
+import useRole from '../../hooks/useRole';
 
 export default function useAuthorize() {
   const { isLoading, user } = useUser();
-  const { pathname } = useLocation();
+  const role = useRole();
 
   let isAuthenticated = false;
   if (user) isAuthenticated = true;
   let isAuthorized = false;
+
+  let isVerified = false;
+  if (user && Number(user.status) === 2) isVerified = true;
 
   const ROLES = {
     admin: 'ADMIN',
@@ -15,12 +18,9 @@ export default function useAuthorize() {
     client: 'OWNER',
   };
 
-  const desiredRole = pathname.split('/').at(1);
-  console.log(desiredRole);
-
-  if (Object.keys(ROLES).includes(desiredRole)) {
-    if (user && user.role === ROLES[desiredRole]) isAuthorized = true;
+  if (Object.keys(ROLES).includes(role)) {
+    if (user && user.role === ROLES[role]) isAuthorized = true;
   }
 
-  return { isLoading, isAuthenticated, isAuthorized, user };
+  return { isLoading, isAuthenticated, isAuthorized, user, isVerified };
 }

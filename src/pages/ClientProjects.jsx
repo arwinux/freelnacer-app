@@ -1,6 +1,6 @@
 import ProjectsViewGrid from '../features/projects/ProjectsViewGrid';
 
-function Projects() {
+function ClientProjects() {
   return (
     <div className='page-set'>
       <ProjectsViewGrid />
@@ -8,4 +8,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default ClientProjects;

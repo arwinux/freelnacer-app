@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SendOTPForm from './SendOTPForm';
 import CheckOTPForm from './CheckOTPForm';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { getOTP } from '../../services/authService';
 import { useForm } from 'react-hook-form';
+import useUser from './useUser';
+import { useNavigate } from 'react-router-dom';
 
 export const RESEND_TIME = 90;
 
 function AuthContainer() {
   const [step, setStep] = useState(1);
+  const navigate = useNavigate();
+
   // const [phoneNumber, setPhoneNumber] = useState('');
   const { isPending: isSendingOtp, mutateAsync } = useMutation({
     mutationFn: getOTP,
@@ -18,6 +22,11 @@ function AuthContainer() {
   const { handleSubmit, register, getValues } = useForm();
 
   const [time, setTime] = useState(RESEND_TIME);
+
+  const { isLoading, user } = useUser();
+  useEffect(() => {
+    if (user) navigate('/', { replace: true });
+  }, [user]);
 
   const sendOtpHandler = async (data) => {
     try {
@@ -58,9 +67,9 @@ function AuthContainer() {
   };
 
   return (
-    <div className="page">
+    <div className='page'>
       {renderStep()}
-      <p className="mt-5 font-semibold cursor-default select-none text-title">
+      <p className='mt-5 font-semibold cursor-default select-none text-title'>
         🔒 Secure authentication powered by OTP
       </p>
     </div>

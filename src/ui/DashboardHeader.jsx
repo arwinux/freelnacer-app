@@ -1,8 +1,9 @@
 import { FaArrowRight } from 'react-icons/fa';
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiTarget } from 'react-icons/fi';
 import { LuSparkles } from 'react-icons/lu';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import useUser from '../features/authentication/useUser';
+import navigateBaseRole from '../utils/navigateBaseRole';
 
 export default function DashboardHeader({
   slogen,
@@ -46,13 +47,30 @@ export default function DashboardHeader({
 
             <span>{controlBtnText}</span>
           </Link>
-          <Link
-            to='#'
-            className='flex w-full sm:w-fit badge-glass  cursor-pointer! transition-all duration-300 hover:text-title hover:bg-component/25 shadow-xl hover:shadow-primary-400 items-center justify-center gap-x-4 font-bold rounded-xl text-primary-500 bg-component py-3 px-6'
-          >
-            <span>View Profile</span>
-            <FaArrowRight />
-          </Link>
+
+          {!isLoading && navigateBaseRole(user.role) === '/admin' ? (
+            <Link
+              to='/admin/manage-categories'
+              className='flex w-full sm:w-fit badge-glass  cursor-pointer! transition-all duration-300 hover:text-title hover:bg-component/25 shadow-xl hover:shadow-primary-400 items-center justify-center gap-x-4 font-bold rounded-xl text-primary-500 bg-component py-3 px-6'
+            >
+              <FiTarget />
+              <span>Manage Categories</span>
+            </Link>
+          ) : (
+            ''
+          )}
+
+          {!isLoading ? (
+            <Link
+              to={`${navigateBaseRole(user.role)}/profile`}
+              className='flex w-full sm:w-fit badge-glass  cursor-pointer! transition-all duration-300 hover:text-title hover:bg-component/25 shadow-xl hover:shadow-primary-400 items-center justify-center gap-x-4 font-bold rounded-xl text-primary-500 bg-component py-3 px-6'
+            >
+              <span>View Profile</span>
+              <FaArrowRight />
+            </Link>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </div>

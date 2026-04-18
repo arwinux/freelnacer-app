@@ -1,4 +1,3 @@
-import React from 'react';
 import { LuFileText, LuUsers } from 'react-icons/lu';
 import { FiBriefcase } from 'react-icons/fi';
 import { IoMdArrowForward, IoMdTrendingUp } from 'react-icons/io';
@@ -7,7 +6,7 @@ import useAllProjects from '../projects/useAllProjects';
 import StatSkeleton from '../../ui/StaticSkeleton';
 import useUser from '../authentication/useUser';
 
-function FreelancerQuickAction({
+function AdminQuickAction({
   proposals,
   proposalsIsLoading,
   projects,
@@ -33,7 +32,7 @@ function FreelancerQuickAction({
         </div>
         <div className='w-full grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 grid-flow-row gap-x-8 gap-y-5 lg:max-w-7xl mx-auto'>
           <Link
-            to={'/freelancer/projects'}
+            to={'/admin/projects'}
             className='w-full ring-border flex flex-1 flex-col group justify-between gap-x-2 gap-y-5 p-8 cursor-pointer select-none dashboard-static-container'
           >
             <div className='flex flex-col gap-y-2'>
@@ -65,7 +64,7 @@ function FreelancerQuickAction({
           </Link>
 
           <Link
-            to={'/freelancer/proposals'}
+            to={'/admin/admin-proposals'}
             className='w-full ring-border flex flex-1 flex-col group justify-between gap-x-2 gap-y-5 p-8 cursor-pointer select-none dashboard-static-container'
           >
             <div className='flex flex-col gap-y-2'>
@@ -95,7 +94,7 @@ function FreelancerQuickAction({
           </Link>
 
           <Link
-            to='/freelancer/profile'
+            to='/admin/profile'
             className='w-full ring-border flex flex-1 flex-col group justify-between gap-x-2 gap-y-5 p-8 cursor-pointer select-none dashboard-static-container'
           >
             <div className='flex flex-col gap-y-2'>
@@ -123,4 +122,4 @@ function FreelancerQuickAction({
   );
 }
 
-export default FreelancerQuickAction;
+export default AdminQuickAction;

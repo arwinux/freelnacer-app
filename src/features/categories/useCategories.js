@@ -9,13 +9,18 @@ export default function useCategories() {
 
   const { categories: rawCategories = [] } = data || {};
 
-  const categories = rawCategories.map((item) => ({
+  const categories = rawCategories.map((item,index) => ({
     label: item.title,
+    englishTitle:item.englishTitle,
+    description:item.description,
+    type:item.type,
     value: item._id,
   }));
 
   const transformedCategories = rawCategories.map((item) => ({
     label: item.title,
+    description:item.description,
+    type:item.type,
     value: item.englishTitle,
   }));
 

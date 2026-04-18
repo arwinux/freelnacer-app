@@ -10,7 +10,7 @@ import useNavigateBrowseProjects from '../hooks/useNavigateBrowseProjects';
 import FilterProposals from '../ui/filterProposals';
 import FreelancerProposalsViewGrid from '../features/proposals/FreelancerProposalsViewGrid';
 
-function FreelancerProposals() {
+function AdminProposals() {
   const { isLoading: userProfileIsLoading, user } = useUser();
   const { isLoading: proposalsIsLoading, proposals } = useProposals();
 
@@ -53,4 +53,4 @@ function FreelancerProposals() {
   );
 }
 
-export default FreelancerProposals;
+export default AdminProposals;
