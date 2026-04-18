@@ -3,7 +3,6 @@ import useProject from '../features/project/useProject';
 import LoadingPage from '../ui/LoadingPage';
 import ProjectFrViewDetails from '../features/project/ProjectFrViewDetails';
 import useUser from '../features/authentication/useUser';
-import { LuClock2 } from 'react-icons/lu';
 import SendProposalBtn from '../ui/SendProposalBtn';
 
 function ProjectFr() {

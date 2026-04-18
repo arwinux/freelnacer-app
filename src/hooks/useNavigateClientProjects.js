@@ -1,6 +1,8 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import useRole from './useRole';
 
 export default function useNavigateClientProject() {
+  const role = useRole();
   const navigate = useNavigate();
-  return () => navigate('/client/client-projects');
+  return () => navigate(`/${role}/${role}-projects`);
 }

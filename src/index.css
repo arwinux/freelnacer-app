@@ -439,11 +439,11 @@ button {
 }
 
 .orange-container {
-  @apply rounded-2xl hover:scale-[1.02] border-2 border-t-2 border-zinc-200/50 hover:shadow-2xl hover:border-2 hover:shadow-primary-500/20 hover:border-primary-400 transition-all duration-500 hover:-translate-y-6;
+  @apply rounded-2xl hover:scale-[1.02] border-2 border-t-2 border-zinc-200/50 shadow shadow-black/15 hover:shadow-2xl hover:border-2 hover:shadow-primary-500/20 hover:border-primary-400 transition-all duration-500 hover:-translate-y-6;
 }
 
 .orange-container-proposal {
-  @apply rounded-2xl hover:scale-[1.01] border-2 border-t-2 border-zinc-200/50 hover:shadow-2xl hover:border-2 hover:shadow-primary-500/20 hover:border-primary-400 transition-all duration-500 hover:-translate-y-2;
+  @apply rounded-2xl hover:scale-[1.01] border-2 border-t-2 border-zinc-200/50 shadow-xl hover:shadow-2xl hover:border-2 hover:shadow-primary-500/20 hover:border-primary-400 transition-all duration-500 hover:-translate-y-2;
 }
 
 .static-container {
@@ -464,6 +464,10 @@ button {
 
 .badge-tag {
   @apply flex cursor-default justify-center items-center gap-x-1 text-primary-700 font-semibold text-xs px-2 py-1 bg-primary-100 border border-primary-500/50 rounded-xl;
+}
+
+.badge-profile-detail {
+  @apply cursor-default gap-x-1 text-gray-700 font-semibold px-3 py-1 bg-gray-300/75 border border-gray-500/50 rounded-lg;
 }
 
 .badge-project-detail {

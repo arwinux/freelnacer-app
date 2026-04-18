@@ -1,7 +1,6 @@
 import DashboardHeader from '../../ui/DashboardHeader';
 import ClientStatics from './ClientStatics';
 import ClientQuickAction from './ClientQuickAction';
-import RecentProjects from '../../ui/RecentProjects';
 import RecentProjectsProposals from '../../ui/RecentProjectsProposals';
 import useClientProjects from '../projects/useClientProjects';
 import { FiPlus } from 'react-icons/fi';

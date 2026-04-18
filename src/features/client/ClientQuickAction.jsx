@@ -78,7 +78,7 @@ function ClientQuickAction({ projects, isLoading }) {
           </Link>
 
           <Link
-            to="#"
+            to="/client/profile"
             className="w-full ring-border flex flex-1 flex-col group justify-between gap-x-2 gap-y-5 p-8 cursor-pointer select-none dashboard-static-container"
           >
             <div className="flex flex-col gap-y-2">

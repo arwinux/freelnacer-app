@@ -9,7 +9,7 @@ export default function useCreateProject() {
     mutationFn: createProjectApi,
 
     onSuccess: () => {
-      toast.success('Project successfully deleted.');
+      toast.success('Project successfully deleted');
       queryClient.invalidateQueries({
         queryKey: ['client-projects'],
       });

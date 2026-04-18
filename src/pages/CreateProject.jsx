@@ -1,4 +1,3 @@
-import { LuRocket } from 'react-icons/lu';
 import { useForm } from 'react-hook-form';
 import {
   TextAreaCreateProject,
@@ -77,7 +76,7 @@ function CreateProject() {
             navigateClientProjects();
             reset();
           },
-        }
+        },
       );
     } else {
       createProject(newProject, {
@@ -90,7 +89,7 @@ function CreateProject() {
   };
 
   return (
-    <div className="flex mt-12 justify-center items-center flex-col w-full page-set">
+    <div className='flex mt-12 justify-center items-center flex-col w-full page-set'>
       <PageHeader
         badge={isEditMode ? 'Edit Project' : 'New Project'}
         title={isEditMode ? 'Update Project' : 'Create Project'}
@@ -100,18 +99,18 @@ function CreateProject() {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full bg-color max-w-3xl rounded-xl shadow-lg scroll-auto"
-        action=""
+        className='w-full bg-color max-w-3xl rounded-xl shadow-lg scroll-auto'
+        action=''
       >
-        <div className="text-title text-2xl font-bold border-b p-6 border-gray-300 pb-2">
+        <div className='text-title text-2xl font-bold border-b p-6 border-gray-300 pb-2'>
           Project Details
         </div>
 
-        <div className="w-full flex flex-col justify-center gap-y-8 px-6 mt-4">
+        <div className='w-full flex flex-col justify-center gap-y-8 px-6 mt-4'>
           <TextFieldCreateProject
-            name="title"
-            label="Project Title"
-            placeholder="e.g., Build a React Dashboard"
+            name='title'
+            label='Project Title'
+            placeholder='e.g., Build a React Dashboard'
             register={register}
             required={true}
             validationSchema={{
@@ -129,10 +128,10 @@ function CreateProject() {
           />
 
           <TextAreaCreateProject
-            name="description"
-            label="Description"
-            placeholder="Describe your project in detail..."
-            classname="h-24"
+            name='description'
+            label='Description'
+            placeholder='Describe your project in detail...'
+            classname='h-24'
             register={register}
             required={true}
             validationSchema={{
@@ -150,20 +149,20 @@ function CreateProject() {
           ></TextAreaCreateProject>
 
           <RHFSelect
-            name="category"
-            label="Cateogry"
-            placeholder="Select a category"
+            name='category'
+            label='Cateogry'
+            placeholder='Select a category'
             register={register}
             required={true}
             options={categories}
           />
 
           <div>
-            <label className="mb-2 text-title flex items-center text-sm font-medium gap-x-2">
+            <label className='mb-2 text-title flex items-center text-sm font-medium gap-x-2'>
               Tags
             </label>
             <Tags
-              className="w-full input-form flex bg-inputs! text-title placeholder-subtitle!"
+              className='w-full input-form flex bg-inputs! text-title placeholder-subtitle!'
               tagifyRef={tagifyRef}
               settings={{
                 maxTags: 10,
@@ -173,13 +172,13 @@ function CreateProject() {
             />
           </div>
 
-          <div className="flex flex-wrap sm:flex-nowrap w-full justify-between items-center gap-x-6">
+          <div className='flex flex-wrap sm:flex-nowrap w-full justify-between items-center gap-x-6'>
             <TextFieldCreateProject
-              name="budget"
-              label="Budget ($)"
-              placeholder="e.g., 5000"
-              classname="flex-1 h-12 "
-              type="number"
+              name='budget'
+              label='Budget ($)'
+              placeholder='e.g., 5000'
+              classname='flex-1 h-12 '
+              type='number'
               register={register}
               required={true}
               validationSchema={{
@@ -191,24 +190,24 @@ function CreateProject() {
               date={date}
               setDate={setDate}
               required={true}
-              label="Deadline"
-              className="flex-1 w-full h-12"
+              label='Deadline'
+              className='flex-1 w-full h-12'
             />
           </div>
         </div>
 
-        <div className="flex w-full flex-col-reverse sm:flex-row px-6 gap-y-2 py-6 justify-center items-center gap-x-5">
+        <div className='flex w-full flex-col-reverse sm:flex-row px-6 gap-y-2 py-6 justify-center items-center gap-x-5'>
           <button
-            type="button"
+            type='button'
             onClick={useNavigateClientProject()}
-            className="secondary-btn flex-1 w-full py-2 font-medium text-lg"
+            className='secondary-btn flex-1 w-full py-2 font-medium text-lg'
           >
             Cancel
           </button>
 
           <button
-            type="submit"
-            className="primary-btn flex-1 w-full py-2 font-medium text-lg"
+            type='submit'
+            className='primary-btn flex-1 w-full py-2 font-medium text-lg'
           >
             {isEditMode ? 'Update Project' : 'Create Project'}
             {isEditMode ? (
